@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyHopDong
 {
-    public partial class Form1 : Form
+    public partial class QuangCao : Form
     {
-        public Form1()
+        public QuangCao()
         {
             InitializeComponent();
         }
