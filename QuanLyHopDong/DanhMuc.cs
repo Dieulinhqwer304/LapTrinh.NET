@@ -16,5 +16,46 @@ namespace QuanLyHopDong
         {
             InitializeComponent();
         }
+
+        private void DanhMuc_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void doanhThuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Khởi tạo đối tượng DoanhThu
+
+            DoanhThu f1 = new DoanhThu();
+            f1.StartPosition = FormStartPosition.CenterScreen;
+            f1.Show();
+
+        }
+
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuanLyHopDong.Functions.Disconnect(); //Đóng kết nối
+        }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chiPhíToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChiPhi f2 = new ChiPhi();
+            f2.StartPosition = FormStartPosition.CenterScreen;
+            f2.Show();
+
+        }
+
+        private void mnuLoiNhuan_Click(object sender, EventArgs e)
+        {
+            LoiNhuan f3 = new LoiNhuan();
+            f3.StartPosition = FormStartPosition.CenterScreen;
+            f3.Show();
+
+        }
     }
 }

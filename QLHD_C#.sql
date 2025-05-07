@@ -149,3 +149,5 @@ CREATE TABLE KhachQuangcao (
     FOREIGN KEY (MaNV) REFERENCES Nhanvien(MaNV),
     FOREIGN KEY (MaQcao) REFERENCES TTQuangcao(MaQcao)
 );
+
+select * from Theloai
