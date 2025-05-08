@@ -58,11 +58,18 @@
     <Compile Include="DanhMuc.Designer.cs">
       <DependentUpon>DanhMuc.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO.cs" />
     <Compile Include="DoanhThu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DoanhThu.Designer.cs">
       <DependentUpon>DoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKhachGuiBai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKhachGuiBai.Designer.cs">
+      <DependentUpon>frmKhachGuiBai.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions.cs" />
     <Compile Include="LoiNhuan.cs">
@@ -84,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DoanhThu.resx">
       <DependentUpon>DoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKhachGuiBai.resx">
+      <DependentUpon>frmKhachGuiBai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
