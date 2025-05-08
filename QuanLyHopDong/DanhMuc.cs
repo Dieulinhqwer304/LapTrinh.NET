@@ -34,6 +34,7 @@ namespace QuanLyHopDong
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Close(); //Đóng form hiện tại
             QuanLyHopDong.Functions.Disconnect(); //Đóng kết nối
         }
 
