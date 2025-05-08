@@ -17,11 +17,6 @@ namespace QuanLyHopDong
             InitializeComponent();
         }
 
-        private void DanhMuc_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void doanhThuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Khởi tạo đối tượng DoanhThu
@@ -34,6 +29,7 @@ namespace QuanLyHopDong
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Close(); //Đóng form hiện tại
             QuanLyHopDong.Functions.Disconnect(); //Đóng kết nối
         }
 
@@ -56,6 +52,13 @@ namespace QuanLyHopDong
             f3.StartPosition = FormStartPosition.CenterScreen;
             f3.Show();
 
+        }
+
+        private void kháchGửiBàiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmKhachGuiBai f = new frmKhachGuiBai();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
         }
     }
 }
