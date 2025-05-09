@@ -34,7 +34,7 @@ namespace QuanLyHopDong
 
         private void LoadDataToGridView()
         {
-            string sql = "SELECT * FROM KhachGuiBai";
+            string sql = "SELECT * FROM Khachguibai";
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(sql, Functions.Conn);
             da.Fill(dt);
@@ -104,10 +104,10 @@ namespace QuanLyHopDong
                 return;
             }
 
-            string sqlCheck = "SELECT * FROM KhachGuiBai WHERE Malangui = N'" + malan + "'";
+            string sqlCheck = "SELECT * FROM Khachguibai WHERE Malangui = N'" + malan + "'";
             if (!Functions.CheckKey(sqlCheck))
             {
-                string sql = "INSERT INTO KhachGuiBai VALUES " +
+                string sql = "INSERT INTO Khachguibai VALUES " +
                              $"(N'{malan}', N'{makh}', N'{matl}', N'{mabao}', N'{tieude}', N'{noidung}', N'{manv}', '{ngaydang}', {nhuanbut})";
 
                 SqlCommand cmd = new SqlCommand(sql, Functions.Conn);

@@ -60,5 +60,12 @@ namespace QuanLyHopDong
             f.StartPosition = FormStartPosition.CenterScreen;
             f.Show();
         }
+
+        private void quảngCáoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmKhachQuangCao f = new frmKhachQuangCao();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
     }
 }
