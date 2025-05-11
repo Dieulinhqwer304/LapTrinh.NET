@@ -35,7 +35,8 @@ namespace QuanLyHopDong
 
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmKhachHang f = new frmKhachHang();
+            f.Show();
         }
 
         private void chiPhíToolStripMenuItem_Click(object sender, EventArgs e)
@@ -65,6 +66,12 @@ namespace QuanLyHopDong
         {
             frmKhachQuangCao f = new frmKhachQuangCao();
             f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void báoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBao f = new frmBao();
             f.Show();
         }
     }

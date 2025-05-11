@@ -177,6 +177,8 @@ INSERT INTO Khachhang VALUES
 (N'KH04', N'Văn phòng Luật Hòa Bình', N'78 Pasteur', N'0287777666', N'0944555666', N'hoabinh@law.vn', N'LV03'),
 (N'KH05', N'Công ty Truyền thông HTV', N'123 Cách Mạng Tháng 8', N'0288888999', N'0955666777', N'htv@media.vn', N'LV05');
 
+ALTER TABLE Khachhang ADD VaiTro NVARCHAR(50);
+
 -- Bảng Khachguibai
 CREATE TABLE Khachguibai (
     Malangui NVARCHAR(10) PRIMARY KEY,

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace QuanLyHopDong
 {
     public partial class frmKhachQuangCao : Form
-    {
+    {   
         public frmKhachQuangCao()
         {
             InitializeComponent();
