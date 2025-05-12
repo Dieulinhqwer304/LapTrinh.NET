@@ -74,5 +74,12 @@ namespace QuanLyHopDong
             frmBao f = new frmBao();
             f.Show();
         }
+
+        private void mnuNhanVien_Click(object sender, EventArgs e)
+        {
+            NhanVien f = new NhanVien();
+            f.StartPosition = FormStartPosition.CenterScreen; 
+            f.Show();
+        }
     }
 }

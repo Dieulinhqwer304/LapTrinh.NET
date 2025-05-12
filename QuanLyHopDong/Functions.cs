@@ -20,7 +20,7 @@ namespace QuanLyHopDong
         public static void Connect()
         {
             //Thiết lập giá trị cho chuỗi kết nối
-            connString = "Data Source=HUYLE;Initial Catalog=QLHD;Integrated Security=True;Encrypt=False";
+            connString = "Data Source=LAPTOP-AJ9TO7IE\\SQLEXPRESS;Initial Catalog=QLHD;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
             Conn = new SqlConnection();         		//Cấp phát đối tượng
             Conn.ConnectionString = connString; 		//Kết nối
             Conn.Open();                        		//Mở kết nối
