@@ -16,7 +16,6 @@ namespace QuanLyHopDong
         {
             InitializeComponent();
         }
-
         private void doanhThuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Khởi tạo đối tượng DoanhThu
@@ -74,5 +73,7 @@ namespace QuanLyHopDong
             frmBao f = new frmBao();
             f.Show();
         }
+
+        
     }
 }
