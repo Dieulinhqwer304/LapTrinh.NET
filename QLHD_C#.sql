@@ -40,19 +40,35 @@ INSERT INTO Theloai VALUES
 CREATE TABLE Bao_Theloai (
     Mabao NVARCHAR(10),
     Matheloai NVARCHAR(10),
+    Ngayapdung DATE, 
     Nhuanbut DECIMAL(10,2),
-    PRIMARY KEY (Mabao, Matheloai),
+    PRIMARY KEY (Mabao, Matheloai, Ngayapdung),
     FOREIGN KEY (Mabao) REFERENCES Bao(Mabao),
     FOREIGN KEY (Matheloai) REFERENCES Theloai(Matheloai)
 );
+INSERT INTO Bao_Theloai (Mabao, Matheloai, Ngayapdung, Nhuanbut)
+VALUES 
+('B01', 'TL01', '2025-01-01', 500000.00),
+('B01', 'TL02', '2025-01-01', 450000.00),
+('B02', 'TL01', '2025-01-01', 550000.00),
+('B02', 'TL02', '2025-01-01', 480000.00),
 
-INSERT INTO Bao_Theloai VALUES
-(N'B01', N'TL01', 500000),
-(N'B01', N'TL02', 400000),
-(N'B02', N'TL03', 450000),
-(N'B03', N'TL04', 350000),
-(N'B04', N'TL05', 300000);
+-- B01 - TL01 có mức nhuận bút mới từ 01/06/2025
+('B01', 'TL01', '2025-06-01', 520000.00),
+-- B02 - TL02 có mức nhuận bút mới từ 01/06/2025
+('B02', 'TL02', '2025-06-01', 500000.00),
 
+('B03', 'TL01', '2025-01-15', 470000.00),
+('B03', 'TL03', '2025-01-15', 490000.00),
+
+('B04', 'TL02', '2025-01-20', 460000.00),
+('B04', 'TL03', '2025-01-20', 500000.00),
+('B04', 'TL04', '2025-01-20', 510000.00),
+
+-- Cập nhật mới
+('B03', 'TL01', '2025-04-01', 480000.00),
+('B03', 'TL04', '2025-04-01', 550000.00),
+('B04', 'TL03', '2025-04-01', 520000.00);
 
 -- Bảng Phongban
 CREATE TABLE Phongban (
@@ -68,7 +84,6 @@ INSERT INTO Phongban VALUES
 (N'PB03', N'Phòng Giáo dục', N'B02', N'0283322110'),
 (N'PB04', N'Phòng Thể thao', N'B03', N'0284455667'),
 (N'PB05', N'Phòng Giải trí', N'B04', N'0289988776');
-
 
 -- Bảng Trinhdo
 CREATE TABLE Trinhdo (
@@ -131,7 +146,6 @@ CREATE TABLE Nhanvien (
     Ngaysinh DATE,
     Gioitinh NVARCHAR(10),
     Dienthoai NVARCHAR(15),
-    Mobile NVARCHAR(15),
     Email NVARCHAR(100),
     FOREIGN KEY (Mabao) REFERENCES Bao(Mabao),
     FOREIGN KEY (Maphong) REFERENCES Phongban(Maphong),
@@ -140,11 +154,11 @@ CREATE TABLE Nhanvien (
     FOREIGN KEY (MaCM) REFERENCES Chuyenmon(MaCM)
 );
 INSERT INTO Nhanvien VALUES
-(N'NV01', N'Nguyễn Văn A', N'B01', N'PB01', N'CV01', N'TD01', N'CM01', N'123 Lê Lợi', '1985-06-10', N'Nam', N'0281234567', N'0901234567', N'nva@gmail.com'),
-(N'NV02', N'Lê Thị B', N'B02', N'PB03', N'CV02', N'TD02', N'CM03', N'456 Lý Thái Tổ', '1990-04-22', N'Nữ', N'0287654321', N'0912345678', N'ltb@gmail.com'),
-(N'NV03', N'Trần Văn C', N'B03', N'PB04', N'CV03', N'TD03', N'CM04', N'789 Trần Hưng Đạo', '1982-12-01', N'Nam', N'0289988776', N'0932123456', N'tvc@gmail.com'),
-(N'NV04', N'Phạm Thị D', N'B04', N'PB05', N'CV02', N'TD01', N'CM05', N'321 Cách Mạng Tháng 8', '1987-11-11', N'Nữ', N'0281111222', N'0922334455', N'ptd@gmail.com'),
-(N'NV05', N'Võ Văn E', N'B05', N'PB02', N'CV04', N'TD04', N'CM02', N'88 Pasteur', '1993-07-30', N'Nam', N'0283333444', N'0909988776', N'vve@gmail.com');
+(N'NV01', N'Nguyễn Văn A', N'B01', N'PB01', N'CV01', N'TD01', N'CM01', N'123 Lê Lợi', '1985-06-10', N'Nam', N'0281234567', N'nva@gmail.com'),
+(N'NV02', N'Lê Thị B', N'B02', N'PB03', N'CV02', N'TD02', N'CM03', N'456 Lý Thái Tổ', '1990-04-22', N'Nữ', N'0287654321', N'ltb@gmail.com'),
+(N'NV03', N'Trần Văn C', N'B03', N'PB04', N'CV03', N'TD03', N'CM04', N'789 Trần Hưng Đạo', '1982-12-01', N'Nam', N'0289988776', N'tvc@gmail.com'),
+(N'NV04', N'Phạm Thị D', N'B04', N'PB05', N'CV02', N'TD01', N'CM05', N'321 Cách Mạng Tháng 8', '1987-11-11', N'Nữ', N'0281111222', N'ptd@gmail.com'),
+(N'NV05', N'Võ Văn E', N'B05', N'PB02', N'CV04', N'TD04', N'CM02', N'88 Pasteur', '1993-07-30', N'Nam', N'0283333444', N'vve@gmail.com');
 
 
 -- Bảng Linhvuchoatdong
@@ -177,7 +191,6 @@ INSERT INTO Khachhang VALUES
 (N'KH04', N'Văn phòng Luật Hòa Bình', N'78 Pasteur', N'0287777666', N'0944555666', N'hoabinh@law.vn', N'LV03'),
 (N'KH05', N'Công ty Truyền thông HTV', N'123 Cách Mạng Tháng 8', N'0288888999', N'0955666777', N'htv@media.vn', N'LV05');
 
-ALTER TABLE Khachhang ADD VaiTro NVARCHAR(50);
 
 -- Bảng Khachguibai
 CREATE TABLE Khachguibai (

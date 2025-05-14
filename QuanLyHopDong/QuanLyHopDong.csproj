@@ -137,9 +137,12 @@
     <EmbeddedResource Include="frmKhachQuangCao.resx">
       <DependentUpon>frmKhachQuangCao.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="FrmNhanVien.resx">
       <DependentUpon>FrmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> 0301ddae417245b25ca4e017adccad6ce4229631
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
