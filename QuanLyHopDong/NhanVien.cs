@@ -26,8 +26,7 @@ namespace QuanLyHopDong
         private void NhanVien_Load (object sender, EventArgs e)
         {
             Functions.Connect();
-            LoadComboBox();
-            LoadDataToGridView();
+
         }
         private void LoadData()
         {
