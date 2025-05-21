@@ -93,18 +93,18 @@
     <Compile Include="frmKhachQuangCao.Designer.cs">
       <DependentUpon>frmKhachQuangCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNhanVien.Designer.cs">
+      <DependentUpon>FrmNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Functions.cs" />
     <Compile Include="LoiNhuan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoiNhuan.Designer.cs">
       <DependentUpon>LoiNhuan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NhanVien.Designer.cs">
-      <DependentUpon>NhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,9 +137,12 @@
     <EmbeddedResource Include="frmKhachQuangCao.resx">
       <DependentUpon>frmKhachQuangCao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien.resx">
-      <DependentUpon>NhanVien.cs</DependentUpon>
+<<<<<<< HEAD
+    <EmbeddedResource Include="FrmNhanVien.resx">
+      <DependentUpon>FrmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> 0301ddae417245b25ca4e017adccad6ce4229631
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
