@@ -69,7 +69,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(356, 139);
+            this.dataGridView1.Size = new System.Drawing.Size(356, 199);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -251,10 +251,9 @@
             series1.Legend = "Legend1";
             series1.Name = "DoanhThu";
             this.chartDoanhThu.Series.Add(series1);
-            this.chartDoanhThu.Size = new System.Drawing.Size(380, 139);
+            this.chartDoanhThu.Size = new System.Drawing.Size(380, 199);
             this.chartDoanhThu.TabIndex = 10;
             this.chartDoanhThu.Text = "Doanh thu theo tháng";
-            this.chartDoanhThu.Click += new System.EventHandler(this.cDoanhThu_Click);
             // 
             // khachQuangcaoBindingSource
             // 
@@ -268,7 +267,7 @@
             // 
             // txtNam1
             // 
-            this.txtNam1.Location = new System.Drawing.Point(449, 210);
+            this.txtNam1.Location = new System.Drawing.Point(449, 209);
             this.txtNam1.Name = "txtNam1";
             this.txtNam1.Size = new System.Drawing.Size(100, 22);
             this.txtNam1.TabIndex = 14;
