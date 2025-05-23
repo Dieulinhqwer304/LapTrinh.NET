@@ -48,28 +48,25 @@ CREATE TABLE Bao_Theloai (
 );
 INSERT INTO Bao_Theloai (Mabao, Matheloai, Ngayapdung, Nhuanbut)
 VALUES 
-('B01', 'TL01', '2025-01-01', 500000.00),
-('B01', 'TL02', '2025-01-01', 450000.00),
-('B02', 'TL01', '2025-01-01', 550000.00),
-('B02', 'TL02', '2025-01-01', 480000.00),
+-- B01 - TL01: tháng 1 đến tháng 6/2025
+('B01', 'TL01', '2025-01-01', 200000),
+('B01', 'TL01', '2025-02-01', 210000),
+('B01', 'TL01', '2025-03-01', 220000),
+('B01', 'TL01', '2025-04-01', 230000),
+('B01', 'TL01', '2025-05-01', 240000),
+('B01', 'TL01', '2025-06-01', 250000),
 
--- B01 - TL01 có mức nhuận bút mới từ 01/06/2025
-('B01', 'TL01', '2025-06-01', 520000.00),
--- B02 - TL02 có mức nhuận bút mới từ 01/06/2025
-('B02', 'TL02', '2025-06-01', 500000.00),
+-- B02 - TL02: tháng 1 đến tháng 3/2025
+('B02', 'TL02', '2025-01-01', 300000),
+('B02', 'TL02', '2025-02-01', 310000),
+('B02', 'TL02', '2025-03-01', 320000),
 
-('B03', 'TL01', '2025-01-15', 470000.00),
-('B03', 'TL03', '2025-01-15', 490000.00),
+-- B03 - TL03: tháng 4 và 5
+('B03', 'TL03', '2025-04-01', 280000),
+('B03', 'TL03', '2025-05-01', 290000),
 
-('B04', 'TL02', '2025-01-20', 460000.00),
-('B04', 'TL03', '2025-01-20', 500000.00),
-('B04', 'TL04', '2025-01-20', 510000.00),
-
--- Cập nhật mới
-('B03', 'TL01', '2025-04-01', 480000.00),
-('B03', 'TL04', '2025-04-01', 550000.00),
-('B04', 'TL03', '2025-04-01', 520000.00);
-
+-- B04 - TL04: tháng 1
+('B04', 'TL04', '2025-01-01', 400000);
 -- Bảng Phongban
 CREATE TABLE Phongban (
     Maphong NVARCHAR(10) PRIMARY KEY,
@@ -208,12 +205,6 @@ CREATE TABLE Khachguibai (
     FOREIGN KEY (Mabao) REFERENCES Bao(Mabao),
     FOREIGN KEY (MaNV) REFERENCES Nhanvien(MaNV)
 );
-INSERT INTO Khachguibai VALUES
-(N'GB01', N'KH01', N'TL01', N'B01', N'Tầm quan trọng của giáo dục', N'Bài viết nêu bật vai trò của giáo dục...', N'NV01', '2025-05-01', 600000),
-(N'GB02', N'KH02', N'TL02', N'B02', N'Thị trường chứng khoán Việt Nam', N'Phân tích diễn biến gần đây...', N'NV02', '2025-05-02', 550000),
-(N'GB03', N'KH03', N'TL03', N'B03', N'Giải pháp nâng cao chất lượng giảng dạy', N'Những cải tiến cần thiết...', N'NV03', '2025-05-03', 500000),
-(N'GB04', N'KH04', N'TL04', N'B04', N'Bóng đá Việt Nam và SEA Games', N'Triển vọng giành huy chương...', N'NV04', '2025-05-04', 400000),
-(N'GB05', N'KH05', N'TL05', N'B05', N'Gameshow truyền hình lên ngôi', N'Sự bùng nổ nội dung giải trí...', N'NV05', '2025-05-05', 450000);
 
 -- Bảng TTQuangcao
 CREATE TABLE TTQuangcao (
@@ -260,10 +251,3 @@ CREATE TABLE KhachQuangcao (
     FOREIGN KEY (MaNV) REFERENCES Nhanvien(MaNV),
     FOREIGN KEY (MaQcao) REFERENCES TTQuangcao(MaQcao)
 );
-INSERT INTO KhachQuangcao VALUES
-(N'QC001', N'KH01', N'B01', N'NV01', N'QC01', N'Giới thiệu sản phẩm giáo dục mới', '2025-05-01', '2025-05-15', 10000000),
-(N'QC002', N'KH02', N'B02', N'NV02', N'QC02', N'Video quảng bá thương hiệu', '2025-05-02', '2025-05-16', 15000000),
-(N'QC003', N'KH03', N'B03', N'NV03', N'QC03', N'Bài PR về chương trình đào tạo', '2025-05-03', '2025-05-17', 9000000),
-(N'QC004', N'KH04', N'B04', N'NV04', N'QC04', N'Tài trợ chương trình pháp luật', '2025-05-04', '2025-05-18', 12000000),
-(N'QC005', N'KH05', N'B05', N'NV05', N'QC05', N'Popup quảng bá gameshow', '2025-05-05', '2025-05-19', 7000000);
-

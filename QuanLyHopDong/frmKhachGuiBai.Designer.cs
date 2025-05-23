@@ -210,6 +210,7 @@
             this.dataGridViewKGuiBai.RowTemplate.Height = 24;
             this.dataGridViewKGuiBai.Size = new System.Drawing.Size(559, 283);
             this.dataGridViewKGuiBai.TabIndex = 19;
+            this.dataGridViewKGuiBai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewKGuiBai_CellClick);
             // 
             // txtTieude
             // 

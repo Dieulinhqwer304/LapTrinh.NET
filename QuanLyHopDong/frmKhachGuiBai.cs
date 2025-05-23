@@ -17,6 +17,8 @@ namespace QuanLyHopDong
             Functions.Connect();
             LoadComboBox();
             LoadDataToGridView();
+            //txtNhuanbut.Visible = true;
+            txtNhuanbut.ReadOnly = true;
         }
 
         private void LoadComboBox()
@@ -62,6 +64,7 @@ namespace QuanLyHopDong
             cboMaNV.Text = "";
             mtxtNgaydang.Text = "";
             txtNhuanbut.Text = "";
+            txtNhuanbut.ReadOnly = true;
         }
 
         private void dataGridViewKGuiBai_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -77,12 +80,14 @@ namespace QuanLyHopDong
                 cboMaNV.Text = dataGridViewKGuiBai.CurrentRow.Cells[6].Value.ToString();
                 mtxtNgaydang.Text = dataGridViewKGuiBai.CurrentRow.Cells[7].Value.ToString();
                 txtNhuanbut.Text = dataGridViewKGuiBai.CurrentRow.Cells[8].Value.ToString();
+                txtNhuanbut.ReadOnly = true;
             }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             clear();
+            txtNhuanbut.ReadOnly = true;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -95,7 +100,30 @@ namespace QuanLyHopDong
             string noidung = txtNoidung.Text.Trim();
             string manv = cboMaNV.Text.Trim();
             string ngaydang = mtxtNgaydang.Text.Trim();
-            string nhuanbut = txtNhuanbut.Text.Trim();
+
+            // Parse ngày đăng
+            if (!DateTime.TryParse(ngaydang, out DateTime dtNgaydang))
+            {
+                MessageBox.Show("Ngày đăng không hợp lệ");
+                return;
+            }
+
+            // Truy vấn nhuận bút trong Bao_Theloai theo tháng/năm ngày đăng
+            string sqlGetNB = $@"SELECT TOP 1 Nhuanbut FROM Bao_Theloai WHERE MaBao = N'{mabao}' AND MaTheloai = N'{matl}'
+            AND MONTH(NgayApdung) = {dtNgaydang.Month} 
+            AND YEAR(NgayApdung) = {dtNgaydang.Year}";
+
+            SqlCommand cmdNB = new SqlCommand(sqlGetNB, Functions.Conn);
+            object result = cmdNB.ExecuteScalar();
+
+            if (result == null)
+            {
+                MessageBox.Show("Không tìm thấy nhuận bút tương ứng trong bảng Bao_Theloai!");
+                return;
+            }
+
+            decimal nhuanbutValue = Convert.ToDecimal(result);
+
 
             if (malan == "")
             {
@@ -103,12 +131,39 @@ namespace QuanLyHopDong
                 txtmaLanGui.Focus();
                 return;
             }
+            if (tieude == "")
+            {
+                MessageBox.Show("Bạn chưa nhập tiêu đề");
+                txtTieude.Focus();
+                return;
+            }
+            if (noidung == "")
+            {
+                MessageBox.Show("Bạn chưa nhập nội dung");
+                txtNoidung.Focus();
+                return;
+            }
+            if (ngaydang == "")
+            {
+                MessageBox.Show("Bạn chưa nhập ngày đăng");
+                txtNoidung.Focus();
+                return;
+            }
+            if (cboMaKH.SelectedIndex == -1 && cboMaKH.Items.Count > 0)
+                cboMaKH.SelectedIndex = 0;
+            if (cboMaTL.SelectedIndex == -1 && cboMaTL.Items.Count > 0)
+                cboMaTL.SelectedIndex = 0;
+            if (cboMaBao.SelectedIndex == -1 && cboMaBao.Items.Count > 0)
+                cboMaBao.SelectedIndex = 0;
+            if (cboMaNV.SelectedIndex == -1 && cboMaNV.Items.Count > 0)
+                cboMaNV.SelectedIndex = 0;
 
             string sqlCheck = "SELECT * FROM Khachguibai WHERE Malangui = N'" + malan + "'";
             if (!Functions.CheckKey(sqlCheck))
             {
                 string sql = "INSERT INTO Khachguibai VALUES " +
-                             $"(N'{malan}', N'{makh}', N'{matl}', N'{mabao}', N'{tieude}', N'{noidung}', N'{manv}', '{ngaydang}', {nhuanbut})";
+             $"(N'{malan}', N'{makh}', N'{matl}', N'{mabao}', N'{tieude}', N'{noidung}', N'{manv}', '{ngaydang}', {nhuanbutValue})";
+
 
                 SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
                 try
@@ -130,16 +185,66 @@ namespace QuanLyHopDong
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (txtmaLanGui.Text.Trim() == "")
+            if (dataGridViewKGuiBai.Rows.Count == 0)
             {
-                MessageBox.Show("Bạn chưa chọn bản ghi nào để sửa");
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtmaLanGui.Text == "")
+            {
+                MessageBox.Show("Bạn chưa nhập mã lần gửi");
+                return;
+            }
+            if (txtTieude.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập tiêu đề");
+                txtTieude.Focus();
+                return;
+            }
+            if (txtNoidung.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập nội dung");
+                txtNoidung.Focus();
+                return;
+            }
+            if (mtxtNgaydang.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập ngày đăng");
+                mtxtNgaydang.Focus();
                 return;
             }
 
+            // Parse ngày đăng
+            if (!DateTime.TryParse(mtxtNgaydang.Text.Trim(), out DateTime dtNgaydang))
+            {
+                MessageBox.Show("Ngày đăng không hợp lệ");
+                return;
+            }
+
+            // Tính nhuận bút tự động
+            string sqlGetNB = $@"SELECT TOP 1 Nhuanbut FROM Bao_Theloai 
+                         WHERE MaBao = N'{cboMaBao.Text}' 
+                         AND MaTheloai = N'{cboMaTL.Text}'
+                         AND MONTH(NgayApdung) = {dtNgaydang.Month} 
+                         AND YEAR(NgayApdung) = {dtNgaydang.Year}";
+
+            SqlCommand cmdNB = new SqlCommand(sqlGetNB, Functions.Conn);
+            object result = cmdNB.ExecuteScalar();
+
+            if (result == null)
+            {
+                MessageBox.Show("Không tìm thấy nhuận bút tương ứng trong bảng Bao_Theloai!");
+                return;
+            }
+
+            decimal nhuanbutValue = Convert.ToDecimal(result);
+            txtNhuanbut.Text = nhuanbutValue.ToString();   // ✅ Sửa đổi: Gán vào textbox để người dùng xem
+
+            // Cập nhật
             string sql = $"UPDATE Khachguibai SET " +
                          $"MaKH=N'{cboMaKH.Text}', Matheloai=N'{cboMaTL.Text}', Mabao=N'{cboMaBao.Text}', " +
                          $"Tieude=N'{txtTieude.Text}', Noidung=N'{txtNoidung.Text}', MaNV=N'{cboMaNV.Text}', " +
-                         $"Ngaydang='{mtxtNgaydang.Text}', Nhuanbut={txtNhuanbut.Text} " +
+                         $"Ngaydang='{mtxtNgaydang.Text}', Nhuanbut={nhuanbutValue} " +
                          $"WHERE Malangui=N'{txtmaLanGui.Text}'";
 
             try
@@ -154,6 +259,7 @@ namespace QuanLyHopDong
                 MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
             }
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
