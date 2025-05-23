@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.mskDen = new System.Windows.Forms.MaskedTextBox();
@@ -69,7 +69,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(356, 139);
+            this.dataGridView1.Size = new System.Drawing.Size(356, 199);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -238,23 +238,22 @@
             // 
             // chartDoanhThu
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea1);
             this.chartDoanhThu.DataSource = this.khachQuangcaoBindingSource;
-            legend3.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend1);
             this.chartDoanhThu.Location = new System.Drawing.Point(402, 239);
             this.chartDoanhThu.Name = "chartDoanhThu";
             this.chartDoanhThu.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chartDoanhThu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "DoanhThu";
-            this.chartDoanhThu.Series.Add(series3);
-            this.chartDoanhThu.Size = new System.Drawing.Size(380, 139);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "DoanhThu";
+            this.chartDoanhThu.Series.Add(series1);
+            this.chartDoanhThu.Size = new System.Drawing.Size(380, 199);
             this.chartDoanhThu.TabIndex = 10;
             this.chartDoanhThu.Text = "Doanh thu theo tháng";
-            this.chartDoanhThu.Click += new System.EventHandler(this.cDoanhThu_Click);
             // 
             // khachQuangcaoBindingSource
             // 
@@ -268,7 +267,7 @@
             // 
             // txtNam1
             // 
-            this.txtNam1.Location = new System.Drawing.Point(449, 210);
+            this.txtNam1.Location = new System.Drawing.Point(449, 209);
             this.txtNam1.Name = "txtNam1";
             this.txtNam1.Size = new System.Drawing.Size(100, 22);
             this.txtNam1.TabIndex = 14;

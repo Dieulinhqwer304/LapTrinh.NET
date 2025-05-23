@@ -37,6 +37,7 @@ namespace QuanLyHopDong
                                 "Lỗi",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
+                return;
             }
 
             if (rdoTheoThang.Checked == true)
@@ -135,10 +136,9 @@ namespace QuanLyHopDong
 
 
         private void DoanhThu_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'qLHDDataSet.KhachQuangcao' table. You can move, or remove it, as needed.
-            this.khachQuangcaoTableAdapter.Fill(this.qLHDDataSet.KhachQuangcao);
+        {       
             QuanLyHopDong.Functions.Connect();
+  
 
         }
 
@@ -197,46 +197,131 @@ namespace QuanLyHopDong
 
         private void btnIn_Click(object sender, EventArgs e)
         {
+            // Tạo ứng dụng Excel
             COMExcel.Application exApp = new COMExcel.Application();
-            COMExcel.Workbook exBook; // Excel 1 - n Workbook
-            COMExcel.Worksheet exSheet; // Workbook 1 - n Worksheet
+            COMExcel.Workbook exBook = exApp.Workbooks.Add(COMExcel.XlWBATemplate.xlWBATWorksheet);
+            COMExcel.Worksheet exSheet = (COMExcel.Worksheet)exBook.Worksheets[1];
             COMExcel.Range exRange;
-            string sql;
-            int hang = 0, cot = 0;
-            DataTable tblThongtinHD, tblThongtinHang;
-            exBook = exApp.Workbooks.Add(COMExcel.XlWBATemplate.xlWBATWorksheet);
-            exSheet = exBook.Worksheets[1];
+
+            exSheet.Name = "Bao cao";
+
+            // ======= HEADER THÔNG TIN =========
             exRange = exSheet.Cells[1, 1];
             exRange.Range["A1:B3"].Font.Size = 10;
-            exRange.Range["A1:B3"].Font.Name = "Times new roman";
+            exRange.Range["A1:B3"].Font.Name = "Times New Roman";
             exRange.Range["A1:B3"].Font.Bold = true;
-            exRange.Range["A1:B3"].Font.ColorIndex = 5; //Màu xanh da trời
+            exRange.Range["A1:B3"].Font.ColorIndex = 5;
+
             exRange.Range["A1:A1"].ColumnWidth = 7;
             exRange.Range["B1:B1"].ColumnWidth = 15;
+
             exRange.Range["A1:B1"].MergeCells = true;
             exRange.Range["A1:B1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A1:B1"].Value = "Hệ thống quản lý báo";
+            exRange.Range["A1:B1"].Value = "HỆ THỐNG QUẢN LÝ BÁO";
+
             exRange.Range["A2:B2"].MergeCells = true;
             exRange.Range["A2:B2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Range["A2:B2"].Value = "Xã Đàn - Hà Nội";
+
             exRange.Range["A3:B3"].MergeCells = true;
             exRange.Range["A3:B3"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A3:B3"].Value = "Điện thoại: (04)44448888";
+            exRange.Range["A3:B3"].Value = "Điện thoại: (04) 4444 8888";
+
+            // ======= TIÊU ĐỀ =========
             exRange.Range["C2:E2"].Font.Size = 16;
-            exRange.Range["C2:E2"].Font.Name = "Times new roman";
+            exRange.Range["C2:E2"].Font.Name = "Times New Roman";
             exRange.Range["C2:E2"].Font.Bold = true;
-            exRange.Range["C2:E2"].Font.ColorIndex = 3; //Màu đỏ
+            exRange.Range["C2:E2"].Font.ColorIndex = 3; // Màu đỏ
             exRange.Range["C2:E2"].MergeCells = true;
             exRange.Range["C2:E2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Range["C2:E2"].Value = "BÁO CÁO DOANH THU";
 
+            // ======= THÔNG TIN THỜI GIAN =========
+            exRange.Range["B5:C6"].Font.Size = 12;
+            exRange.Range["B5:C6"].Font.Name = "Times New Roman";
+            exRange.Range["B5:B5"].Value = "Năm báo cáo:";
+            exRange.Range["C5:C5"].Value = txtNam1.Text; // Lấy năm từ txtNam1 (dùng trong btnLamMoi_Click)
+
+            // ======= IN DỮ LIỆU TỪ CHARTDOANHTHU =========
+            int rowStart = 8;
+            exRange.Range["A8:B8"].Font.Bold = true;
+            exRange.Range["A8:B8"].Font.Size = 12;
+            exRange.Range["A8:B8"].Font.Name = "Times New Roman";
+            exRange.Range["A8:B8"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Range["A8:A8"].ColumnWidth = 10;
+            exRange.Range["B8:B8"].ColumnWidth = 15;
+
+            exSheet.Cells[rowStart, 1] = "Tháng";
+            exSheet.Cells[rowStart, 2] = "Doanh thu";
+
+            int dataRowCount = 0;
+            if (chartDoanhThu.Series["DoanhThu"].Points.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu trong chartDoanhThu để in! Vui lòng nhấn 'Làm mới' trước.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                exApp.Quit();
+                return;
+            }
+
+            // Lấy dữ liệu từ chartDoanhThu
+            foreach (var point in chartDoanhThu.Series["DoanhThu"].Points)
+            {
+                string thang = point.XValue.ToString(); // Tháng (đã là dạng số: 1, 2, 3,...)
+                double doanhThu = point.YValues[0]; // Doanh thu (đã ở dạng triệu VNĐ từ btnLamMoi_Click)
+
+                exSheet.Cells[dataRowCount + rowStart + 1, 1] = thang;
+                exSheet.Cells[dataRowCount + rowStart + 1, 2] = doanhThu;
+                dataRowCount++;
+            }
+
+            // ======= VẼ BIỂU ĐỒ =========
+            COMExcel.ChartObjects charts = (COMExcel.ChartObjects)exSheet.ChartObjects();
+            COMExcel.ChartObject chartObject = charts.Add(300, 100, 400, 250); // Vị trí và kích thước biểu đồ
+            COMExcel.Chart chart = chartObject.Chart;
+
+            // Xác định vùng dữ liệu vẽ biểu đồ (bao gồm tiêu đề: A8:B...)
+            string dataStart = "A" + rowStart; // Bao gồm tiêu đề
+            string dataEnd = "B" + (rowStart + dataRowCount);
+            COMExcel.Range chartRange = exSheet.get_Range(dataStart, dataEnd);
+
+            // Đặt nguồn dữ liệu cho biểu đồ
+            chart.SetSourceData(chartRange, COMExcel.XlRowCol.xlColumns);
+
+            // Thay đổi loại biểu đồ nếu chỉ có 1 hàng dữ liệu
+            if (dataRowCount == 1)
+            {
+                chart.ChartType = COMExcel.XlChartType.xlColumnClustered; // Biểu đồ cột cho 1 điểm
+            }
+            else
+            {
+                chart.ChartType = COMExcel.XlChartType.xlLine; // Biểu đồ đường cho nhiều điểm
+            }
+
+            // Tiêu đề biểu đồ
+            chart.HasTitle = true;
+            chart.ChartTitle.Text = "Biểu đồ doanh thu (triệu VNĐ)";
+
+            // Trục X: Chỉ hiển thị tháng
+            chart.Axes(COMExcel.XlAxisType.xlCategory).HasTitle = true;
+            chart.Axes(COMExcel.XlAxisType.xlCategory).AxisTitle.Text = "Tháng";
+            chart.Axes(COMExcel.XlAxisType.xlCategory).CategoryType = COMExcel.XlCategoryType.xlCategoryScale; // Đảm bảo trục X là danh mục (chỉ hiển thị tháng)
+
+            // Trục Y: Doanh thu (triệu VNĐ), với các mức nhảy 10, 20, 30, 40
+            chart.Axes(COMExcel.XlAxisType.xlValue).HasTitle = true;
+            chart.Axes(COMExcel.XlAxisType.xlValue).AxisTitle.Text = "Doanh thu (triệu VNĐ)";
+            chart.Axes(COMExcel.XlAxisType.xlValue).MinimumScale = 0;
+            chart.Axes(COMExcel.XlAxisType.xlValue).MaximumScale = 40; // Tối đa 40 triệu
+            chart.Axes(COMExcel.XlAxisType.xlValue).MajorUnit = 10; // Nhảy 10 triệu mỗi bước
+
+            // Định dạng biểu đồ
+            chart.Legend.Position = COMExcel.XlLegendPosition.xlLegendPositionBottom;
+
+            // ======= HIỂN THỊ EXCEL =========
+            exApp.Visible = true;
         }
 
-        private void cDoanhThu_Click(object sender, EventArgs e)
-        {
 
 
-        }
+
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
