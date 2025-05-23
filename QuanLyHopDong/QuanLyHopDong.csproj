@@ -64,11 +64,11 @@
     <Compile Include="DoanhThu.Designer.cs">
       <DependentUpon>DoanhThu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmDanhMuc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmDanhMuc.Designer.cs">
+      <DependentUpon>frmDanhMuc.cs</DependentUpon>
     </Compile>
     <Compile Include="frmBao.cs">
       <SubType>Form</SubType>
@@ -100,6 +100,12 @@
     <Compile Include="FrmNhanVien.Designer.cs">
       <DependentUpon>FrmNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTrangchu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTrangchu.Designer.cs">
+      <DependentUpon>frmTrangchu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Functions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,8 +123,8 @@
     <EmbeddedResource Include="DoanhThu.resx">
       <DependentUpon>DoanhThu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmDanhMuc.resx">
+      <DependentUpon>frmDanhMuc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBao.resx">
       <DependentUpon>frmBao.cs</DependentUpon>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNhanVien.resx">
       <DependentUpon>FrmNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTrangchu.resx">
+      <DependentUpon>frmTrangchu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -161,6 +170,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <None Include="Resources\Ông Trump giục EU đơn phương giảm thêm thuế Tổng thống Mỹ Donald Trump đang yêu cầu EU đơn phương giảm thuế đối với hàng hóa Mỹ để có tiến triển trong đàm phán, theo Financial Times.1.png" />
+    <None Include="Resources\Ông Trump giục EU đơn phương giảm thêm thuế Tổng thống Mỹ Donald Trump đang yêu cầu EU đơn phương giảm thuế đối với hàng hóa Mỹ để có tiến triển trong đàm phán, theo Financial Times..png" />
+    <None Include="Resources\banner1.png" />
     <None Include="QLHDDataSet.xsc">
       <DependentUpon>QLHDDataSet.xsd</DependentUpon>
     </None>

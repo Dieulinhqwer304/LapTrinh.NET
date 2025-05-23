@@ -63,6 +63,40 @@ namespace QuanLyHopDong.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap banner {
+            get {
+                object obj = ResourceManager.GetObject("banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ông_Trump_giục_EU_đơn_phương_giảm_thêm_thuế_Tổng_thống_Mỹ_Donald_Trump_đang_yêu_cầu_EU_đơn_phương_giảm_thuế_đối_với_hàng_hóa_Mỹ_để_có_tiến_triển_trong_đàm_phán__theo_Financial_Times_ {
+            get {
+                object obj = ResourceManager.GetObject("Ông Trump giục EU đơn phương giảm thêm thuế Tổng thống Mỹ Donald Trump đang yêu c" +
+                        "ầu EU đơn phương giảm thuế đối với hàng hóa Mỹ để có tiến triển trong đàm phán, " +
+                        "theo Financial Times.", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ông_Trump_giục_EU_đơn_phương_giảm_thêm_thuế_Tổng_thống_Mỹ_Donald_Trump_đang_yêu_cầu_EU_đơn_phương_giảm_thuế_đối_với_hàng_hóa_Mỹ_để_có_tiến_triển_trong_đàm_phán__theo_Financial_Times1 {
+            get {
+                object obj = ResourceManager.GetObject("Ông Trump giục EU đơn phương giảm thêm thuế Tổng thống Mỹ Donald Trump đang yêu c" +
+                        "ầu EU đơn phương giảm thuế đối với hàng hóa Mỹ để có tiến triển trong đàm phán, " +
+                        "theo Financial Times1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap R {
             get {
                 object obj = ResourceManager.GetObject("R", resourceCulture);

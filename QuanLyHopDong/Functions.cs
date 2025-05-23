@@ -8,27 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using FontAwesome.Sharp;
 
 
 
-namespace QuanLyHopDong
+namespace QuanLyHopDong 
 {
     internal class Functions
     {
         public static SqlConnection Conn;  //Khai báo đối tượng kết nối
         public static string connString;   //Khai báo biến chứa chuỗi kết nối
-
+        private static IconButton currentButton;
+        private static Color activeColor = Color.LightBlue;  // Màu nút khi được chọn
+        private static Color defaultColor = Color.Transparent; // Màu mặc định
         public static void Connect()
         {
 
-            connString = "Data Source =DESKTOP-55FD207\\SQLEXPRESS;" +
-                "Initial Catalog =QLHD;" +
-                "Integrated Security =True";
+            connString = "Data Source=DLINH-0406\\SQLEXPRESS;Initial Catalog=QLHD;Integrated Security=True";
 
             Conn = new SqlConnection();         		//Cấp phát đối tượng
             Conn.ConnectionString = connString; 		//Kết nối
             Conn.Open();                        		//Mở kết nối
         }
+
 
         public static void Disconnect()
         {
@@ -40,6 +42,17 @@ namespace QuanLyHopDong
             }
         }
 
+        // Đổi màu menu buton khi click
+        public static void ActivateButton(IconButton button)
+        {
+            if (currentButton != null)
+            {
+                currentButton.BackColor = defaultColor;
+            }
+
+            currentButton = button;
+            currentButton.BackColor = activeColor;
+        }
         public static DataTable GetDataToTable(string sql)
         {
             SqlDataAdapter Mydata = new SqlDataAdapter();	// Khai báo
