@@ -44,17 +44,17 @@
             this.mskTu = new System.Windows.Forms.MaskedTextBox();
             this.rdoTheoThang = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnHienThi = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
-            this.btnLamMoi = new System.Windows.Forms.Button();
-            this.btnThoat = new System.Windows.Forms.Button();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.khachQuangcaoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qLHDDataSet = new QuanLyHopDong.QLHDDataSet();
             this.txtNam1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.khachQuangcaoTableAdapter = new QuanLyHopDong.QLHDDataSetTableAdapters.KhachQuangcaoTableAdapter();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.ibtnHienThi = new FontAwesome.Sharp.IconButton();
+            this.ibtnLamMoi = new FontAwesome.Sharp.IconButton();
+            this.ibtnIn = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).BeginInit();
@@ -185,56 +185,16 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Tháng";
             // 
-            // btnHienThi
-            // 
-            this.btnHienThi.Location = new System.Drawing.Point(402, 82);
-            this.btnHienThi.Name = "btnHienThi";
-            this.btnHienThi.Size = new System.Drawing.Size(75, 23);
-            this.btnHienThi.TabIndex = 6;
-            this.btnHienThi.Text = "Hiển thị";
-            this.btnHienThi.UseVisualStyleBackColor = true;
-            this.btnHienThi.Click += new System.EventHandler(this.btnHienThi_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label2.ForeColor = System.Drawing.Color.ForestGreen;
             this.label2.Location = new System.Drawing.Point(242, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(299, 29);
             this.label2.TabIndex = 7;
             this.label2.Text = "BÁO CÁO DOANH THU";
-            // 
-            // btnIn
-            // 
-            this.btnIn.Location = new System.Drawing.Point(521, 82);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
-            this.btnIn.TabIndex = 8;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
-            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-            // 
-            // btnLamMoi
-            // 
-            this.btnLamMoi.Location = new System.Drawing.Point(555, 209);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(122, 23);
-            this.btnLamMoi.TabIndex = 9;
-            this.btnLamMoi.Text = "Làm mới biểu đồ";
-            this.btnLamMoi.UseVisualStyleBackColor = true;
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Location = new System.Drawing.Point(647, 84);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(75, 23);
-            this.btnThoat.TabIndex = 10;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = true;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // chartDoanhThu
             // 
@@ -267,7 +227,7 @@
             // 
             // txtNam1
             // 
-            this.txtNam1.Location = new System.Drawing.Point(449, 209);
+            this.txtNam1.Location = new System.Drawing.Point(465, 209);
             this.txtNam1.Name = "txtNam1";
             this.txtNam1.Size = new System.Drawing.Size(100, 22);
             this.txtNam1.TabIndex = 14;
@@ -276,7 +236,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(407, 212);
+            this.label6.Location = new System.Drawing.Point(408, 212);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 16);
             this.label6.TabIndex = 14;
@@ -287,19 +247,69 @@
             // 
             this.khachQuangcaoTableAdapter.ClearBeforeFill = true;
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // ibtnHienThi
+            // 
+            this.ibtnHienThi.IconChar = FontAwesome.Sharp.IconChar.Display;
+            this.ibtnHienThi.IconColor = System.Drawing.Color.ForestGreen;
+            this.ibtnHienThi.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnHienThi.IconSize = 20;
+            this.ibtnHienThi.Location = new System.Drawing.Point(402, 63);
+            this.ibtnHienThi.Name = "ibtnHienThi";
+            this.ibtnHienThi.Size = new System.Drawing.Size(102, 32);
+            this.ibtnHienThi.TabIndex = 15;
+            this.ibtnHienThi.Text = "Hiển thị";
+            this.ibtnHienThi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ibtnHienThi.UseVisualStyleBackColor = true;
+            this.ibtnHienThi.Click += new System.EventHandler(this.ibtnHienThi_Click);
+            // 
+            // ibtnLamMoi
+            // 
+            this.ibtnLamMoi.IconChar = FontAwesome.Sharp.IconChar.Repeat;
+            this.ibtnLamMoi.IconColor = System.Drawing.Color.ForestGreen;
+            this.ibtnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnLamMoi.IconSize = 20;
+            this.ibtnLamMoi.Location = new System.Drawing.Point(673, 201);
+            this.ibtnLamMoi.Name = "ibtnLamMoi";
+            this.ibtnLamMoi.Size = new System.Drawing.Size(109, 32);
+            this.ibtnLamMoi.TabIndex = 16;
+            this.ibtnLamMoi.Text = "Làm mới ";
+            this.ibtnLamMoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ibtnLamMoi.UseVisualStyleBackColor = true;
+            this.ibtnLamMoi.Click += new System.EventHandler(this.ibtnLamMoi_Click);
+            // 
+            // ibtnIn
+            // 
+            this.ibtnIn.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.ibtnIn.IconColor = System.Drawing.Color.ForestGreen;
+            this.ibtnIn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnIn.IconSize = 20;
+            this.ibtnIn.Location = new System.Drawing.Point(402, 117);
+            this.ibtnIn.Name = "ibtnIn";
+            this.ibtnIn.Size = new System.Drawing.Size(83, 32);
+            this.ibtnIn.TabIndex = 17;
+            this.ibtnIn.Text = "In";
+            this.ibtnIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ibtnIn.UseVisualStyleBackColor = true;
+            this.ibtnIn.Click += new System.EventHandler(this.ibtnIn_Click);
+            // 
             // DoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ibtnIn);
+            this.Controls.Add(this.ibtnLamMoi);
+            this.Controls.Add(this.ibtnHienThi);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtNam1);
             this.Controls.Add(this.chartDoanhThu);
-            this.Controls.Add(this.btnThoat);
-            this.Controls.Add(this.btnLamMoi);
-            this.Controls.Add(this.btnIn);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnHienThi);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "DoanhThu";
@@ -329,11 +339,7 @@
         private System.Windows.Forms.MaskedTextBox mskTu;
         private System.Windows.Forms.RadioButton rdoTheoThang;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnHienThi;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnIn;
-        private System.Windows.Forms.Button btnLamMoi;
-        private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.MaskedTextBox mskDen;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
         private System.Windows.Forms.TextBox txtNam1;
@@ -341,5 +347,9 @@
         private QLHDDataSet qLHDDataSet;
         private System.Windows.Forms.BindingSource khachQuangcaoBindingSource;
         private QLHDDataSetTableAdapters.KhachQuangcaoTableAdapter khachQuangcaoTableAdapter;
+        private System.Windows.Forms.ImageList imageList1;
+        private FontAwesome.Sharp.IconButton ibtnHienThi;
+        private FontAwesome.Sharp.IconButton ibtnLamMoi;
+        private FontAwesome.Sharp.IconButton ibtnIn;
     }
 }
