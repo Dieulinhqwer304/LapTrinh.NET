@@ -90,18 +90,87 @@ namespace QuanLyHopDong
             }
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
+        private void iconbtnThem_Click(object sender, EventArgs e)
         {
             clear();
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
+        private void iconbtnSua_Click(object sender, EventArgs e)
         {
-            clear();
+            if (dataGridViewKQcao.Rows.Count == 0)
+            {
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtmaLanQC.Text.Trim() == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi nào để sửa");
+                return;
+            }
+
+            // --- TÍNH LẠI TỔNG TIỀN ---
+            DateTime bd, kt;
+            if (!DateTime.TryParse(mtxtNgayBD.Text, out bd) || !DateTime.TryParse(mtxtNgayKT.Text, out kt))
+            {
+                MessageBox.Show("Ngày bắt đầu hoặc ngày kết thúc không hợp lệ.");
+                return;
+            }
+            int songay = (kt - bd).Days + 1;
+            string sqlDonGia = $"SELECT Dongia FROM BangGia WHERE MaBao = N'{cboMaBao.Text}' AND MaQcao = N'{cboMaQC.Text}'";
+            object donGiaObj = Functions.GetFieldValues(sqlDonGia);
+            if (donGiaObj == null || donGiaObj.ToString() == "")
+            {
+                MessageBox.Show("Không tìm thấy đơn giá trong bảng giá.");
+                return;
+            }
+            decimal dongia = Convert.ToDecimal(donGiaObj);
+            decimal tongtien = songay * dongia;
+            txtTongtien.Text = tongtien.ToString();     // ★ hiển thị
+
+            string sql = $"UPDATE KhachQuangcao SET " +
+                         $"MaKH=N'{cboMaKH.Text}', Mabao=N'{cboMaBao.Text}', MaNV=N'{cboMaNV.Text}', " +
+                         $"MaQcao=N'{cboMaQC.Text}', Noidung=N'{txtNoidung.Text}', NgayBD=N'{mtxtNgayBD.Text}', " +
+                         $"NgayKT='{mtxtNgayKT.Text}', Tongtien={tongtien} " +
+                         $"WHERE MalanQC=N'{txtmaLanQC.Text}'";
+            try
+            {
+                SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
+                cmd.ExecuteNonQuery();
+                LoadDataToGridView();
+                clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
+            }
         }
 
-        // --------------------  THÊM  --------------------
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void iconbtnXoa_Click(object sender, EventArgs e)
+        {
+            if (txtmaLanQC.Text.Trim() == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi để xóa");
+                return;
+            }
+
+            if (MessageBox.Show("Bạn có chắc muốn xóa không?", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                string sql = $"DELETE FROM KhachQuangcao WHERE MalanQC = N'{txtmaLanQC.Text}'";
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
+                    cmd.ExecuteNonQuery();
+                    LoadDataToGridView();
+                    clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa: " + ex.Message);
+                }
+            }
+        }
+
+        private void iconbtnLuu_Click(object sender, EventArgs e)
         {
             string malanqc = txtmaLanQC.Text.Trim();
             string makh = cboMaKH.Text.Trim();
@@ -161,84 +230,12 @@ namespace QuanLyHopDong
             }
         }
 
-        // --------------------  SỬA  --------------------
-        private void btnSua_Click(object sender, EventArgs e)
+        private void iconbtnHuy_Click(object sender, EventArgs e)
         {
-            if (dataGridViewKQcao.Rows.Count == 0)
-            {
-                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if (txtmaLanQC.Text.Trim() == "")
-            {
-                MessageBox.Show("Bạn chưa chọn bản ghi nào để sửa");
-                return;
-            }
-
-            // --- TÍNH LẠI TỔNG TIỀN ---
-            DateTime bd, kt;
-            if (!DateTime.TryParse(mtxtNgayBD.Text, out bd) || !DateTime.TryParse(mtxtNgayKT.Text, out kt))
-            {
-                MessageBox.Show("Ngày bắt đầu hoặc ngày kết thúc không hợp lệ.");
-                return;
-            }
-            int songay = (kt - bd).Days + 1;
-            string sqlDonGia = $"SELECT Dongia FROM BangGia WHERE MaBao = N'{cboMaBao.Text}' AND MaQcao = N'{cboMaQC.Text}'";
-            object donGiaObj = Functions.GetFieldValues(sqlDonGia);
-            if (donGiaObj == null || donGiaObj.ToString() == "")
-            {
-                MessageBox.Show("Không tìm thấy đơn giá trong bảng giá.");
-                return;
-            }
-            decimal dongia = Convert.ToDecimal(donGiaObj);
-            decimal tongtien = songay * dongia;
-            txtTongtien.Text = tongtien.ToString();     // ★ hiển thị
-
-            string sql = $"UPDATE KhachQuangcao SET " +
-                         $"MaKH=N'{cboMaKH.Text}', Mabao=N'{cboMaBao.Text}', MaNV=N'{cboMaNV.Text}', " +
-                         $"MaQcao=N'{cboMaQC.Text}', Noidung=N'{txtNoidung.Text}', NgayBD=N'{mtxtNgayBD.Text}', " +
-                         $"NgayKT='{mtxtNgayKT.Text}', Tongtien={tongtien} " +
-                         $"WHERE MalanQC=N'{txtmaLanQC.Text}'";
-            try
-            {
-                SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
-                cmd.ExecuteNonQuery();
-                LoadDataToGridView();
-                clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
-            }
+            clear();
         }
 
-        // --------------------  XÓA  --------------------
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (txtmaLanQC.Text.Trim() == "")
-            {
-                MessageBox.Show("Bạn chưa chọn bản ghi để xóa");
-                return;
-            }
-
-            if (MessageBox.Show("Bạn có chắc muốn xóa không?", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                string sql = $"DELETE FROM KhachQuangcao WHERE MalanQC = N'{txtmaLanQC.Text}'";
-                try
-                {
-                    SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
-                    cmd.ExecuteNonQuery();
-                    LoadDataToGridView();
-                    clear();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi xóa: " + ex.Message);
-                }
-            }
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
+        private void iconButton1_Click(object sender, EventArgs e)
         {
             this.Close();
         }

@@ -84,13 +84,115 @@ namespace QuanLyHopDong
             }
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
+        private void iconbtnThem_Click(object sender, EventArgs e)
         {
             clear();
             txtNhuanbut.ReadOnly = true;
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void iconbtnSua_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewKGuiBai.Rows.Count == 0)
+            {
+                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (txtmaLanGui.Text == "")
+            {
+                MessageBox.Show("Bạn chưa nhập mã lần gửi");
+                return;
+            }
+            if (txtTieude.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập tiêu đề");
+                txtTieude.Focus();
+                return;
+            }
+            if (txtNoidung.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập nội dung");
+                txtNoidung.Focus();
+                return;
+            }
+            if (mtxtNgaydang.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập ngày đăng");
+                mtxtNgaydang.Focus();
+                return;
+            }
+
+            // Parse ngày đăng
+            if (!DateTime.TryParse(mtxtNgaydang.Text.Trim(), out DateTime dtNgaydang))
+            {
+                MessageBox.Show("Ngày đăng không hợp lệ");
+                return;
+            }
+
+            // Tính nhuận bút tự động
+            string sqlGetNB = $@"SELECT TOP 1 Nhuanbut FROM Bao_Theloai 
+                         WHERE MaBao = N'{cboMaBao.Text}' 
+                         AND MaTheloai = N'{cboMaTL.Text}'
+                         AND MONTH(NgayApdung) = {dtNgaydang.Month} 
+                         AND YEAR(NgayApdung) = {dtNgaydang.Year}";
+
+            SqlCommand cmdNB = new SqlCommand(sqlGetNB, Functions.Conn);
+            object result = cmdNB.ExecuteScalar();
+
+            if (result == null)
+            {
+                MessageBox.Show("Không tìm thấy nhuận bút tương ứng trong bảng Bao_Theloai!");
+                return;
+            }
+
+            decimal nhuanbutValue = Convert.ToDecimal(result);
+            txtNhuanbut.Text = nhuanbutValue.ToString();   // ✅ Sửa đổi: Gán vào textbox để người dùng xem
+
+            // Cập nhật
+            string sql = $"UPDATE Khachguibai SET " +
+                         $"MaKH=N'{cboMaKH.Text}', Matheloai=N'{cboMaTL.Text}', Mabao=N'{cboMaBao.Text}', " +
+                         $"Tieude=N'{txtTieude.Text}', Noidung=N'{txtNoidung.Text}', MaNV=N'{cboMaNV.Text}', " +
+                         $"Ngaydang='{mtxtNgaydang.Text}', Nhuanbut={nhuanbutValue} " +
+                         $"WHERE Malangui=N'{txtmaLanGui.Text}'";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
+                cmd.ExecuteNonQuery();
+                LoadDataToGridView();
+                clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
+            }
+        }
+
+        private void iconbtnXoa_Click(object sender, EventArgs e)
+        {
+            if (txtmaLanGui.Text.Trim() == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi để xóa");
+                return;
+            }
+
+            if (MessageBox.Show("Bạn có chắc muốn xóa không?", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                string sql = $"DELETE FROM Khachguibai WHERE Malangui = N'{txtmaLanGui.Text}'";
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
+                    cmd.ExecuteNonQuery();
+                    LoadDataToGridView();
+                    clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa: " + ex.Message);
+                }
+            }
+        }
+
+        private void iconbtnLuu_Click(object sender, EventArgs e)
         {
             string malan = txtmaLanGui.Text.Trim();
             string makh = cboMaKH.Text.Trim();
@@ -183,117 +285,24 @@ namespace QuanLyHopDong
             }
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void iconbtnHuy_Click(object sender, EventArgs e)
         {
-            if (dataGridViewKGuiBai.Rows.Count == 0)
-            {
-                MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if (txtmaLanGui.Text == "")
-            {
-                MessageBox.Show("Bạn chưa nhập mã lần gửi");
-                return;
-            }
-            if (txtTieude.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn chưa nhập tiêu đề");
-                txtTieude.Focus();
-                return;
-            }
-            if (txtNoidung.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn chưa nhập nội dung");
-                txtNoidung.Focus();
-                return;
-            }
-            if (mtxtNgaydang.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn chưa nhập ngày đăng");
-                mtxtNgaydang.Focus();
-                return;
-            }
-
-            // Parse ngày đăng
-            if (!DateTime.TryParse(mtxtNgaydang.Text.Trim(), out DateTime dtNgaydang))
-            {
-                MessageBox.Show("Ngày đăng không hợp lệ");
-                return;
-            }
-
-            // Tính nhuận bút tự động
-            string sqlGetNB = $@"SELECT TOP 1 Nhuanbut FROM Bao_Theloai 
-                         WHERE MaBao = N'{cboMaBao.Text}' 
-                         AND MaTheloai = N'{cboMaTL.Text}'
-                         AND MONTH(NgayApdung) = {dtNgaydang.Month} 
-                         AND YEAR(NgayApdung) = {dtNgaydang.Year}";
-
-            SqlCommand cmdNB = new SqlCommand(sqlGetNB, Functions.Conn);
-            object result = cmdNB.ExecuteScalar();
-
-            if (result == null)
-            {
-                MessageBox.Show("Không tìm thấy nhuận bút tương ứng trong bảng Bao_Theloai!");
-                return;
-            }
-
-            decimal nhuanbutValue = Convert.ToDecimal(result);
-            txtNhuanbut.Text = nhuanbutValue.ToString();   // ✅ Sửa đổi: Gán vào textbox để người dùng xem
-
-            // Cập nhật
-            string sql = $"UPDATE Khachguibai SET " +
-                         $"MaKH=N'{cboMaKH.Text}', Matheloai=N'{cboMaTL.Text}', Mabao=N'{cboMaBao.Text}', " +
-                         $"Tieude=N'{txtTieude.Text}', Noidung=N'{txtNoidung.Text}', MaNV=N'{cboMaNV.Text}', " +
-                         $"Ngaydang='{mtxtNgaydang.Text}', Nhuanbut={nhuanbutValue} " +
-                         $"WHERE Malangui=N'{txtmaLanGui.Text}'";
-
-            try
-            {
-                SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
-                cmd.ExecuteNonQuery();
-                LoadDataToGridView();
-                clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
-            }
+            clear();
         }
 
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (txtmaLanGui.Text.Trim() == "")
-            {
-                MessageBox.Show("Bạn chưa chọn bản ghi để xóa");
-                return;
-            }
-
-            if (MessageBox.Show("Bạn có chắc muốn xóa không?", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                string sql = $"DELETE FROM Khachguibai WHERE Malangui = N'{txtmaLanGui.Text}'";
-                try
-                {
-                    SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
-                    cmd.ExecuteNonQuery();
-                    LoadDataToGridView();
-                    clear();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi xóa: " + ex.Message);
-                }
-            }
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
+        private void iconbtnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
+        private void label6_Click(object sender, EventArgs e)
         {
-            clear();
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
