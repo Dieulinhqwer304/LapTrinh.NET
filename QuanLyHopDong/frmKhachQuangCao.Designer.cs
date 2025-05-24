@@ -61,7 +61,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label10.ForeColor = System.Drawing.Color.PaleVioletRed;
+            this.label10.ForeColor = System.Drawing.Color.SeaGreen;
             this.label10.Location = new System.Drawing.Point(7, 9);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(285, 31);
@@ -235,7 +235,7 @@
             // 
             this.iconbtnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.iconbtnThem.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.iconbtnThem.IconColor = System.Drawing.Color.PaleVioletRed;
+            this.iconbtnThem.IconColor = System.Drawing.Color.SeaGreen;
             this.iconbtnThem.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnThem.IconSize = 23;
             this.iconbtnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -252,7 +252,7 @@
             // 
             this.iconbtnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.iconbtnSua.IconChar = FontAwesome.Sharp.IconChar.Edit;
-            this.iconbtnSua.IconColor = System.Drawing.Color.PaleVioletRed;
+            this.iconbtnSua.IconColor = System.Drawing.Color.SeaGreen;
             this.iconbtnSua.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnSua.IconSize = 23;
             this.iconbtnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -269,7 +269,7 @@
             // 
             this.iconbtnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.iconbtnXoa.IconChar = FontAwesome.Sharp.IconChar.Eraser;
-            this.iconbtnXoa.IconColor = System.Drawing.Color.PaleVioletRed;
+            this.iconbtnXoa.IconColor = System.Drawing.Color.SeaGreen;
             this.iconbtnXoa.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnXoa.IconSize = 23;
             this.iconbtnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -286,7 +286,7 @@
             // 
             this.iconbtnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.iconbtnLuu.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.iconbtnLuu.IconColor = System.Drawing.Color.PaleVioletRed;
+            this.iconbtnLuu.IconColor = System.Drawing.Color.SeaGreen;
             this.iconbtnLuu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnLuu.IconSize = 23;
             this.iconbtnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -303,7 +303,7 @@
             // 
             this.iconbtnHuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.iconbtnHuy.IconChar = FontAwesome.Sharp.IconChar.X;
-            this.iconbtnHuy.IconColor = System.Drawing.Color.PaleVioletRed;
+            this.iconbtnHuy.IconColor = System.Drawing.Color.SeaGreen;
             this.iconbtnHuy.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnHuy.IconSize = 20;
             this.iconbtnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -320,7 +320,7 @@
             // 
             this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.RightFromBracket;
-            this.iconButton1.IconColor = System.Drawing.Color.PaleVioletRed;
+            this.iconButton1.IconColor = System.Drawing.Color.SeaGreen;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 23;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
