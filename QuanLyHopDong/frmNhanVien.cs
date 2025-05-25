@@ -96,18 +96,23 @@ namespace QuanLyHopDong
                 cboMaBao.Text = dgvNhanVien.CurrentRow.Cells[10].Value.ToString();
             }
         }
+        
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-        private void btnThem_Click(object sender, EventArgs e)
+        private void iconbtnThem_Click(object sender, EventArgs e)
         {
             clear();
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void iconbtnSua_Click(object sender, EventArgs e)
         {
             clear();
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void iconbtnXoa_Click(object sender, EventArgs e)
         {
             if (txtMaNV.Text.Trim() == "")
             {
@@ -132,7 +137,21 @@ namespace QuanLyHopDong
             }
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void iconbtnTimKiem_Click(object sender, EventArgs e)
+        {
+            string keyword = txtTenNV.Text.Trim();
+            if (keyword == "")
+            {
+                MessageBox.Show("Bạn chưa nhập từ khóa tìm kiếm.");
+                return;
+            }
+
+            string sql = $"SELECT * FROM Nhanvien WHERE TenNV LIKE N'%{keyword}%'";
+            DataTable dt = Functions.GetDataToTable(sql);
+            dgvNhanVien.DataSource = dt;
+        }
+
+        private void iconbtnLuu_Click(object sender, EventArgs e)
         {
             string manv = txtMaNV.Text.Trim();
             string tennv = txtTenNV.Text.Trim();
@@ -178,28 +197,14 @@ namespace QuanLyHopDong
             }
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            string keyword = txtTenNV.Text.Trim();
-            if (keyword == "")
-            {
-                MessageBox.Show("Bạn chưa nhập từ khóa tìm kiếm.");
-                return;
-            }
-
-            string sql = $"SELECT * FROM Nhanvien WHERE TenNV LIKE N'%{keyword}%'";
-            DataTable dt = Functions.GetDataToTable(sql);
-            dgvNhanVien.DataSource = dt;
-        }
-
-        private void btnBoQua_Click(object sender, EventArgs e)
+        private void iconbtnBoQua_Click(object sender, EventArgs e)
         {
             clear();
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
+        private void iconbtnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+
         }
     }
 
