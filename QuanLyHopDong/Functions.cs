@@ -25,7 +25,6 @@ namespace QuanLyHopDong
         {
 
             connString = "Data Source=DLINH-0406\\SQLEXPRESS;Initial Catalog=QLHD;Integrated Security=True;Encrypt=False";
-
             Conn = new SqlConnection();         		//Cấp phát đối tượng
             Conn.ConnectionString = connString; 		//Kết nối
             Conn.Open();                        		//Mở kết nối
@@ -65,15 +64,32 @@ namespace QuanLyHopDong
             return table;
         }
 
-        public static bool CheckKey(string sql)
+        //public static bool CheckKey(string sql)
+        //{
+        //    SqlDataAdapter Mydata = new SqlDataAdapter(sql, Functions.Conn);
+        //    DataTable table = new DataTable();
+        //    Mydata.Fill(table);
+        //    if (table.Rows.Count > 0)
+        //        return true;
+        //    else
+        //        return false;
+        //}
+        public static bool CheckKey(string sql, params SqlParameter[] parameters)
         {
-            SqlDataAdapter Mydata = new SqlDataAdapter(sql, Functions.Conn);
-            DataTable table = new DataTable();
-            Mydata.Fill(table);
-            if (table.Rows.Count > 0)
-                return true;
-            else
-                return false;
+            using (SqlCommand cmd = new SqlCommand(sql, Functions.Conn))
+            {
+                if (parameters != null)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+                SqlDataAdapter Mydata = new SqlDataAdapter(cmd);
+                DataTable table = new DataTable();
+                Mydata.Fill(table);
+                if (table.Rows.Count > 0)
+                    return true;
+                else
+                    return false;
+            }
         }
         public static void RunSql(string sql)
         {

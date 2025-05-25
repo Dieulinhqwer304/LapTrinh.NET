@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace QuanLyHopDong
@@ -204,53 +205,66 @@ namespace QuanLyHopDong
             string ngaydang = mtxtNgaydang.Text.Trim();
 
             // Parse ngày đăng
-            if (!DateTime.TryParse(ngaydang, out DateTime dtNgaydang))
+            if (!DateTime.TryParseExact(ngaydang, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dtNgaydang))
             {
-                MessageBox.Show("Ngày đăng không hợp lệ");
+                MessageBox.Show("Ngày đăng không hợp lệ. Định dạng đúng: dd/MM/yyyy");
                 return;
             }
 
-            // Truy vấn nhuận bút trong Bao_Theloai theo tháng/năm ngày đăng
-            string sqlGetNB = $@"SELECT TOP 1 Nhuanbut FROM Bao_Theloai WHERE MaBao = N'{mabao}' AND MaTheloai = N'{matl}'
-            AND MONTH(NgayApdung) = {dtNgaydang.Month} 
-            AND YEAR(NgayApdung) = {dtNgaydang.Year}";
 
-            SqlCommand cmdNB = new SqlCommand(sqlGetNB, Functions.Conn);
-            object result = cmdNB.ExecuteScalar();
+            // Truy vấn nhuận bút mới: Lấy dòng có Ngayapdung <= NgayDang gần nhất
+            string sqlGetNB = @"
+            SELECT TOP 1 Nhuanbut 
+            from Bao_Theloai 
+            WHERE Mabao = @MaBao 
+            AND Matheloai = @MaTheloai 
+            AND Ngayapdung <= @NgayDang
+            ORDER BY Ngayapdung DESC";
 
-            if (result == null)
+            decimal nhuanbutValue = 0;
+            using (SqlCommand cmdNB = new SqlCommand(sqlGetNB, Functions.Conn))
             {
-                MessageBox.Show("Không tìm thấy nhuận bút tương ứng trong bảng Bao_Theloai!");
-                return;
+                cmdNB.Parameters.AddWithValue("@MaBao", mabao);
+                cmdNB.Parameters.AddWithValue("@MaTheloai", matl);
+                cmdNB.Parameters.AddWithValue("@NgayDang", dtNgaydang);
+
+                object result = cmdNB.ExecuteScalar();
+                if (result == null)
+                {
+                    MessageBox.Show("Không tìm thấy nhuận bút tương ứng trong bảng Bao_Theloai!");
+                    return;
+                }
+
+                nhuanbutValue = Convert.ToDecimal(result);
             }
 
-            decimal nhuanbutValue = Convert.ToDecimal(result);
-
-
-            if (malan == "")
+            // Kiểm tra dữ liệu
+            if (string.IsNullOrEmpty(malan))
             {
                 MessageBox.Show("Bạn chưa nhập mã lần gửi");
                 txtmaLanGui.Focus();
                 return;
             }
-            if (tieude == "")
+            if (string.IsNullOrEmpty(tieude))
             {
                 MessageBox.Show("Bạn chưa nhập tiêu đề");
                 txtTieude.Focus();
                 return;
             }
-            if (noidung == "")
+            if (string.IsNullOrEmpty(noidung))
             {
                 MessageBox.Show("Bạn chưa nhập nội dung");
                 txtNoidung.Focus();
                 return;
             }
-            if (ngaydang == "")
+            if (string.IsNullOrEmpty(ngaydang))
             {
                 MessageBox.Show("Bạn chưa nhập ngày đăng");
-                txtNoidung.Focus();
+                mtxtNgaydang.Focus();
                 return;
             }
+
+            // Thiết lập combobox mặc định nếu chưa chọn
             if (cboMaKH.SelectedIndex == -1 && cboMaKH.Items.Count > 0)
                 cboMaKH.SelectedIndex = 0;
             if (cboMaTL.SelectedIndex == -1 && cboMaTL.Items.Count > 0)
@@ -260,29 +274,32 @@ namespace QuanLyHopDong
             if (cboMaNV.SelectedIndex == -1 && cboMaNV.Items.Count > 0)
                 cboMaNV.SelectedIndex = 0;
 
+            // Kiểm tra trùng mã
             string sqlCheck = "SELECT * FROM Khachguibai WHERE Malangui = N'" + malan + "'";
             if (!Functions.CheckKey(sqlCheck))
             {
-                string sql = "INSERT INTO Khachguibai VALUES " +
-             $"(N'{malan}', N'{makh}', N'{matl}', N'{mabao}', N'{tieude}', N'{noidung}', N'{manv}', '{ngaydang}', {nhuanbutValue})";
+                string sqlInsert = @"INSERT INTO Khachguibai 
+                VALUES (N'" + malan + "', N'" + makh + "', N'" + matl + "', N'" + mabao + "', N'" + tieude + "', N'" + noidung + "', N'" + manv + "', '" + dtNgaydang.ToString("yyyy-MM-dd") + "', " + nhuanbutValue + ")";
 
-
-                SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
-                try
+                using (SqlCommand cmd = new SqlCommand(sqlInsert, Functions.Conn))
                 {
-                    cmd.ExecuteNonQuery();
-                    LoadDataToGridView();
-                    clear();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi lưu: " + ex.Message);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        LoadDataToGridView();
+                        clear();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi lưu: " + ex.Message);
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("Trùng mã lần gửi!");
             }
+
         }
 
         private void iconbtnHuy_Click(object sender, EventArgs e)

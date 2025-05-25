@@ -27,6 +27,9 @@ namespace QuanLyHopDong
             cboGioiTinh.Items.Add("Nam");
             cboGioiTinh.Items.Add("Nữ");
             cboGioiTinh.Items.Add("Khác");
+            // Cấu hình định dạng ngày theo yyyy/MM/dd
+            dtpNgaySinh.Format = DateTimePickerFormat.Custom;
+            dtpNgaySinh.CustomFormat = "yyyy/MM/dd";
         }
         private void LoadDataToGridView()
         {
@@ -38,16 +41,16 @@ namespace QuanLyHopDong
 
             dgvNhanVien.Columns[0].HeaderText = "Mã nhân viên";
             dgvNhanVien.Columns[1].HeaderText = "Tên nhân viên";
-            dgvNhanVien.Columns[2].HeaderText = "Giới tính";
-            dgvNhanVien.Columns[3].HeaderText = "Ngày sinh";
-            dgvNhanVien.Columns[4].HeaderText = "Địa chỉ";
-            dgvNhanVien .Columns[5].HeaderText = "Điện thoại";
-            dgvNhanVien.Columns[6].HeaderText = "Email";
-            dgvNhanVien .Columns[7].HeaderText = "Mã chức vụ";
-            dgvNhanVien.Columns[8].HeaderText = "Mã chuyên môn";
-            dgvNhanVien.Columns[9].HeaderText = "Mã phòng";
-            dgvNhanVien.Columns[10].HeaderText = "Mã trình độ";
-            dgvNhanVien.Columns[11].HeaderText = "Mã báo";
+            dgvNhanVien.Columns[2].HeaderText = "Mã báo";
+            dgvNhanVien.Columns[3].HeaderText = "Mã phòng";
+            dgvNhanVien.Columns[4].HeaderText = "Mã chức vụ";
+            dgvNhanVien .Columns[5].HeaderText = "Mã trình độ";
+            dgvNhanVien.Columns[6].HeaderText = "Mã chuyên môn";
+            dgvNhanVien .Columns[7].HeaderText = "Địa chỉ";
+            dgvNhanVien.Columns[8].HeaderText = "Ngày sinh";
+            dgvNhanVien.Columns[9].HeaderText = "Giới tính";
+            dgvNhanVien.Columns[10].HeaderText = "Điện thoại";
+            dgvNhanVien.Columns[11].HeaderText = "Email";
         }
         private void LoadComboBox()
         {
@@ -84,30 +87,42 @@ namespace QuanLyHopDong
             {
                 txtMaNV.Text = dgvNhanVien.CurrentRow.Cells[0].Value.ToString();
                 txtTenNV.Text = dgvNhanVien.CurrentRow.Cells[1].Value.ToString();
-                cboGioiTinh.Text = dgvNhanVien.CurrentRow.Cells[2].Value.ToString();
-                dtpNgaySinh.Text = dgvNhanVien.CurrentRow.Cells[3].Value.ToString();
-                txtDiaChi.Text = dgvNhanVien.CurrentRow.Cells[3].Value.ToString();
-                txtDienThoai.Text = dgvNhanVien.CurrentRow.Cells[4].Value.ToString();
-                txtEmail.Text = dgvNhanVien.CurrentRow.Cells[5].Value.ToString();
-                cboMaChucVu.Text = dgvNhanVien  .CurrentRow.Cells[6].Value.ToString();
-                cboMaChuyenMon.Text = dgvNhanVien.CurrentRow.Cells[7].Value.ToString();
-                cboMaPhong.Text = dgvNhanVien.CurrentRow.Cells[8].Value.ToString();
-                cboMaTrinhDo.Text = dgvNhanVien .CurrentRow .Cells[9].Value.ToString();
-                cboMaBao.Text = dgvNhanVien.CurrentRow.Cells[10].Value.ToString();
+                cboMaBao.Text = dgvNhanVien.CurrentRow.Cells[2].Value.ToString();
+                cboMaPhong.Text = dgvNhanVien.CurrentRow.Cells[3].Value.ToString();
+                cboMaChucVu.Text = dgvNhanVien.CurrentRow.Cells[4].Value.ToString();
+                cboMaTrinhDo.Text = dgvNhanVien.CurrentRow.Cells[5].Value.ToString();
+                cboMaChuyenMon.Text = dgvNhanVien.CurrentRow.Cells[6].Value.ToString();
+                txtDiaChi.Text = dgvNhanVien.CurrentRow.Cells[7].Value.ToString();
+                if (DateTime.TryParse(dgvNhanVien.CurrentRow.Cells[8].Value.ToString(), out DateTime ngaySinh))
+                {
+                    dtpNgaySinh.Value = ngaySinh;
+                }
+                else
+                {
+                    dtpNgaySinh.Value = DateTime.Now; // hoặc chọn giá trị mặc định nếu không hợp lệ
+                }
+                cboGioiTinh.Text = dgvNhanVien.CurrentRow.Cells[9].Value.ToString();
+                txtDienThoai.Text = dgvNhanVien.CurrentRow.Cells[10].Value.ToString();
+                txtEmail.Text = dgvNhanVien.CurrentRow.Cells[11].Value.ToString();
             }
         }
+        
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-        private void btnThem_Click(object sender, EventArgs e)
+        private void iconbtnThem_Click(object sender, EventArgs e)
         {
             clear();
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void iconbtnSua_Click(object sender, EventArgs e)
         {
             clear();
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void iconbtnXoa_Click(object sender, EventArgs e)
         {
             if (txtMaNV.Text.Trim() == "")
             {
@@ -132,12 +147,30 @@ namespace QuanLyHopDong
             }
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void iconbtnTimKiem_Click(object sender, EventArgs e)
+        {
+            string keyword = txtTenNV.Text.Trim();
+            if (keyword == "")
+            {
+                MessageBox.Show("Bạn chưa nhập từ khóa tìm kiếm.");
+                return;
+            }
+
+            string sql = $"SELECT * FROM Nhanvien WHERE TenNV LIKE N'%{keyword}%'";
+            DataTable dt = Functions.GetDataToTable(sql);
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy nhân viên nào.");
+            }
+            dgvNhanVien.DataSource = dt;
+        }
+
+        private void iconbtnLuu_Click(object sender, EventArgs e)
         {
             string manv = txtMaNV.Text.Trim();
             string tennv = txtTenNV.Text.Trim();
             string gioitinh = cboGioiTinh.Text.Trim();
-            string ngaysinh = dtpNgaySinh.Text.Trim();
+            string ngaysinh = dtpNgaySinh.Value.ToString("yyyy-MM-dd");
             string diachi = txtDiaChi.Text.Trim();
             string dienthoai = txtDienThoai.Text.Trim();
             string email = txtEmail.Text.Trim();
@@ -157,8 +190,10 @@ namespace QuanLyHopDong
             string sqlCheck = "SELECT * FROM Nhanvien WHERE MaNV = N'" + manv + "'";
             if (!Functions.CheckKey(sqlCheck))
             {
-                string sql = "INSERT INTO  VALUES " +
-                             $"(N'{manv}', N'{tennv}', N'{mabao}, N'{maphong}', N'{machucvu}', N'{matrinhdo}', N'{machuyenmon}', N'{diachi}', N'{ngaysinh}', N'{gioitinh}', '{dienthoai}', N'{email}')";
+                string sql = "INSERT INTO Nhanvien (MaNV, TenNV, Gioitinh, Ngaysinh, Diachi, Dienthoai, Email, Machucvu, MaCM, Maphong, MaTD, Mabao) " +
+             $"VALUES (N'{manv}', N'{tennv}', N'{gioitinh}', '{ngaysinh}', N'{diachi}', '{dienthoai}', N'{email}', " +
+             $"N'{machucvu}', N'{machuyenmon}', N'{maphong}', N'{matrinhdo}', N'{mabao}')";
+
 
                 SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
                 try
@@ -178,28 +213,14 @@ namespace QuanLyHopDong
             }
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            string keyword = txtTenNV.Text.Trim();
-            if (keyword == "")
-            {
-                MessageBox.Show("Bạn chưa nhập từ khóa tìm kiếm.");
-                return;
-            }
-
-            string sql = $"SELECT * FROM Nhanvien WHERE TenNV LIKE N'%{keyword}%'";
-            DataTable dt = Functions.GetDataToTable(sql);
-            dgvNhanVien.DataSource = dt;
-        }
-
-        private void btnBoQua_Click(object sender, EventArgs e)
+        private void iconbtnBoQua_Click(object sender, EventArgs e)
         {
             clear();
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
+        private void iconbtnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+
         }
     }
 

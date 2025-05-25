@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace QuanLyHopDong
 {
@@ -23,9 +24,9 @@ namespace QuanLyHopDong
             Functions.Connect();
             LoadComboBox();
             LoadDataToGridView();
-            txtTongtien.ReadOnly = true;            // ★ khóa nhập
-            txtTongtien.BackColor = SystemColors.Control; // ★ màu nền “đọc-chỉ”
-            txtTongtien.TabStop = false;            // ★ không tab vào
+            txtTongtien.ReadOnly = true;
+            txtTongtien.BackColor = SystemColors.Control;
+            txtTongtien.TabStop = false;
         }
 
         private void LoadComboBox()
@@ -71,22 +72,22 @@ namespace QuanLyHopDong
             mtxtNgayBD.Text = "";
             mtxtNgayKT.Text = "";
             txtTongtien.Text = "";
-            txtTongtien.ReadOnly = true;        // ★ giữ read-only
+            txtTongtien.ReadOnly = true;
         }
 
         private void dataGridViewKQcao_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridViewKQcao.Rows.Count > 0)
+            if (e.RowIndex >= 0 && dataGridViewKQcao.Rows.Count > 0)
             {
-                txtmaLanQC.Text = dataGridViewKQcao.CurrentRow.Cells[0].Value.ToString();
-                cboMaKH.Text = dataGridViewKQcao.CurrentRow.Cells[1].Value.ToString();
-                cboMaBao.Text = dataGridViewKQcao.CurrentRow.Cells[2].Value.ToString();
-                cboMaNV.Text = dataGridViewKQcao.CurrentRow.Cells[3].Value.ToString();
-                cboMaQC.Text = dataGridViewKQcao.CurrentRow.Cells[4].Value.ToString();
-                txtNoidung.Text = dataGridViewKQcao.CurrentRow.Cells[5].Value.ToString();
-                mtxtNgayBD.Text = dataGridViewKQcao.CurrentRow.Cells[6].Value.ToString();
-                mtxtNgayKT.Text = dataGridViewKQcao.CurrentRow.Cells[7].Value.ToString();
-                txtTongtien.Text = dataGridViewKQcao.CurrentRow.Cells[8].Value.ToString();
+                txtmaLanQC.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[0].Value?.ToString() ?? "";
+                cboMaKH.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[1].Value?.ToString() ?? "";
+                cboMaBao.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[2].Value?.ToString() ?? "";
+                cboMaNV.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[3].Value?.ToString() ?? "";
+                cboMaQC.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[4].Value?.ToString() ?? "";
+                txtNoidung.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[5].Value?.ToString() ?? "";
+                mtxtNgayBD.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[6].Value?.ToString() ?? "";
+                mtxtNgayKT.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[7].Value?.ToString() ?? "";
+                txtTongtien.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[8].Value?.ToString() ?? "";
             }
         }
 
@@ -108,34 +109,52 @@ namespace QuanLyHopDong
                 return;
             }
 
-            // --- TÍNH LẠI TỔNG TIỀN ---
+            // Kiểm tra ngày
             DateTime bd, kt;
-            if (!DateTime.TryParse(mtxtNgayBD.Text, out bd) || !DateTime.TryParse(mtxtNgayKT.Text, out kt))
+            if (!DateTime.TryParseExact(mtxtNgayBD.Text.Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out bd) ||
+                !DateTime.TryParseExact(mtxtNgayKT.Text.Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out kt))
             {
-                MessageBox.Show("Ngày bắt đầu hoặc ngày kết thúc không hợp lệ.");
+                MessageBox.Show("Ngày bắt đầu hoặc ngày kết thúc không hợp lệ. Định dạng đúng: dd/MM/yyyy");
                 return;
             }
-            int songay = (kt - bd).Days + 1;
-            string sqlDonGia = $"SELECT Dongia FROM BangGia WHERE MaBao = N'{cboMaBao.Text}' AND MaQcao = N'{cboMaQC.Text}'";
-            object donGiaObj = Functions.GetFieldValues(sqlDonGia);
-            if (donGiaObj == null || donGiaObj.ToString() == "")
-            {
-                MessageBox.Show("Không tìm thấy đơn giá trong bảng giá.");
-                return;
-            }
-            decimal dongia = Convert.ToDecimal(donGiaObj);
-            decimal tongtien = songay * dongia;
-            txtTongtien.Text = tongtien.ToString();     // ★ hiển thị
 
-            string sql = $"UPDATE KhachQuangcao SET " +
-                         $"MaKH=N'{cboMaKH.Text}', Mabao=N'{cboMaBao.Text}', MaNV=N'{cboMaNV.Text}', " +
-                         $"MaQcao=N'{cboMaQC.Text}', Noidung=N'{txtNoidung.Text}', NgayBD=N'{mtxtNgayBD.Text}', " +
-                         $"NgayKT='{mtxtNgayKT.Text}', Tongtien={tongtien} " +
-                         $"WHERE MalanQC=N'{txtmaLanQC.Text}'";
+            // Tính tổng tiền
+            int songay = (kt - bd).Days + 1;
+            string sqlDonGia = "SELECT Dongia FROM BangGia WHERE MaBao = @MaBao AND MaQcao = @MaQcao";
+            using (SqlCommand cmdDonGia = new SqlCommand(sqlDonGia, Functions.Conn))
+            {
+                cmdDonGia.Parameters.AddWithValue("@MaBao", cboMaBao.Text);
+                cmdDonGia.Parameters.AddWithValue("@MaQcao", cboMaQC.Text);
+                object donGiaObj = cmdDonGia.ExecuteScalar();
+                if (donGiaObj == null || donGiaObj.ToString() == "")
+                {
+                    MessageBox.Show("Không tìm thấy đơn giá trong bảng giá.");
+                    return;
+                }
+                decimal dongia = Convert.ToDecimal(donGiaObj);
+                decimal tongtien = songay * dongia;
+                txtTongtien.Text = tongtien.ToString();
+            }
+
+            // Cập nhật bản ghi
+            string sql = "UPDATE KhachQuangcao SET MaKH = @MaKH, Mabao = @MaBao, MaNV = @MaNV, MaQcao = @MaQcao, " +
+                         "Noidung = @Noidung, NgayBD = @NgayBD, NgayKT = @NgayKT, Tongtien = @Tongtien " +
+                         "WHERE MalanQC = @MalanQC";
             try
             {
-                SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
-                cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand(sql, Functions.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@MalanQC", txtmaLanQC.Text);
+                    cmd.Parameters.AddWithValue("@MaKH", cboMaKH.Text);
+                    cmd.Parameters.AddWithValue("@MaBao", cboMaBao.Text);
+                    cmd.Parameters.AddWithValue("@MaNV", cboMaNV.Text);
+                    cmd.Parameters.AddWithValue("@MaQcao", cboMaQC.Text);
+                    cmd.Parameters.AddWithValue("@Noidung", txtNoidung.Text);
+                    cmd.Parameters.AddWithValue("@NgayBD", mtxtNgayBD.Text);
+                    cmd.Parameters.AddWithValue("@NgayKT", mtxtNgayKT.Text);
+                    cmd.Parameters.AddWithValue("@Tongtien", Convert.ToDecimal(txtTongtien.Text));
+                    cmd.ExecuteNonQuery();
+                }
                 LoadDataToGridView();
                 clear();
             }
@@ -155,11 +174,14 @@ namespace QuanLyHopDong
 
             if (MessageBox.Show("Bạn có chắc muốn xóa không?", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                string sql = $"DELETE FROM KhachQuangcao WHERE MalanQC = N'{txtmaLanQC.Text}'";
+                string sql = "DELETE FROM KhachQuangcao WHERE MalanQC = @MalanQC";
                 try
                 {
-                    SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
-                    cmd.ExecuteNonQuery();
+                    using (SqlCommand cmd = new SqlCommand(sql, Functions.Conn))
+                    {
+                        cmd.Parameters.AddWithValue("@MalanQC", txtmaLanQC.Text);
+                        cmd.ExecuteNonQuery();
+                    }
                     LoadDataToGridView();
                     clear();
                 }
@@ -188,39 +210,78 @@ namespace QuanLyHopDong
                 return;
             }
 
-            string sqlCheck = "SELECT * FROM KhachQuangcao WHERE MalanQC = N'" + malanqc + "'";
-            if (Functions.CheckKey(sqlCheck))
+            // Kiểm tra trùng mã
+            string sqlCheck = "SELECT * FROM KhachQuangcao WHERE MalanQC = @MalanQC";
+            SqlParameter param = new SqlParameter("@MalanQC", malanqc);
+            if (Functions.CheckKey(sqlCheck, param))
             {
                 MessageBox.Show("Trùng mã lần quảng cáo!");
                 return;
             }
 
-            // --- TÍNH TỔNG TIỀN ---
+            // Kiểm tra ngày
             DateTime bd, kt;
-            if (!DateTime.TryParse(ngaybatdau, out bd) || !DateTime.TryParse(ngayketthuc, out kt))
+            if (!DateTime.TryParseExact(ngaybatdau, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out bd) ||
+                !DateTime.TryParseExact(ngayketthuc, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out kt))
             {
-                MessageBox.Show("Ngày bắt đầu hoặc ngày kết thúc không hợp lệ.");
+                MessageBox.Show("Ngày bắt đầu hoặc ngày kết thúc không hợp lệ. Định dạng đúng: dd/MM/yyyy");
                 return;
             }
-            int songay = (kt - bd).Days + 1;
-            string sqlDonGia = $"SELECT Dongia FROM BangGia WHERE MaBao = N'{mabao}' AND MaQcao = N'{maqc}'";
-            object donGiaObj = Functions.GetFieldValues(sqlDonGia);
-            if (donGiaObj == null || donGiaObj.ToString() == "")
-            {
-                MessageBox.Show("Không tìm thấy đơn giá trong bảng giá.");
-                return;
-            }
-            decimal dongia = Convert.ToDecimal(donGiaObj);
-            decimal tongtien = songay * dongia;
-            txtTongtien.Text = tongtien.ToString();     // ★ hiển thị
 
-            string sql = "INSERT INTO KhachQuangcao VALUES " +
-                         $"(N'{malanqc}', N'{makh}', N'{mabao}', N'{manv}', N'{maqc}', N'{noidung}', " +
-                         $"N'{ngaybatdau}', '{ngayketthuc}', {tongtien})";
+            // Tính tổng tiền
+            int songay = (kt - bd).Days + 1;
+            string sqlDonGia = "SELECT Dongia FROM BangGia WHERE MaBao = @MaBao AND MaQcao = @MaQcao";
+            decimal tongtien;
+            using (SqlCommand cmdDonGia = new SqlCommand(sqlDonGia, Functions.Conn))
+            {
+                cmdDonGia.Parameters.AddWithValue("@MaBao", mabao);
+                cmdDonGia.Parameters.AddWithValue("@MaQcao", maqc);
+                object donGiaObj = cmdDonGia.ExecuteScalar();
+                if (donGiaObj == null || donGiaObj.ToString() == "")
+                {
+                    MessageBox.Show("Không tìm thấy đơn giá trong bảng giá.");
+                    return;
+                }
+                decimal dongia = Convert.ToDecimal(donGiaObj);
+                tongtien = songay * dongia;
+                txtTongtien.Text = tongtien.ToString();
+            }
+
+            // Kiểm tra dữ liệu
+            if (string.IsNullOrEmpty(noidung))
+            {
+                MessageBox.Show("Bạn chưa nhập nội dung");
+                txtNoidung.Focus();
+                return;
+            }
+
+            // Thiết lập combobox mặc định nếu chưa chọn
+            if (cboMaKH.Items.Count > 0 && cboMaKH.SelectedIndex == -1)
+                cboMaKH.SelectedIndex = 0;
+            if (cboMaBao.Items.Count > 0 && cboMaBao.SelectedIndex == -1)
+                cboMaBao.SelectedIndex = 0;
+            if (cboMaNV.Items.Count > 0 && cboMaNV.SelectedIndex == -1)
+                cboMaNV.SelectedIndex = 0;
+            if (cboMaQC.Items.Count > 0 && cboMaQC.SelectedIndex == -1)
+                cboMaQC.SelectedIndex = 0;
+
+            // Thêm bản ghi
+            string sql = "INSERT INTO KhachQuangcao VALUES (@MalanQC, @MaKH, @MaBao, @MaNV, @MaQcao, @Noidung, @NgayBD, @NgayKT, @Tongtien)";
             try
             {
-                SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
-                cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand(sql, Functions.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@MalanQC", malanqc);
+                    cmd.Parameters.AddWithValue("@MaKH", makh);
+                    cmd.Parameters.AddWithValue("@MaBao", mabao);
+                    cmd.Parameters.AddWithValue("@MaNV", manv);
+                    cmd.Parameters.AddWithValue("@MaQcao", maqc);
+                    cmd.Parameters.AddWithValue("@Noidung", noidung);
+                    cmd.Parameters.AddWithValue("@NgayBD", ngaybatdau);
+                    cmd.Parameters.AddWithValue("@NgayKT", ngayketthuc);
+                    cmd.Parameters.AddWithValue("@Tongtien", tongtien);
+                    cmd.ExecuteNonQuery();
+                }
                 LoadDataToGridView();
                 clear();
             }
@@ -229,7 +290,6 @@ namespace QuanLyHopDong
                 MessageBox.Show("Lỗi khi lưu: " + ex.Message);
             }
         }
-
         private void iconbtnHuy_Click(object sender, EventArgs e)
         {
             clear();
