@@ -41,16 +41,16 @@ namespace QuanLyHopDong
 
             dgvNhanVien.Columns[0].HeaderText = "Mã nhân viên";
             dgvNhanVien.Columns[1].HeaderText = "Tên nhân viên";
-            dgvNhanVien.Columns[2].HeaderText = "Giới tính";
-            dgvNhanVien.Columns[3].HeaderText = "Ngày sinh";
-            dgvNhanVien.Columns[4].HeaderText = "Địa chỉ";
-            dgvNhanVien .Columns[5].HeaderText = "Điện thoại";
-            dgvNhanVien.Columns[6].HeaderText = "Email";
-            dgvNhanVien .Columns[7].HeaderText = "Mã chức vụ";
-            dgvNhanVien.Columns[8].HeaderText = "Mã chuyên môn";
-            dgvNhanVien.Columns[9].HeaderText = "Mã phòng";
-            dgvNhanVien.Columns[10].HeaderText = "Mã trình độ";
-            dgvNhanVien.Columns[11].HeaderText = "Mã báo";
+            dgvNhanVien.Columns[2].HeaderText = "Mã báo";
+            dgvNhanVien.Columns[3].HeaderText = "Mã phòng";
+            dgvNhanVien.Columns[4].HeaderText = "Mã chức vụ";
+            dgvNhanVien .Columns[5].HeaderText = "Mã trình độ";
+            dgvNhanVien.Columns[6].HeaderText = "Mã chuyên môn";
+            dgvNhanVien .Columns[7].HeaderText = "Địa chỉ";
+            dgvNhanVien.Columns[8].HeaderText = "Ngày sinh";
+            dgvNhanVien.Columns[9].HeaderText = "Giới tính";
+            dgvNhanVien.Columns[10].HeaderText = "Điện thoại";
+            dgvNhanVien.Columns[11].HeaderText = "Email";
         }
         private void LoadComboBox()
         {
@@ -87,8 +87,13 @@ namespace QuanLyHopDong
             {
                 txtMaNV.Text = dgvNhanVien.CurrentRow.Cells[0].Value.ToString();
                 txtTenNV.Text = dgvNhanVien.CurrentRow.Cells[1].Value.ToString();
-                cboGioiTinh.Text = dgvNhanVien.CurrentRow.Cells[2].Value.ToString();
-                if (DateTime.TryParse(dgvNhanVien.CurrentRow.Cells[3].Value.ToString(), out DateTime ngaySinh))
+                cboMaBao.Text = dgvNhanVien.CurrentRow.Cells[2].Value.ToString();
+                cboMaPhong.Text = dgvNhanVien.CurrentRow.Cells[3].Value.ToString();
+                cboMaChucVu.Text = dgvNhanVien.CurrentRow.Cells[4].Value.ToString();
+                cboMaTrinhDo.Text = dgvNhanVien.CurrentRow.Cells[5].Value.ToString();
+                cboMaChuyenMon.Text = dgvNhanVien.CurrentRow.Cells[6].Value.ToString();
+                txtDiaChi.Text = dgvNhanVien.CurrentRow.Cells[7].Value.ToString();
+                if (DateTime.TryParse(dgvNhanVien.CurrentRow.Cells[8].Value.ToString(), out DateTime ngaySinh))
                 {
                     dtpNgaySinh.Value = ngaySinh;
                 }
@@ -96,14 +101,9 @@ namespace QuanLyHopDong
                 {
                     dtpNgaySinh.Value = DateTime.Now; // hoặc chọn giá trị mặc định nếu không hợp lệ
                 }
-                txtDiaChi.Text = dgvNhanVien.CurrentRow.Cells[4].Value.ToString();
-                txtDienThoai.Text = dgvNhanVien.CurrentRow.Cells[5].Value.ToString();
-                txtEmail.Text = dgvNhanVien.CurrentRow.Cells[6].Value.ToString();
-                cboMaChucVu.Text = dgvNhanVien  .CurrentRow.Cells[7].Value.ToString();
-                cboMaChuyenMon.Text = dgvNhanVien.CurrentRow.Cells[8].Value.ToString();
-                cboMaPhong.Text = dgvNhanVien.CurrentRow.Cells[9].Value.ToString();
-                cboMaTrinhDo.Text = dgvNhanVien .CurrentRow .Cells[10].Value.ToString();
-                cboMaBao.Text = dgvNhanVien.CurrentRow.Cells[11].Value.ToString();
+                cboGioiTinh.Text = dgvNhanVien.CurrentRow.Cells[9].Value.ToString();
+                txtDienThoai.Text = dgvNhanVien.CurrentRow.Cells[10].Value.ToString();
+                txtEmail.Text = dgvNhanVien.CurrentRow.Cells[11].Value.ToString();
             }
         }
         
