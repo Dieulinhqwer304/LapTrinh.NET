@@ -24,7 +24,7 @@ namespace QuanLyHopDong
         public static void Connect()
         {
 
-            connString = "Data Source=DESKTOP-55FD207\\SQLEXPRESS;Initial Catalog=QLHD;Integrated Security=True;Encrypt=False";
+            connString = "Data Source=DLINH-0406\\SQLEXPRESS;Initial Catalog=QLHD;Integrated Security=True;Encrypt=False";
 
             Conn = new SqlConnection();         		//Cấp phát đối tượng
             Conn.ConnectionString = connString; 		//Kết nối
