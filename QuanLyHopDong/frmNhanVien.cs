@@ -27,6 +27,9 @@ namespace QuanLyHopDong
             cboGioiTinh.Items.Add("Nam");
             cboGioiTinh.Items.Add("Nữ");
             cboGioiTinh.Items.Add("Khác");
+            // Cấu hình định dạng ngày theo yyyy/MM/dd
+            dtpNgaySinh.Format = DateTimePickerFormat.Custom;
+            dtpNgaySinh.CustomFormat = "yyyy/MM/dd";
         }
         private void LoadDataToGridView()
         {
@@ -85,15 +88,22 @@ namespace QuanLyHopDong
                 txtMaNV.Text = dgvNhanVien.CurrentRow.Cells[0].Value.ToString();
                 txtTenNV.Text = dgvNhanVien.CurrentRow.Cells[1].Value.ToString();
                 cboGioiTinh.Text = dgvNhanVien.CurrentRow.Cells[2].Value.ToString();
-                dtpNgaySinh.Text = dgvNhanVien.CurrentRow.Cells[3].Value.ToString();
-                txtDiaChi.Text = dgvNhanVien.CurrentRow.Cells[3].Value.ToString();
-                txtDienThoai.Text = dgvNhanVien.CurrentRow.Cells[4].Value.ToString();
-                txtEmail.Text = dgvNhanVien.CurrentRow.Cells[5].Value.ToString();
-                cboMaChucVu.Text = dgvNhanVien  .CurrentRow.Cells[6].Value.ToString();
-                cboMaChuyenMon.Text = dgvNhanVien.CurrentRow.Cells[7].Value.ToString();
-                cboMaPhong.Text = dgvNhanVien.CurrentRow.Cells[8].Value.ToString();
-                cboMaTrinhDo.Text = dgvNhanVien .CurrentRow .Cells[9].Value.ToString();
-                cboMaBao.Text = dgvNhanVien.CurrentRow.Cells[10].Value.ToString();
+                if (DateTime.TryParse(dgvNhanVien.CurrentRow.Cells[3].Value.ToString(), out DateTime ngaySinh))
+                {
+                    dtpNgaySinh.Value = ngaySinh;
+                }
+                else
+                {
+                    dtpNgaySinh.Value = DateTime.Now; // hoặc chọn giá trị mặc định nếu không hợp lệ
+                }
+                txtDiaChi.Text = dgvNhanVien.CurrentRow.Cells[4].Value.ToString();
+                txtDienThoai.Text = dgvNhanVien.CurrentRow.Cells[5].Value.ToString();
+                txtEmail.Text = dgvNhanVien.CurrentRow.Cells[6].Value.ToString();
+                cboMaChucVu.Text = dgvNhanVien  .CurrentRow.Cells[7].Value.ToString();
+                cboMaChuyenMon.Text = dgvNhanVien.CurrentRow.Cells[8].Value.ToString();
+                cboMaPhong.Text = dgvNhanVien.CurrentRow.Cells[9].Value.ToString();
+                cboMaTrinhDo.Text = dgvNhanVien .CurrentRow .Cells[10].Value.ToString();
+                cboMaBao.Text = dgvNhanVien.CurrentRow.Cells[11].Value.ToString();
             }
         }
         
@@ -148,6 +158,10 @@ namespace QuanLyHopDong
 
             string sql = $"SELECT * FROM Nhanvien WHERE TenNV LIKE N'%{keyword}%'";
             DataTable dt = Functions.GetDataToTable(sql);
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy nhân viên nào.");
+            }
             dgvNhanVien.DataSource = dt;
         }
 
@@ -156,7 +170,7 @@ namespace QuanLyHopDong
             string manv = txtMaNV.Text.Trim();
             string tennv = txtTenNV.Text.Trim();
             string gioitinh = cboGioiTinh.Text.Trim();
-            string ngaysinh = dtpNgaySinh.Text.Trim();
+            string ngaysinh = dtpNgaySinh.Value.ToString("yyyy-MM-dd");
             string diachi = txtDiaChi.Text.Trim();
             string dienthoai = txtDienThoai.Text.Trim();
             string email = txtEmail.Text.Trim();
@@ -176,8 +190,10 @@ namespace QuanLyHopDong
             string sqlCheck = "SELECT * FROM Nhanvien WHERE MaNV = N'" + manv + "'";
             if (!Functions.CheckKey(sqlCheck))
             {
-                string sql = "INSERT INTO  VALUES " +
-                             $"(N'{manv}', N'{tennv}', N'{mabao}, N'{maphong}', N'{machucvu}', N'{matrinhdo}', N'{machuyenmon}', N'{diachi}', N'{ngaysinh}', N'{gioitinh}', '{dienthoai}', N'{email}')";
+                string sql = "INSERT INTO Nhanvien (MaNV, TenNV, Gioitinh, Ngaysinh, Diachi, Dienthoai, Email, Machucvu, MaCM, Maphong, MaTD, Mabao) " +
+             $"VALUES (N'{manv}', N'{tennv}', N'{gioitinh}', '{ngaysinh}', N'{diachi}', '{dienthoai}', N'{email}', " +
+             $"N'{machucvu}', N'{machuyenmon}', N'{maphong}', N'{matrinhdo}', N'{mabao}')";
+
 
                 SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
                 try

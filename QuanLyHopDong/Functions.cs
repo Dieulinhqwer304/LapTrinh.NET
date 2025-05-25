@@ -23,13 +23,7 @@ namespace QuanLyHopDong
         private static Color defaultColor = Color.Transparent; // Màu mặc định
         public static void Connect()
         {
-
-<<<<<<< HEAD
             connString = "Data Source=LAPTOP-AJ9TO7IE\\SQLEXPRESS;Initial Catalog=QLHD;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
-=======
-            connString = "Data Source=DESKTOP-55FD207\\SQLEXPRESS;Initial Catalog=QLHD;Integrated Security=True;Encrypt=False";
->>>>>>> 600ebd30dfc3aedef3611f684fd50feaca6b7979
-
             Conn = new SqlConnection();         		//Cấp phát đối tượng
             Conn.ConnectionString = connString; 		//Kết nối
             Conn.Open();                        		//Mở kết nối
