@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FontAwesome.Sharp;
 
 namespace QuanLyHopDong
 {
@@ -22,6 +23,48 @@ namespace QuanLyHopDong
         {
             Functions.Connect();
             LoadDataToGridView();
+
+            btnThem.IconChar = IconChar.Plus;
+            btnThem.IconColor = Color.SeaGreen;
+            btnThem.IconSize = 20;
+            btnThem.IconFont = IconFont.Auto;
+            btnThem.TextImageRelation = TextImageRelation.ImageBeforeText;
+
+            btnSua.IconChar = IconChar.Edit;
+            btnSua.IconColor = Color.SeaGreen;
+            btnSua.IconSize = 20;
+            btnSua.IconFont = IconFont.Auto;
+            btnSua.TextImageRelation = TextImageRelation.ImageBeforeText;
+
+            btnXoa.IconChar = IconChar.Trash;
+            btnXoa.IconColor = Color.SeaGreen;
+            btnXoa.IconSize = 20;
+            btnXoa.IconFont = IconFont.Auto;
+            btnXoa.TextImageRelation = TextImageRelation.ImageBeforeText;
+
+            btnLuu.IconChar = IconChar.FloppyDisk;
+            btnLuu.IconColor = Color.SeaGreen;
+            btnLuu.IconSize = 20;
+            btnLuu.IconFont = IconFont.Auto;
+            btnLuu.TextImageRelation = TextImageRelation.ImageBeforeText;
+
+            btnBoQua.IconChar = IconChar.X;
+            btnBoQua.IconColor = Color.SeaGreen;
+            btnBoQua.IconSize = 20;
+            btnBoQua.IconFont = IconFont.Auto;
+            btnBoQua.TextImageRelation = TextImageRelation.ImageBeforeText;
+
+            btnTimKiem.IconChar = IconChar.MagnifyingGlass;
+            btnTimKiem.IconColor = Color.SeaGreen;
+            btnTimKiem.IconSize = 20;
+            btnTimKiem.IconFont = IconFont.Auto;
+            btnTimKiem.TextImageRelation = TextImageRelation.ImageBeforeText;
+
+            btnThoat.IconChar = IconChar.RightFromBracket;
+            btnThoat.IconColor = Color.SeaGreen;
+            btnThoat.IconSize = 20;
+            btnThoat.IconFont = IconFont.Auto;
+            btnThoat.TextImageRelation = TextImageRelation.ImageBeforeText;
         }
         private void LoadDataToGridView()
         {
