@@ -69,7 +69,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 71);
+            this.label1.Location = new System.Drawing.Point(11, 86);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(142, 25);
@@ -91,7 +91,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 435);
+            this.label3.Location = new System.Drawing.Point(11, 441);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 25);
@@ -102,7 +102,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(19, 354);
+            this.label4.Location = new System.Drawing.Point(11, 359);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 25);
@@ -113,7 +113,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(19, 196);
+            this.label5.Location = new System.Drawing.Point(13, 202);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 25);
@@ -124,7 +124,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(19, 516);
+            this.label6.Location = new System.Drawing.Point(11, 521);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(120, 25);
@@ -135,7 +135,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 278);
+            this.label7.Location = new System.Drawing.Point(11, 283);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(165, 25);
@@ -179,7 +179,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(666, 70);
+            this.label11.Location = new System.Drawing.Point(658, 86);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(109, 25);
@@ -200,127 +200,127 @@
             // txtMaNV
             // 
             this.txtMaNV.BackColor = System.Drawing.Color.White;
-            this.txtMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaNV.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtMaNV.Location = new System.Drawing.Point(161, 71);
-            this.txtMaNV.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaNV.Location = new System.Drawing.Point(161, 80);
+            this.txtMaNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(177, 37);
+            this.txtMaNV.Size = new System.Drawing.Size(177, 34);
             this.txtMaNV.TabIndex = 12;
             // 
             // txtTenNV
             // 
-            this.txtTenNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenNV.Location = new System.Drawing.Point(163, 142);
-            this.txtTenNV.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTenNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTenNV.Name = "txtTenNV";
-            this.txtTenNV.Size = new System.Drawing.Size(177, 37);
+            this.txtTenNV.Size = new System.Drawing.Size(177, 34);
             this.txtTenNV.TabIndex = 13;
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiaChi.Location = new System.Drawing.Point(463, 120);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(177, 37);
+            this.txtDiaChi.Size = new System.Drawing.Size(177, 34);
             this.txtDiaChi.TabIndex = 14;
             // 
             // txtDienThoai
             // 
-            this.txtDienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDienThoai.Location = new System.Drawing.Point(800, 64);
-            this.txtDienThoai.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDienThoai.Location = new System.Drawing.Point(800, 77);
+            this.txtDienThoai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDienThoai.Name = "txtDienThoai";
-            this.txtDienThoai.Size = new System.Drawing.Size(177, 37);
+            this.txtDienThoai.Size = new System.Drawing.Size(177, 34);
             this.txtDienThoai.TabIndex = 15;
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(800, 139);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(177, 37);
+            this.txtEmail.Size = new System.Drawing.Size(177, 34);
             this.txtEmail.TabIndex = 16;
             // 
             // cboMaBao
             // 
-            this.cboMaBao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMaBao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaBao.FormattingEnabled = true;
             this.cboMaBao.Location = new System.Drawing.Point(16, 470);
-            this.cboMaBao.Margin = new System.Windows.Forms.Padding(4);
+            this.cboMaBao.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboMaBao.Name = "cboMaBao";
-            this.cboMaBao.Size = new System.Drawing.Size(180, 38);
+            this.cboMaBao.Size = new System.Drawing.Size(180, 37);
             this.cboMaBao.TabIndex = 17;
             // 
             // cboMaPhong
             // 
-            this.cboMaPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMaPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaPhong.FormattingEnabled = true;
             this.cboMaPhong.Location = new System.Drawing.Point(16, 388);
-            this.cboMaPhong.Margin = new System.Windows.Forms.Padding(4);
+            this.cboMaPhong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboMaPhong.Name = "cboMaPhong";
-            this.cboMaPhong.Size = new System.Drawing.Size(180, 38);
+            this.cboMaPhong.Size = new System.Drawing.Size(180, 37);
             this.cboMaPhong.TabIndex = 18;
             // 
             // cboMaChucVu
             // 
-            this.cboMaChucVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMaChucVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaChucVu.FormattingEnabled = true;
             this.cboMaChucVu.Location = new System.Drawing.Point(16, 231);
-            this.cboMaChucVu.Margin = new System.Windows.Forms.Padding(4);
+            this.cboMaChucVu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboMaChucVu.Name = "cboMaChucVu";
-            this.cboMaChucVu.Size = new System.Drawing.Size(180, 38);
+            this.cboMaChucVu.Size = new System.Drawing.Size(180, 37);
             this.cboMaChucVu.TabIndex = 19;
             // 
             // cboMaTrinhDo
             // 
-            this.cboMaTrinhDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMaTrinhDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaTrinhDo.FormattingEnabled = true;
             this.cboMaTrinhDo.Location = new System.Drawing.Point(16, 550);
-            this.cboMaTrinhDo.Margin = new System.Windows.Forms.Padding(4);
+            this.cboMaTrinhDo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboMaTrinhDo.Name = "cboMaTrinhDo";
-            this.cboMaTrinhDo.Size = new System.Drawing.Size(180, 38);
+            this.cboMaTrinhDo.Size = new System.Drawing.Size(180, 37);
             this.cboMaTrinhDo.TabIndex = 20;
             // 
             // cboMaChuyenMon
             // 
-            this.cboMaChuyenMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMaChuyenMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaChuyenMon.FormattingEnabled = true;
             this.cboMaChuyenMon.Location = new System.Drawing.Point(16, 312);
-            this.cboMaChuyenMon.Margin = new System.Windows.Forms.Padding(4);
+            this.cboMaChuyenMon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboMaChuyenMon.Name = "cboMaChuyenMon";
-            this.cboMaChuyenMon.Size = new System.Drawing.Size(180, 38);
+            this.cboMaChuyenMon.Size = new System.Drawing.Size(180, 37);
             this.cboMaChuyenMon.TabIndex = 21;
             // 
             // cboGioiTinh
             // 
-            this.cboGioiTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboGioiTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboGioiTinh.FormattingEnabled = true;
             this.cboGioiTinh.Location = new System.Drawing.Point(463, 178);
-            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(4);
+            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboGioiTinh.Name = "cboGioiTinh";
-            this.cboGioiTinh.Size = new System.Drawing.Size(177, 38);
+            this.cboGioiTinh.Size = new System.Drawing.Size(177, 37);
             this.cboGioiTinh.TabIndex = 22;
             // 
             // dtpNgaySinh
             // 
             this.dtpNgaySinh.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNgaySinh.Location = new System.Drawing.Point(463, 70);
-            this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(177, 37);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(177, 34);
             this.dtpNgaySinh.TabIndex = 23;
             // 
             // dgvNhanVien
             // 
             this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNhanVien.GridColor = System.Drawing.Color.Green;
+            this.dgvNhanVien.GridColor = System.Drawing.Color.Black;
             this.dgvNhanVien.Location = new System.Drawing.Point(204, 230);
-            this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.RowHeadersWidth = 72;
             this.dgvNhanVien.RowTemplate.Height = 31;
@@ -351,17 +351,16 @@
             // 
             // iconbtnThem
             // 
-            this.iconbtnThem.BackColor = System.Drawing.Color.Green;
+            this.iconbtnThem.BackColor = System.Drawing.Color.White;
             this.iconbtnThem.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.iconbtnThem.DialogResult = System.Windows.Forms.DialogResult.No;
             this.iconbtnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconbtnThem.ForeColor = System.Drawing.SystemColors.Control;
+            this.iconbtnThem.ForeColor = System.Drawing.Color.Black;
             this.iconbtnThem.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.iconbtnThem.IconColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.iconbtnThem.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconbtnThem.IconColor = System.Drawing.Color.Green;
+            this.iconbtnThem.IconFont = FontAwesome.Sharp.IconFont.Brands;
             this.iconbtnThem.IconSize = 30;
             this.iconbtnThem.Location = new System.Drawing.Point(128, 592);
-            this.iconbtnThem.Margin = new System.Windows.Forms.Padding(4);
+            this.iconbtnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconbtnThem.Name = "iconbtnThem";
             this.iconbtnThem.Size = new System.Drawing.Size(124, 45);
             this.iconbtnThem.TabIndex = 34;
@@ -373,15 +372,15 @@
             // 
             // iconbtnSua
             // 
-            this.iconbtnSua.BackColor = System.Drawing.Color.Green;
+            this.iconbtnSua.BackColor = System.Drawing.Color.White;
             this.iconbtnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconbtnSua.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.iconbtnSua.ForeColor = System.Drawing.Color.Black;
             this.iconbtnSua.IconChar = FontAwesome.Sharp.IconChar.Edit;
-            this.iconbtnSua.IconColor = System.Drawing.Color.White;
+            this.iconbtnSua.IconColor = System.Drawing.Color.Green;
             this.iconbtnSua.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnSua.IconSize = 30;
             this.iconbtnSua.Location = new System.Drawing.Point(260, 592);
-            this.iconbtnSua.Margin = new System.Windows.Forms.Padding(4);
+            this.iconbtnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconbtnSua.Name = "iconbtnSua";
             this.iconbtnSua.Size = new System.Drawing.Size(124, 45);
             this.iconbtnSua.TabIndex = 35;
@@ -393,15 +392,15 @@
             // 
             // iconbtnXoa
             // 
-            this.iconbtnXoa.BackColor = System.Drawing.Color.Green;
+            this.iconbtnXoa.BackColor = System.Drawing.Color.White;
             this.iconbtnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconbtnXoa.ForeColor = System.Drawing.Color.White;
+            this.iconbtnXoa.ForeColor = System.Drawing.Color.Black;
             this.iconbtnXoa.IconChar = FontAwesome.Sharp.IconChar.Eraser;
-            this.iconbtnXoa.IconColor = System.Drawing.Color.White;
+            this.iconbtnXoa.IconColor = System.Drawing.Color.Green;
             this.iconbtnXoa.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnXoa.IconSize = 30;
             this.iconbtnXoa.Location = new System.Drawing.Point(392, 592);
-            this.iconbtnXoa.Margin = new System.Windows.Forms.Padding(4);
+            this.iconbtnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconbtnXoa.Name = "iconbtnXoa";
             this.iconbtnXoa.Size = new System.Drawing.Size(124, 45);
             this.iconbtnXoa.TabIndex = 36;
@@ -413,15 +412,15 @@
             // 
             // iconbtnTimKiem
             // 
-            this.iconbtnTimKiem.BackColor = System.Drawing.Color.Green;
+            this.iconbtnTimKiem.BackColor = System.Drawing.Color.White;
             this.iconbtnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconbtnTimKiem.ForeColor = System.Drawing.Color.White;
+            this.iconbtnTimKiem.ForeColor = System.Drawing.Color.Black;
             this.iconbtnTimKiem.IconChar = FontAwesome.Sharp.IconChar.SearchMinus;
-            this.iconbtnTimKiem.IconColor = System.Drawing.Color.White;
+            this.iconbtnTimKiem.IconColor = System.Drawing.Color.Green;
             this.iconbtnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnTimKiem.IconSize = 30;
             this.iconbtnTimKiem.Location = new System.Drawing.Point(524, 592);
-            this.iconbtnTimKiem.Margin = new System.Windows.Forms.Padding(4);
+            this.iconbtnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconbtnTimKiem.Name = "iconbtnTimKiem";
             this.iconbtnTimKiem.Size = new System.Drawing.Size(148, 45);
             this.iconbtnTimKiem.TabIndex = 37;
@@ -433,15 +432,15 @@
             // 
             // iconbtnLuu
             // 
-            this.iconbtnLuu.BackColor = System.Drawing.Color.Green;
+            this.iconbtnLuu.BackColor = System.Drawing.Color.White;
             this.iconbtnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconbtnLuu.ForeColor = System.Drawing.Color.White;
+            this.iconbtnLuu.ForeColor = System.Drawing.Color.Black;
             this.iconbtnLuu.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.iconbtnLuu.IconColor = System.Drawing.Color.White;
+            this.iconbtnLuu.IconColor = System.Drawing.Color.Green;
             this.iconbtnLuu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnLuu.IconSize = 30;
             this.iconbtnLuu.Location = new System.Drawing.Point(680, 592);
-            this.iconbtnLuu.Margin = new System.Windows.Forms.Padding(4);
+            this.iconbtnLuu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconbtnLuu.Name = "iconbtnLuu";
             this.iconbtnLuu.Size = new System.Drawing.Size(124, 45);
             this.iconbtnLuu.TabIndex = 38;
@@ -453,15 +452,15 @@
             // 
             // iconbtnBoQua
             // 
-            this.iconbtnBoQua.BackColor = System.Drawing.Color.Green;
+            this.iconbtnBoQua.BackColor = System.Drawing.Color.White;
             this.iconbtnBoQua.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconbtnBoQua.ForeColor = System.Drawing.Color.White;
+            this.iconbtnBoQua.ForeColor = System.Drawing.Color.Black;
             this.iconbtnBoQua.IconChar = FontAwesome.Sharp.IconChar.X;
-            this.iconbtnBoQua.IconColor = System.Drawing.Color.White;
+            this.iconbtnBoQua.IconColor = System.Drawing.Color.Green;
             this.iconbtnBoQua.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnBoQua.IconSize = 25;
             this.iconbtnBoQua.Location = new System.Drawing.Point(812, 592);
-            this.iconbtnBoQua.Margin = new System.Windows.Forms.Padding(4);
+            this.iconbtnBoQua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconbtnBoQua.Name = "iconbtnBoQua";
             this.iconbtnBoQua.Size = new System.Drawing.Size(124, 45);
             this.iconbtnBoQua.TabIndex = 39;
@@ -473,15 +472,15 @@
             // 
             // iconbtnThoat
             // 
-            this.iconbtnThoat.BackColor = System.Drawing.Color.Green;
+            this.iconbtnThoat.BackColor = System.Drawing.Color.White;
             this.iconbtnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconbtnThoat.ForeColor = System.Drawing.Color.White;
+            this.iconbtnThoat.ForeColor = System.Drawing.Color.Black;
             this.iconbtnThoat.IconChar = FontAwesome.Sharp.IconChar.RightFromBracket;
-            this.iconbtnThoat.IconColor = System.Drawing.Color.White;
+            this.iconbtnThoat.IconColor = System.Drawing.Color.Green;
             this.iconbtnThoat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnThoat.IconSize = 30;
             this.iconbtnThoat.Location = new System.Drawing.Point(944, 592);
-            this.iconbtnThoat.Margin = new System.Windows.Forms.Padding(4);
+            this.iconbtnThoat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconbtnThoat.Name = "iconbtnThoat";
             this.iconbtnThoat.Size = new System.Drawing.Size(124, 45);
             this.iconbtnThoat.TabIndex = 40;
@@ -569,12 +568,12 @@
         private System.Windows.Forms.DataGridView dgvNhanVien;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private FontAwesome.Sharp.IconButton iconbtnThem;
         private FontAwesome.Sharp.IconButton iconbtnSua;
         private FontAwesome.Sharp.IconButton iconbtnXoa;
         private FontAwesome.Sharp.IconButton iconbtnTimKiem;
         private FontAwesome.Sharp.IconButton iconbtnLuu;
         private FontAwesome.Sharp.IconButton iconbtnBoQua;
         private FontAwesome.Sharp.IconButton iconbtnThoat;
+        private FontAwesome.Sharp.IconButton iconbtnThem;
     }
 }
