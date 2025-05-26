@@ -203,7 +203,7 @@
             this.txtMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaNV.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtMaNV.Location = new System.Drawing.Point(161, 80);
-            this.txtMaNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaNV.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Size = new System.Drawing.Size(177, 34);
             this.txtMaNV.TabIndex = 12;
@@ -212,7 +212,7 @@
             // 
             this.txtTenNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenNV.Location = new System.Drawing.Point(163, 142);
-            this.txtTenNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenNV.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenNV.Name = "txtTenNV";
             this.txtTenNV.Size = new System.Drawing.Size(177, 34);
             this.txtTenNV.TabIndex = 13;
@@ -221,7 +221,7 @@
             // 
             this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiaChi.Location = new System.Drawing.Point(463, 120);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(177, 34);
             this.txtDiaChi.TabIndex = 14;
@@ -229,17 +229,18 @@
             // txtDienThoai
             // 
             this.txtDienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDienThoai.Location = new System.Drawing.Point(800, 77);
-            this.txtDienThoai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDienThoai.Location = new System.Drawing.Point(800, 80);
+            this.txtDienThoai.Margin = new System.Windows.Forms.Padding(4);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(177, 34);
             this.txtDienThoai.TabIndex = 15;
+            this.txtDienThoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDienThoai_KeyPress);
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(800, 139);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(177, 34);
             this.txtEmail.TabIndex = 16;
@@ -249,7 +250,7 @@
             this.cboMaBao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaBao.FormattingEnabled = true;
             this.cboMaBao.Location = new System.Drawing.Point(16, 470);
-            this.cboMaBao.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMaBao.Margin = new System.Windows.Forms.Padding(4);
             this.cboMaBao.Name = "cboMaBao";
             this.cboMaBao.Size = new System.Drawing.Size(180, 37);
             this.cboMaBao.TabIndex = 17;
@@ -259,7 +260,7 @@
             this.cboMaPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaPhong.FormattingEnabled = true;
             this.cboMaPhong.Location = new System.Drawing.Point(16, 388);
-            this.cboMaPhong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMaPhong.Margin = new System.Windows.Forms.Padding(4);
             this.cboMaPhong.Name = "cboMaPhong";
             this.cboMaPhong.Size = new System.Drawing.Size(180, 37);
             this.cboMaPhong.TabIndex = 18;
@@ -269,7 +270,7 @@
             this.cboMaChucVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaChucVu.FormattingEnabled = true;
             this.cboMaChucVu.Location = new System.Drawing.Point(16, 231);
-            this.cboMaChucVu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMaChucVu.Margin = new System.Windows.Forms.Padding(4);
             this.cboMaChucVu.Name = "cboMaChucVu";
             this.cboMaChucVu.Size = new System.Drawing.Size(180, 37);
             this.cboMaChucVu.TabIndex = 19;
@@ -279,7 +280,7 @@
             this.cboMaTrinhDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaTrinhDo.FormattingEnabled = true;
             this.cboMaTrinhDo.Location = new System.Drawing.Point(16, 550);
-            this.cboMaTrinhDo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMaTrinhDo.Margin = new System.Windows.Forms.Padding(4);
             this.cboMaTrinhDo.Name = "cboMaTrinhDo";
             this.cboMaTrinhDo.Size = new System.Drawing.Size(180, 37);
             this.cboMaTrinhDo.TabIndex = 20;
@@ -289,7 +290,7 @@
             this.cboMaChuyenMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaChuyenMon.FormattingEnabled = true;
             this.cboMaChuyenMon.Location = new System.Drawing.Point(16, 312);
-            this.cboMaChuyenMon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMaChuyenMon.Margin = new System.Windows.Forms.Padding(4);
             this.cboMaChuyenMon.Name = "cboMaChuyenMon";
             this.cboMaChuyenMon.Size = new System.Drawing.Size(180, 37);
             this.cboMaChuyenMon.TabIndex = 21;
@@ -299,7 +300,7 @@
             this.cboGioiTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboGioiTinh.FormattingEnabled = true;
             this.cboGioiTinh.Location = new System.Drawing.Point(463, 178);
-            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(4);
             this.cboGioiTinh.Name = "cboGioiTinh";
             this.cboGioiTinh.Size = new System.Drawing.Size(177, 37);
             this.cboGioiTinh.TabIndex = 22;
@@ -310,7 +311,7 @@
             this.dtpNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNgaySinh.Location = new System.Drawing.Point(463, 70);
-            this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(4);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(177, 34);
             this.dtpNgaySinh.TabIndex = 23;
@@ -320,7 +321,7 @@
             this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNhanVien.GridColor = System.Drawing.Color.Black;
             this.dgvNhanVien.Location = new System.Drawing.Point(204, 230);
-            this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(4);
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.RowHeadersWidth = 72;
             this.dgvNhanVien.RowTemplate.Height = 31;
@@ -360,7 +361,7 @@
             this.iconbtnThem.IconFont = FontAwesome.Sharp.IconFont.Brands;
             this.iconbtnThem.IconSize = 30;
             this.iconbtnThem.Location = new System.Drawing.Point(128, 592);
-            this.iconbtnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconbtnThem.Margin = new System.Windows.Forms.Padding(4);
             this.iconbtnThem.Name = "iconbtnThem";
             this.iconbtnThem.Size = new System.Drawing.Size(124, 45);
             this.iconbtnThem.TabIndex = 34;
@@ -380,7 +381,7 @@
             this.iconbtnSua.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnSua.IconSize = 30;
             this.iconbtnSua.Location = new System.Drawing.Point(260, 592);
-            this.iconbtnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconbtnSua.Margin = new System.Windows.Forms.Padding(4);
             this.iconbtnSua.Name = "iconbtnSua";
             this.iconbtnSua.Size = new System.Drawing.Size(124, 45);
             this.iconbtnSua.TabIndex = 35;
@@ -400,7 +401,7 @@
             this.iconbtnXoa.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnXoa.IconSize = 30;
             this.iconbtnXoa.Location = new System.Drawing.Point(392, 592);
-            this.iconbtnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconbtnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.iconbtnXoa.Name = "iconbtnXoa";
             this.iconbtnXoa.Size = new System.Drawing.Size(124, 45);
             this.iconbtnXoa.TabIndex = 36;
@@ -420,7 +421,7 @@
             this.iconbtnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnTimKiem.IconSize = 30;
             this.iconbtnTimKiem.Location = new System.Drawing.Point(524, 592);
-            this.iconbtnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconbtnTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.iconbtnTimKiem.Name = "iconbtnTimKiem";
             this.iconbtnTimKiem.Size = new System.Drawing.Size(148, 45);
             this.iconbtnTimKiem.TabIndex = 37;
@@ -440,7 +441,7 @@
             this.iconbtnLuu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnLuu.IconSize = 30;
             this.iconbtnLuu.Location = new System.Drawing.Point(680, 592);
-            this.iconbtnLuu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconbtnLuu.Margin = new System.Windows.Forms.Padding(4);
             this.iconbtnLuu.Name = "iconbtnLuu";
             this.iconbtnLuu.Size = new System.Drawing.Size(124, 45);
             this.iconbtnLuu.TabIndex = 38;
@@ -460,7 +461,7 @@
             this.iconbtnBoQua.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnBoQua.IconSize = 25;
             this.iconbtnBoQua.Location = new System.Drawing.Point(812, 592);
-            this.iconbtnBoQua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconbtnBoQua.Margin = new System.Windows.Forms.Padding(4);
             this.iconbtnBoQua.Name = "iconbtnBoQua";
             this.iconbtnBoQua.Size = new System.Drawing.Size(124, 45);
             this.iconbtnBoQua.TabIndex = 39;
@@ -480,7 +481,7 @@
             this.iconbtnThoat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnThoat.IconSize = 30;
             this.iconbtnThoat.Location = new System.Drawing.Point(944, 592);
-            this.iconbtnThoat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconbtnThoat.Margin = new System.Windows.Forms.Padding(4);
             this.iconbtnThoat.Name = "iconbtnThoat";
             this.iconbtnThoat.Size = new System.Drawing.Size(124, 45);
             this.iconbtnThoat.TabIndex = 40;
