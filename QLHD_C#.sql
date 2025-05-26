@@ -189,6 +189,7 @@ INSERT INTO Khachhang VALUES
 (N'KH05', N'Công ty Truyền thông HTV', N'123 Cách Mạng Tháng 8', N'0288888999', N'0955666777', N'htv@media.vn', N'LV05');
 
 
+
 -- Bảng Khachguibai
 CREATE TABLE Khachguibai (
     Malangui NVARCHAR(10) PRIMARY KEY,

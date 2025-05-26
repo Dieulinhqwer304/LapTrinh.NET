@@ -124,7 +124,7 @@ namespace QuanLyHopDong
                 txtTenBao.Focus();
                 return;
             }
-            if (cboMaChucNang.SelectedIndex == -1)
+            if (cboMaChucNang.SelectedIndex <= 0)
             {
                 MessageBox.Show("Bạn chưa chọn mã chức năng");
                 cboMaChucNang.Focus();
@@ -246,11 +246,12 @@ namespace QuanLyHopDong
         }
         private void LoadMaChucNang()
         {
-            string sql = "SELECT MaChucNang FROM ChucNang"; // Tên bảng chứa mã chức năng
+            string sql = "SELECT MaChucNang FROM ChucNang"; 
             DataTable dt = Functions.GetDataToTable(sql);
             cboMaChucNang.DataSource = dt;
             cboMaChucNang.DisplayMember = "MaChucNang";
             cboMaChucNang.ValueMember = "MaChucNang";
+            cboMaChucNang.SelectedIndex = -1;
         }
     }
 }
