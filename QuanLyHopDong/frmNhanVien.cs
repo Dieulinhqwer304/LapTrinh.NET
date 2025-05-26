@@ -222,6 +222,11 @@ namespace QuanLyHopDong
         {
 
         }
+
+        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

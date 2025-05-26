@@ -27,6 +27,10 @@ namespace QuanLyHopDong
             txtTongtien.ReadOnly = true;
             txtTongtien.BackColor = SystemColors.Control;
             txtTongtien.TabStop = false;
+            dtpNgayBD.Format = DateTimePickerFormat.Custom;
+            dtpNgayBD.CustomFormat = "dd/MM/yyyy";
+            dtpNgayKT.Format = DateTimePickerFormat.Custom;
+            dtpNgayKT.CustomFormat = "dd/MM/yyyy";
         }
 
         private void LoadComboBox()
@@ -49,7 +53,7 @@ namespace QuanLyHopDong
             SqlDataAdapter da = new SqlDataAdapter(sql, Functions.Conn);
             da.Fill(dt);
             dataGridViewKQcao.DataSource = dt;
-
+            
             dataGridViewKQcao.Columns[0].HeaderText = "Mã lần quảng cáo";
             dataGridViewKQcao.Columns[1].HeaderText = "Mã khách hàng";
             dataGridViewKQcao.Columns[2].HeaderText = "Mã báo";
@@ -57,7 +61,9 @@ namespace QuanLyHopDong
             dataGridViewKQcao.Columns[4].HeaderText = "Mã quảng cáo";
             dataGridViewKQcao.Columns[5].HeaderText = "Nội dung";
             dataGridViewKQcao.Columns[6].HeaderText = "Ngày bắt đầu";
+            dataGridViewKQcao.Columns[6].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridViewKQcao.Columns[7].HeaderText = "Ngày kết thúc";
+            dataGridViewKQcao.Columns[7].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridViewKQcao.Columns[8].HeaderText = "Tổng tiền";
         }
 
@@ -69,8 +75,8 @@ namespace QuanLyHopDong
             cboMaNV.Text = "";
             cboMaQC.Text = "";
             txtNoidung.Text = "";
-            mtxtNgayBD.Text = "";
-            mtxtNgayKT.Text = "";
+            dtpNgayBD.Text = "";
+            dtpNgayKT.Text = "";
             txtTongtien.Text = "";
             txtTongtien.ReadOnly = true;
         }
@@ -85,9 +91,26 @@ namespace QuanLyHopDong
                 cboMaNV.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[3].Value?.ToString() ?? "";
                 cboMaQC.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[4].Value?.ToString() ?? "";
                 txtNoidung.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[5].Value?.ToString() ?? "";
-                mtxtNgayBD.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[6].Value?.ToString() ?? "";
-                mtxtNgayKT.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[7].Value?.ToString() ?? "";
+                if (DateTime.TryParse(dataGridViewKQcao.Rows[e.RowIndex].Cells[6].Value.ToString(), out DateTime ngayBD))
+                {
+                    dtpNgayBD.Value = ngayBD;
+                }
+                else
+                {
+                    //dtpNgayBD.Value = DateTime.Now;
+                }
+
+                if (DateTime.TryParse(dataGridViewKQcao.Rows[e.RowIndex].Cells[7].Value.ToString(), out DateTime ngayKT))
+                {
+                    dtpNgayKT.Value = ngayKT;
+                }
+                else
+                {
+                    //dtpNgayKT.Value = DateTime.Now;
+                }
+                //dtpNgayKT.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[7].Value?.ToString() ?? "";
                 txtTongtien.Text = dataGridViewKQcao.Rows[e.RowIndex].Cells[8].Value?.ToString() ?? "";
+                Console.WriteLine(dataGridViewKQcao.Rows[e.RowIndex].Cells[6].Value);
             }
         }
 
@@ -111,8 +134,8 @@ namespace QuanLyHopDong
 
             // Kiểm tra ngày
             DateTime bd, kt;
-            if (!DateTime.TryParseExact(mtxtNgayBD.Text.Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out bd) ||
-                !DateTime.TryParseExact(mtxtNgayKT.Text.Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out kt))
+            if (!DateTime.TryParseExact(dtpNgayBD.Text.Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out bd) ||
+                !DateTime.TryParseExact(dtpNgayKT.Text.Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out kt))
             {
                 MessageBox.Show("Ngày bắt đầu hoặc ngày kết thúc không hợp lệ. Định dạng đúng: dd/MM/yyyy");
                 return;
@@ -150,8 +173,8 @@ namespace QuanLyHopDong
                     cmd.Parameters.AddWithValue("@MaNV", cboMaNV.Text);
                     cmd.Parameters.AddWithValue("@MaQcao", cboMaQC.Text);
                     cmd.Parameters.AddWithValue("@Noidung", txtNoidung.Text);
-                    cmd.Parameters.AddWithValue("@NgayBD", mtxtNgayBD.Text);
-                    cmd.Parameters.AddWithValue("@NgayKT", mtxtNgayKT.Text);
+                    cmd.Parameters.AddWithValue("@NgayBD", dtpNgayBD.Text);
+                    cmd.Parameters.AddWithValue("@NgayKT", dtpNgayKT.Text);
                     cmd.Parameters.AddWithValue("@Tongtien", Convert.ToDecimal(txtTongtien.Text));
                     cmd.ExecuteNonQuery();
                 }
@@ -200,8 +223,8 @@ namespace QuanLyHopDong
             string manv = cboMaNV.Text.Trim();
             string maqc = cboMaQC.Text.Trim();
             string noidung = txtNoidung.Text.Trim();
-            string ngaybatdau = mtxtNgayBD.Text.Trim();
-            string ngayketthuc = mtxtNgayKT.Text.Trim();
+            string ngaybatdau = dtpNgayBD.Text.Trim();
+            string ngayketthuc = dtpNgayKT.Text.Trim();
 
             if (malanqc == "")
             {
@@ -298,6 +321,26 @@ namespace QuanLyHopDong
         private void iconButton1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dtpNgayBD_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void dtpNgayKT_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void dtpNgayBD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpNgayKT_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

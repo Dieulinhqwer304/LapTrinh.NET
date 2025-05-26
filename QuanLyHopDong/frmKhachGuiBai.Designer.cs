@@ -45,7 +45,6 @@
             this.cboMaNV = new System.Windows.Forms.ComboBox();
             this.txtNoidung = new System.Windows.Forms.TextBox();
             this.txtNhuanbut = new System.Windows.Forms.TextBox();
-            this.mtxtNgaydang = new System.Windows.Forms.MaskedTextBox();
             this.dataGridViewKGuiBai = new System.Windows.Forms.DataGridView();
             this.txtTieude = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -55,6 +54,7 @@
             this.iconbtnXoa = new FontAwesome.Sharp.IconButton();
             this.iconbtnSua = new FontAwesome.Sharp.IconButton();
             this.iconbtnThem = new FontAwesome.Sharp.IconButton();
+            this.dtpNgaydang = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKGuiBai)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,7 +111,6 @@
             this.label6.Size = new System.Drawing.Size(61, 16);
             this.label6.TabIndex = 5;
             this.label6.Text = "Nội dung";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -130,7 +129,6 @@
             this.label8.Size = new System.Drawing.Size(74, 16);
             this.label8.TabIndex = 7;
             this.label8.Text = "Ngày đăng";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -193,15 +191,6 @@
             this.txtNhuanbut.Name = "txtNhuanbut";
             this.txtNhuanbut.Size = new System.Drawing.Size(127, 22);
             this.txtNhuanbut.TabIndex = 17;
-            // 
-            // mtxtNgaydang
-            // 
-            this.mtxtNgaydang.Location = new System.Drawing.Point(596, 66);
-            this.mtxtNgaydang.Mask = "00/00/0000";
-            this.mtxtNgaydang.Name = "mtxtNgaydang";
-            this.mtxtNgaydang.Size = new System.Drawing.Size(140, 22);
-            this.mtxtNgaydang.TabIndex = 18;
-            this.mtxtNgaydang.ValidatingType = typeof(System.DateTime);
             // 
             // dataGridViewKGuiBai
             // 
@@ -334,11 +323,20 @@
             this.iconbtnThem.UseVisualStyleBackColor = true;
             this.iconbtnThem.Click += new System.EventHandler(this.iconbtnThem_Click);
             // 
+            // dtpNgaydang
+            // 
+            this.dtpNgaydang.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaydang.Location = new System.Drawing.Point(600, 66);
+            this.dtpNgaydang.Name = "dtpNgaydang";
+            this.dtpNgaydang.Size = new System.Drawing.Size(139, 22);
+            this.dtpNgaydang.TabIndex = 61;
+            // 
             // frmKhachGuiBai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 392);
+            this.Controls.Add(this.dtpNgaydang);
             this.Controls.Add(this.iconbtnThoat);
             this.Controls.Add(this.iconbtnHuy);
             this.Controls.Add(this.iconbtnLuu);
@@ -348,7 +346,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtTieude);
             this.Controls.Add(this.dataGridViewKGuiBai);
-            this.Controls.Add(this.mtxtNgaydang);
             this.Controls.Add(this.txtNhuanbut);
             this.Controls.Add(this.txtNoidung);
             this.Controls.Add(this.cboMaNV);
@@ -393,7 +390,6 @@
         private System.Windows.Forms.ComboBox cboMaNV;
         private System.Windows.Forms.TextBox txtNoidung;
         private System.Windows.Forms.TextBox txtNhuanbut;
-        private System.Windows.Forms.MaskedTextBox mtxtNgaydang;
         private System.Windows.Forms.DataGridView dataGridViewKGuiBai;
         private System.Windows.Forms.TextBox txtTieude;
         private System.Windows.Forms.Label label10;
@@ -403,5 +399,6 @@
         private FontAwesome.Sharp.IconButton iconbtnXoa;
         private FontAwesome.Sharp.IconButton iconbtnSua;
         private FontAwesome.Sharp.IconButton iconbtnThem;
+        private System.Windows.Forms.DateTimePicker dtpNgaydang;
     }
 }

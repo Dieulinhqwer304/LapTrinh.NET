@@ -18,8 +18,9 @@ namespace QuanLyHopDong
             Functions.Connect();
             LoadComboBox();
             LoadDataToGridView();
-            //txtNhuanbut.Visible = true;
             txtNhuanbut.ReadOnly = true;
+            dtpNgaydang.Format = DateTimePickerFormat.Custom;
+            dtpNgaydang.CustomFormat = "dd/MM/yyyy";
         }
 
         private void LoadComboBox()
@@ -51,6 +52,7 @@ namespace QuanLyHopDong
             dataGridViewKGuiBai.Columns[5].HeaderText = "Nội dung";
             dataGridViewKGuiBai.Columns[6].HeaderText = "Mã nhân viên";
             dataGridViewKGuiBai.Columns[7].HeaderText = "Ngày đăng";
+            dataGridViewKGuiBai.Columns[7].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridViewKGuiBai.Columns[8].HeaderText = "Nhuận bút";
         }
 
@@ -63,7 +65,7 @@ namespace QuanLyHopDong
             txtTieude.Text = "";
             txtNoidung.Text = "";
             cboMaNV.Text = "";
-            mtxtNgaydang.Text = "";
+            dtpNgaydang.Text = "";
             txtNhuanbut.Text = "";
             txtNhuanbut.ReadOnly = true;
         }
@@ -79,7 +81,12 @@ namespace QuanLyHopDong
                 txtTieude.Text = dataGridViewKGuiBai.CurrentRow.Cells[4].Value.ToString();
                 txtNoidung.Text = dataGridViewKGuiBai.CurrentRow.Cells[5].Value.ToString();
                 cboMaNV.Text = dataGridViewKGuiBai.CurrentRow.Cells[6].Value.ToString();
-                mtxtNgaydang.Text = dataGridViewKGuiBai.CurrentRow.Cells[7].Value.ToString();
+
+                if(DateTime.TryParse(dataGridViewKGuiBai.CurrentRow.Cells[7].Value.ToString(), out DateTime ngayDang))
+                {
+                    dtpNgaydang.Value = ngayDang;
+                }
+
                 txtNhuanbut.Text = dataGridViewKGuiBai.CurrentRow.Cells[8].Value.ToString();
                 txtNhuanbut.ReadOnly = true;
             }
@@ -115,15 +122,15 @@ namespace QuanLyHopDong
                 txtNoidung.Focus();
                 return;
             }
-            if (mtxtNgaydang.Text.Trim().Length == 0)
+            if (dtpNgaydang.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn chưa nhập ngày đăng");
-                mtxtNgaydang.Focus();
+                dtpNgaydang.Focus();
                 return;
             }
 
             // Parse ngày đăng
-            if (!DateTime.TryParse(mtxtNgaydang.Text.Trim(), out DateTime dtNgaydang))
+            if (!DateTime.TryParse(dtpNgaydang.Text.Trim(), out DateTime dtNgaydang))
             {
                 MessageBox.Show("Ngày đăng không hợp lệ");
                 return;
@@ -152,7 +159,7 @@ namespace QuanLyHopDong
             string sql = $"UPDATE Khachguibai SET " +
                          $"MaKH=N'{cboMaKH.Text}', Matheloai=N'{cboMaTL.Text}', Mabao=N'{cboMaBao.Text}', " +
                          $"Tieude=N'{txtTieude.Text}', Noidung=N'{txtNoidung.Text}', MaNV=N'{cboMaNV.Text}', " +
-                         $"Ngaydang='{mtxtNgaydang.Text}', Nhuanbut={nhuanbutValue} " +
+                         $"Ngaydang='{dtpNgaydang.Text}', Nhuanbut={nhuanbutValue} " +
                          $"WHERE Malangui=N'{txtmaLanGui.Text}'";
 
             try
@@ -202,7 +209,7 @@ namespace QuanLyHopDong
             string tieude = txtTieude.Text.Trim();
             string noidung = txtNoidung.Text.Trim();
             string manv = cboMaNV.Text.Trim();
-            string ngaydang = mtxtNgaydang.Text.Trim();
+            string ngaydang = dtpNgaydang.Text.Trim();
 
             // Parse ngày đăng
             if (!DateTime.TryParseExact(ngaydang, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dtNgaydang))
@@ -260,7 +267,7 @@ namespace QuanLyHopDong
             if (string.IsNullOrEmpty(ngaydang))
             {
                 MessageBox.Show("Bạn chưa nhập ngày đăng");
-                mtxtNgaydang.Focus();
+                dtpNgaydang.Focus();
                 return;
             }
 
@@ -312,12 +319,7 @@ namespace QuanLyHopDong
             this.Close();
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
+        private void dtpNgaydang_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }
