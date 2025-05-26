@@ -24,6 +24,7 @@ namespace QuanLyHopDong
         {
             Functions.Connect();
             LoadDataToGridView();
+            LoadMaVLHD();
 
             btnThem.IconChar = IconChar.Plus;
             btnThem.IconColor = Color.SeaGreen;
@@ -83,7 +84,7 @@ namespace QuanLyHopDong
             txtDiaChi.Text = "";
             txtDienThoai.Text = "";
             txtEmail.Text = "";
-            cboVaiTro.Text = "";
+            cboMaVLHD.Text = "";
         }
 
         private void dataGridViewKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -98,7 +99,7 @@ namespace QuanLyHopDong
                 txtDiaChi.Text = row.Cells["Diachi"].Value.ToString();
                 txtDienThoai.Text = row.Cells["Dienthoai"].Value.ToString();
                 txtEmail.Text = row.Cells["Email"].Value.ToString();
-                cboVaiTro.Text = row.Cells["VaiTro"].Value.ToString();
+                cboMaVLHD.SelectedValue = row.Cells["MaLVHD"].Value.ToString();
                 txtMaKH.ReadOnly = true;
             }
         }
@@ -111,25 +112,37 @@ namespace QuanLyHopDong
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string makh = txtMaKH.Text.Trim();
-            if (makh == "")
+            if (txtMaKH.Text.Trim() == "")
             {
                 MessageBox.Show("Bạn chưa nhập mã khách hàng");
                 txtMaKH.Focus();
+                return;
+            }
+            if (txtTenKH.Text.Trim() == "")
+            {
+                MessageBox.Show("Bạn chưa nhập tên khách hàng");
+                txtTenKH.Focus();
+                return;
+            }
+            if (cboMaVLHD.Text.Trim() == "")
+            {
+                MessageBox.Show("Bạn chưa nhập mã VLHD");
+                cboMaVLHD.Focus();
                 return;
             }
 
             string sqlCheck = "SELECT * FROM Khachhang WHERE MaKH = N'" + makh + "'";
             if (!Functions.CheckKey(sqlCheck))
             {
-                string sql = "INSERT INTO Khachhang (MaKH, TenKH, DiaChi, DienThoai, Email, VaiTro) " +
-             "VALUES (@MaKH, @TenKH, @DiaChi, @DienThoai, @Email, @VaiTro)";
+                string sql = "INSERT INTO Khachhang (MaKH, TenKH, DiaChi, DienThoai, Email, MaLVHD) " +
+             "VALUES (@MaKH, @TenKH, @DiaChi, @DienThoai, @Email, @MaLVHD)";
                 SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
                 cmd.Parameters.AddWithValue("@MaKH", txtMaKH.Text.Trim());
                 cmd.Parameters.AddWithValue("@TenKH", txtTenKH.Text.Trim());
                 cmd.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text.Trim());
                 cmd.Parameters.AddWithValue("@DienThoai", txtDienThoai.Text.Trim());
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-                cmd.Parameters.AddWithValue("@VaiTro", cboVaiTro.Text.Trim());
+                cmd.Parameters.AddWithValue("@MaLVHD", cboMaVLHD.SelectedValue.ToString());
                 try
                 {
                     cmd.ExecuteNonQuery();
@@ -156,7 +169,7 @@ namespace QuanLyHopDong
                 return;
             }
 
-            string sql = $"UPDATE Khachhang SET TenKH=N'{txtTenKH.Text}', DiaChi=N'{txtDiaChi.Text}', DienThoai=N'{txtDienThoai.Text}', Email=N'{txtEmail.Text}', VaiTro=N'{cboVaiTro.Text}' WHERE MaKH=N'{txtMaKH.Text}'";
+            string sql = $"UPDATE Khachhang SET TenKH=N'{txtTenKH.Text}', DiaChi=N'{txtDiaChi.Text}', DienThoai=N'{txtDienThoai.Text}', Email=N'{txtEmail.Text}', MaLVHD=N'{cboMaVLHD.SelectedValue}' WHERE MaKH=N'{txtMaKH.Text}'";
             try
             {
                 SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
@@ -212,6 +225,21 @@ namespace QuanLyHopDong
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void txtDienThoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void LoadMaVLHD()
+        {
+            string sql = "SELECT MaLVHD FROM Linhvuchoatdong";
+            DataTable dt = Functions.GetDataToTable(sql);
+            cboMaVLHD.DataSource = dt;
+            cboMaVLHD.DisplayMember = "MaLVHD";
+            cboMaVLHD.ValueMember = "MaLVHD";
         }
     }
 }

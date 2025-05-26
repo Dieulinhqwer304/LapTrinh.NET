@@ -23,6 +23,7 @@ namespace QuanLyHopDong
         {
             Functions.Connect();
             LoadDataToGridView();
+            LoadMaChucNang();
 
             btnThem.IconChar = IconChar.Plus;
             btnThem.IconColor = Color.SeaGreen;
@@ -79,7 +80,7 @@ namespace QuanLyHopDong
         {
             txtMaBao.Text = "";
             txtTenBao.Text = "";
-            txtMaChucNang.Text = "";
+            cboMaChucNang.Text = "";
             txtDiaChi.Text = "";
             txtDienThoai.Text = "";
             txtEmail.Text = "";
@@ -94,7 +95,7 @@ namespace QuanLyHopDong
                 DataGridViewRow row = dgvBao.Rows[i];
                 txtMaBao.Text = row.Cells[0].Value?.ToString() ?? "";
                 txtTenBao.Text = row.Cells[1].Value?.ToString() ?? "";
-                txtMaChucNang.Text = row.Cells[2].Value?.ToString() ?? "";  
+                cboMaChucNang.SelectedValue = row.Cells[2].Value?.ToString() ?? "";
                 txtDiaChi.Text = row.Cells[3].Value?.ToString() ?? "";
                 txtDienThoai.Text = row.Cells[4].Value?.ToString() ?? "";
                 txtEmail.Text = row.Cells[5].Value?.ToString() ?? "";
@@ -111,10 +112,22 @@ namespace QuanLyHopDong
         {
             string mabao = txtMaBao.Text.Trim();
 
-            if (mabao == "")
+            if (txtMaBao.Text.Trim() == "")
             {
                 MessageBox.Show("Bạn chưa nhập mã báo");
                 txtMaBao.Focus();
+                return;
+            }
+            if (txtTenBao.Text.Trim() == "")
+            {
+                MessageBox.Show("Bạn chưa nhập tên báo");
+                txtTenBao.Focus();
+                return;
+            }
+            if (cboMaChucNang.SelectedIndex == -1)
+            {
+                MessageBox.Show("Bạn chưa chọn mã chức năng");
+                cboMaChucNang.Focus();
                 return;
             }
 
@@ -126,7 +139,7 @@ namespace QuanLyHopDong
                 SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
                 cmd.Parameters.AddWithValue("@Mabao", txtMaBao.Text.Trim());
                 cmd.Parameters.AddWithValue("@Tenbao", txtTenBao.Text.Trim());
-                cmd.Parameters.AddWithValue("@Machucnang", txtMaChucNang.Text.Trim()); 
+                cmd.Parameters.AddWithValue("@Machucnang", cboMaChucNang.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@Diachi", txtDiaChi.Text.Trim());
                 cmd.Parameters.AddWithValue("@Dienthoai", txtDienThoai.Text.Trim());   
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
@@ -157,7 +170,7 @@ namespace QuanLyHopDong
                 return;
             }
 
-            string sql = $"UPDATE Bao SET Tenbao = N'{txtTenBao.Text}', Machucnang = N'{txtMaChucNang.Text}', " +
+            string sql = $"UPDATE Bao SET Tenbao = N'{txtTenBao.Text}', Machucnang = N'{cboMaChucNang.SelectedValue}', " +
                          $"Diachi = N'{txtDiaChi.Text}', Dienthoai = N'{txtDienThoai.Text}', Email = N'{txtEmail.Text}' " +
                          $"WHERE Mabao = N'{txtMaBao.Text}'";
             try
@@ -224,6 +237,20 @@ namespace QuanLyHopDong
         {
             this.Close();
         }
-
+        private void txtDienThoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void LoadMaChucNang()
+        {
+            string sql = "SELECT MaChucNang FROM ChucNang"; // Tên bảng chứa mã chức năng
+            DataTable dt = Functions.GetDataToTable(sql);
+            cboMaChucNang.DataSource = dt;
+            cboMaChucNang.DisplayMember = "MaChucNang";
+            cboMaChucNang.ValueMember = "MaChucNang";
+        }
     }
 }
