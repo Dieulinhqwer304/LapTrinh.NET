@@ -16,6 +16,7 @@ namespace QuanLyHopDong
         public FrmNhanVien()
         {
             InitializeComponent();
+            txtDienThoai.KeyPress += txtDienThoai_KeyPress;
         }
 
         private void FrmNhanVien_Load(object sender, EventArgs e)
@@ -106,7 +107,14 @@ namespace QuanLyHopDong
                 txtEmail.Text = dgvNhanVien.CurrentRow.Cells[11].Value.ToString();
             }
         }
-        
+        private void txtDienThoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Cho phép phím điều khiển như Backspace và các số (0-9)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ngăn không cho nhập
+            }
+        }
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -169,20 +177,21 @@ namespace QuanLyHopDong
         {
             string manv = txtMaNV.Text.Trim();
             string tennv = txtTenNV.Text.Trim();
-            string gioitinh = cboGioiTinh.Text.Trim();
-            string ngaysinh = dtpNgaySinh.Value.ToString("yyyy-MM-dd");
+            string mabao = cboMaBao.Text.Trim();
+            string maphong = cboMaPhong.Text.Trim();
+            string machucvu = cboMaChucVu.Text.Trim();
+            string matrinhdo = cboMaTrinhDo.Text.Trim();
+            string machuyenmon = cboMaChuyenMon.Text.Trim();
             string diachi = txtDiaChi.Text.Trim();
+            string ngaysinh = dtpNgaySinh.Value.ToString("yyyy-MM-dd");
+            string gioitinh = cboGioiTinh.Text.Trim();
             string dienthoai = txtDienThoai.Text.Trim();
             string email = txtEmail.Text.Trim();
-            string machucvu = cboMaChucVu.Text.Trim();
-            string machuyenmon = cboMaChuyenMon.Text.Trim();
-            string maphong = cboMaPhong.Text.Trim();
-            string matrinhdo = cboMaTrinhDo.Text.Trim();
-            string mabao = cboMaBao.Text.Trim();
+  
 
             if (manv == "")
             {
-                MessageBox.Show("Bạn chưa nhập mã lần quảng cáo");
+                MessageBox.Show("Bạn chưa nhập mã nhân viên");
                 txtMaNV.Focus();
                 return;
             }
@@ -190,10 +199,8 @@ namespace QuanLyHopDong
             string sqlCheck = "SELECT * FROM Nhanvien WHERE MaNV = N'" + manv + "'";
             if (!Functions.CheckKey(sqlCheck))
             {
-                string sql = "INSERT INTO Nhanvien (MaNV, TenNV, Gioitinh, Ngaysinh, Diachi, Dienthoai, Email, Machucvu, MaCM, Maphong, Matrinhdo, Mabao) " +
-             $"VALUES (N'{manv}', N'{tennv}', N'{gioitinh}', '{ngaysinh}', N'{diachi}', '{dienthoai}', N'{email}', " +
-             $"N'{machucvu}', N'{machuyenmon}', N'{maphong}', N'{matrinhdo}', N'{mabao}')";
-
+                string sql = "INSERT INTO Nhanvien (MaNV, TenNV, MaBao, MaPhong, MaChucVu, MaTrinhDo, MaChuyenMon, DiaChi, NgaySinh, GioiTinh, DienThoai, Email) " +
+                $"VALUES (N'{manv}', N'{tennv}', N'{mabao}', N'{maphong}', N'{machucvu}', N'{matrinhdo}', N'{machuyenmon}', N'{diachi}', N'{ngaysinh}', N'{gioitinh}', N'{dienthoai}', N'{email}')";
 
                 SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
                 try
@@ -220,12 +227,12 @@ namespace QuanLyHopDong
 
         private void iconbtnThoat_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-        }
-
-        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
-        {
-
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 
