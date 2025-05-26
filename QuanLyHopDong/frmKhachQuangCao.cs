@@ -75,7 +75,7 @@ namespace QuanLyHopDong
             cboMaNV.Text = "";
             cboMaQC.Text = "";
             txtNoidung.Text = "";
-            dtpNgayBD.Text = "";
+            dtpNgayBD.Value = DateTime.Now;
             dtpNgayKT.Text = "";
             txtTongtien.Text = "";
             txtTongtien.ReadOnly = true;
@@ -126,23 +126,20 @@ namespace QuanLyHopDong
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            // Validate ngayBD < ngayKT
+            if (dtpNgayBD.Value > dtpNgayKT.Value)
+            {
+                MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc!");
+                return;
+            }
             if (txtmaLanQC.Text.Trim() == "")
             {
                 MessageBox.Show("Bạn chưa chọn bản ghi nào để sửa");
                 return;
             }
 
-            // Kiểm tra ngày
-            DateTime bd, kt;
-            if (!DateTime.TryParseExact(dtpNgayBD.Text.Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out bd) ||
-                !DateTime.TryParseExact(dtpNgayKT.Text.Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out kt))
-            {
-                MessageBox.Show("Ngày bắt đầu hoặc ngày kết thúc không hợp lệ. Định dạng đúng: dd/MM/yyyy");
-                return;
-            }
-
             // Tính tổng tiền
-            int songay = (kt - bd).Days + 1;
+            int songay = (dtpNgayKT.Value - dtpNgayBD.Value).Days + 1;
             string sqlDonGia = "SELECT Dongia FROM BangGia WHERE MaBao = @MaBao AND MaQcao = @MaQcao";
             using (SqlCommand cmdDonGia = new SqlCommand(sqlDonGia, Functions.Conn))
             {
@@ -173,8 +170,8 @@ namespace QuanLyHopDong
                     cmd.Parameters.AddWithValue("@MaNV", cboMaNV.Text);
                     cmd.Parameters.AddWithValue("@MaQcao", cboMaQC.Text);
                     cmd.Parameters.AddWithValue("@Noidung", txtNoidung.Text);
-                    cmd.Parameters.AddWithValue("@NgayBD", dtpNgayBD.Text);
-                    cmd.Parameters.AddWithValue("@NgayKT", dtpNgayKT.Text);
+                    cmd.Parameters.AddWithValue("@NgayBD", dtpNgayBD.Value);
+                    cmd.Parameters.AddWithValue("@NgayKT", dtpNgayKT.Value);
                     cmd.Parameters.AddWithValue("@Tongtien", Convert.ToDecimal(txtTongtien.Text));
                     cmd.ExecuteNonQuery();
                 }
@@ -223,13 +220,19 @@ namespace QuanLyHopDong
             string manv = cboMaNV.Text.Trim();
             string maqc = cboMaQC.Text.Trim();
             string noidung = txtNoidung.Text.Trim();
-            string ngaybatdau = dtpNgayBD.Text.Trim();
-            string ngayketthuc = dtpNgayKT.Text.Trim();
+
 
             if (malanqc == "")
             {
                 MessageBox.Show("Bạn chưa nhập mã lần quảng cáo");
                 txtmaLanQC.Focus();
+                return;
+            }
+
+            // Validate ngayBD < ngayKT
+            if(dtpNgayBD.Value > dtpNgayKT.Value)
+            {
+                MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc!");
                 return;
             }
 
@@ -241,18 +244,10 @@ namespace QuanLyHopDong
                 MessageBox.Show("Trùng mã lần quảng cáo!");
                 return;
             }
-
-            // Kiểm tra ngày
-            DateTime bd, kt;
-            if (!DateTime.TryParseExact(ngaybatdau, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out bd) ||
-                !DateTime.TryParseExact(ngayketthuc, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out kt))
-            {
-                MessageBox.Show("Ngày bắt đầu hoặc ngày kết thúc không hợp lệ. Định dạng đúng: dd/MM/yyyy");
-                return;
-            }
+          
 
             // Tính tổng tiền
-            int songay = (kt - bd).Days + 1;
+            int songay = (dtpNgayKT.Value - dtpNgayBD.Value).Days + 1;
             string sqlDonGia = "SELECT Dongia FROM BangGia WHERE MaBao = @MaBao AND MaQcao = @MaQcao";
             decimal tongtien;
             using (SqlCommand cmdDonGia = new SqlCommand(sqlDonGia, Functions.Conn))
@@ -300,8 +295,8 @@ namespace QuanLyHopDong
                     cmd.Parameters.AddWithValue("@MaNV", manv);
                     cmd.Parameters.AddWithValue("@MaQcao", maqc);
                     cmd.Parameters.AddWithValue("@Noidung", noidung);
-                    cmd.Parameters.AddWithValue("@NgayBD", ngaybatdau);
-                    cmd.Parameters.AddWithValue("@NgayKT", ngayketthuc);
+                    cmd.Parameters.AddWithValue("@NgayBD", dtpNgayBD.Value);
+                    cmd.Parameters.AddWithValue("@NgayKT", dtpNgayKT.Value);
                     cmd.Parameters.AddWithValue("@Tongtien", tongtien);
                     cmd.ExecuteNonQuery();
                 }

@@ -65,7 +65,7 @@ namespace QuanLyHopDong
             txtTieude.Text = "";
             txtNoidung.Text = "";
             cboMaNV.Text = "";
-            dtpNgaydang.Text = "";
+            dtpNgaydang.Value = DateTime.Now;
             txtNhuanbut.Text = "";
             txtNhuanbut.ReadOnly = true;
         }
@@ -122,26 +122,14 @@ namespace QuanLyHopDong
                 txtNoidung.Focus();
                 return;
             }
-            if (dtpNgaydang.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn chưa nhập ngày đăng");
-                dtpNgaydang.Focus();
-                return;
-            }
 
-            // Parse ngày đăng
-            if (!DateTime.TryParse(dtpNgaydang.Text.Trim(), out DateTime dtNgaydang))
-            {
-                MessageBox.Show("Ngày đăng không hợp lệ");
-                return;
-            }
 
             // Tính nhuận bút tự động
             string sqlGetNB = $@"SELECT TOP 1 Nhuanbut FROM Bao_Theloai 
                          WHERE MaBao = N'{cboMaBao.Text}' 
                          AND MaTheloai = N'{cboMaTL.Text}'
-                         AND MONTH(NgayApdung) = {dtNgaydang.Month} 
-                         AND YEAR(NgayApdung) = {dtNgaydang.Year}";
+                         AND MONTH(NgayApdung) = {dtpNgaydang.Value.Month} 
+                         AND YEAR(NgayApdung) = {dtpNgaydang.Value.Year}";
 
             SqlCommand cmdNB = new SqlCommand(sqlGetNB, Functions.Conn);
             object result = cmdNB.ExecuteScalar();
@@ -159,7 +147,7 @@ namespace QuanLyHopDong
             string sql = $"UPDATE Khachguibai SET " +
                          $"MaKH=N'{cboMaKH.Text}', Matheloai=N'{cboMaTL.Text}', Mabao=N'{cboMaBao.Text}', " +
                          $"Tieude=N'{txtTieude.Text}', Noidung=N'{txtNoidung.Text}', MaNV=N'{cboMaNV.Text}', " +
-                         $"Ngaydang='{dtpNgaydang.Text}', Nhuanbut={nhuanbutValue} " +
+                         $"Ngaydang='{dtpNgaydang.Value}', Nhuanbut={nhuanbutValue} " +
                          $"WHERE Malangui=N'{txtmaLanGui.Text}'";
 
             try
@@ -209,14 +197,7 @@ namespace QuanLyHopDong
             string tieude = txtTieude.Text.Trim();
             string noidung = txtNoidung.Text.Trim();
             string manv = cboMaNV.Text.Trim();
-            string ngaydang = dtpNgaydang.Text.Trim();
-
-            // Parse ngày đăng
-            if (!DateTime.TryParseExact(ngaydang, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dtNgaydang))
-            {
-                MessageBox.Show("Ngày đăng không hợp lệ. Định dạng đúng: dd/MM/yyyy");
-                return;
-            }
+            DateTime ngaydang = dtpNgaydang.Value;
 
 
             // Truy vấn nhuận bút mới: Lấy dòng có Ngayapdung <= NgayDang gần nhất
@@ -233,7 +214,7 @@ namespace QuanLyHopDong
             {
                 cmdNB.Parameters.AddWithValue("@MaBao", mabao);
                 cmdNB.Parameters.AddWithValue("@MaTheloai", matl);
-                cmdNB.Parameters.AddWithValue("@NgayDang", dtNgaydang);
+                cmdNB.Parameters.AddWithValue("@NgayDang", dtpNgaydang.Value);
 
                 object result = cmdNB.ExecuteScalar();
                 if (result == null)
@@ -264,12 +245,12 @@ namespace QuanLyHopDong
                 txtNoidung.Focus();
                 return;
             }
-            if (string.IsNullOrEmpty(ngaydang))
-            {
-                MessageBox.Show("Bạn chưa nhập ngày đăng");
-                dtpNgaydang.Focus();
-                return;
-            }
+            //if (string.IsNullOrEmpty(dtpNgaydang.Value))
+            //{
+            //    MessageBox.Show("Bạn chưa nhập ngày đăng");
+            //    dtpNgaydang.Focus();
+            //    return;
+            //}
 
             // Thiết lập combobox mặc định nếu chưa chọn
             if (cboMaKH.SelectedIndex == -1 && cboMaKH.Items.Count > 0)
@@ -286,7 +267,7 @@ namespace QuanLyHopDong
             if (!Functions.CheckKey(sqlCheck))
             {
                 string sqlInsert = @"INSERT INTO Khachguibai 
-                VALUES (N'" + malan + "', N'" + makh + "', N'" + matl + "', N'" + mabao + "', N'" + tieude + "', N'" + noidung + "', N'" + manv + "', '" + dtNgaydang.ToString("yyyy-MM-dd") + "', " + nhuanbutValue + ")";
+                VALUES (N'" + malan + "', N'" + makh + "', N'" + matl + "', N'" + mabao + "', N'" + tieude + "', N'" + noidung + "', N'" + manv + "', '" + ngaydang.ToString("yyyy-MM-dd") + "', " + nhuanbutValue + ")";
 
                 using (SqlCommand cmd = new SqlCommand(sqlInsert, Functions.Conn))
                 {
