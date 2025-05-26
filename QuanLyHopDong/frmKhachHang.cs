@@ -124,9 +124,9 @@ namespace QuanLyHopDong
                 txtTenKH.Focus();
                 return;
             }
-            if (cboMaVLHD.Text.Trim() == "")
+            if (cboMaVLHD.SelectedIndex <= 0)
             {
-                MessageBox.Show("Bạn chưa nhập mã VLHD");
+                MessageBox.Show("Bạn chưa chọn mã lĩnh vực hoạt động");
                 cboMaVLHD.Focus();
                 return;
             }
@@ -240,6 +240,7 @@ namespace QuanLyHopDong
             cboMaVLHD.DataSource = dt;
             cboMaVLHD.DisplayMember = "MaLVHD";
             cboMaVLHD.ValueMember = "MaLVHD";
+            cboMaVLHD.SelectedIndex = -1;
         }
     }
 }

@@ -57,7 +57,7 @@ namespace QuanLyHopDong
             Functions.FillCombo("SELECT Machucvu FROM Chucvu", cboMaChucVu, "Machucvu", "Machucvu");
             Functions.FillCombo("SELECT MaBao FROM Bao", cboMaBao, "Mabao", "Mabao");
             Functions.FillCombo("SELECT Maphong FROM Phongban", cboMaPhong, "Maphong", "Maphong");
-            Functions.FillCombo("SELECT MaTD FROM Trinhdo", cboMaTrinhDo, "MaTD", "MaTD");
+            Functions.FillCombo("SELECT MaTD FROM Trinhdo", cboMaTrinhDo, "MaTD", "Matrinhdo");
             Functions.FillCombo("SELECT MaCM FROM Chuyenmon", cboMaChuyenMon, "MaCM", "MaCM");
 
             cboMaChucVu.SelectedIndex = -1;
@@ -190,7 +190,7 @@ namespace QuanLyHopDong
             string sqlCheck = "SELECT * FROM Nhanvien WHERE MaNV = N'" + manv + "'";
             if (!Functions.CheckKey(sqlCheck))
             {
-                string sql = "INSERT INTO Nhanvien (MaNV, TenNV, Gioitinh, Ngaysinh, Diachi, Dienthoai, Email, Machucvu, MaCM, Maphong, MaTD, Mabao) " +
+                string sql = "INSERT INTO Nhanvien (MaNV, TenNV, Gioitinh, Ngaysinh, Diachi, Dienthoai, Email, Machucvu, MaCM, Maphong, Matrinhdo, Mabao) " +
              $"VALUES (N'{manv}', N'{tennv}', N'{gioitinh}', '{ngaysinh}', N'{diachi}', '{dienthoai}', N'{email}', " +
              $"N'{machucvu}', N'{machuyenmon}', N'{maphong}', N'{matrinhdo}', N'{mabao}')";
 
