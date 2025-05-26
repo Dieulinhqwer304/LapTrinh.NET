@@ -124,7 +124,7 @@ namespace QuanLyHopDong
                 txtTenBao.Focus();
                 return;
             }
-            if (cboMaChucNang.SelectedIndex <= 0)
+            if (cboMaChucNang.SelectedIndex == -1)
             {
                 MessageBox.Show("Bạn chưa chọn mã chức năng");
                 cboMaChucNang.Focus();
