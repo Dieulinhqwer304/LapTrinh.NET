@@ -57,7 +57,7 @@ namespace QuanLyHopDong
             Functions.FillCombo("SELECT Machucvu FROM Chucvu", cboMaChucVu, "Machucvu", "Machucvu");
             Functions.FillCombo("SELECT MaBao FROM Bao", cboMaBao, "Mabao", "Mabao");
             Functions.FillCombo("SELECT Maphong FROM Phongban", cboMaPhong, "Maphong", "Maphong");
-            Functions.FillCombo("SELECT MaTD FROM Trinhdo", cboMaTrinhDo, "MaTD", "MaTD");
+            Functions.FillCombo("SELECT MaTD FROM Trinhdo", cboMaTrinhDo, "MaTD", "Matrinhdo");
             Functions.FillCombo("SELECT MaCM FROM Chuyenmon", cboMaChuyenMon, "MaCM", "MaCM");
 
             cboMaChucVu.SelectedIndex = -1;
