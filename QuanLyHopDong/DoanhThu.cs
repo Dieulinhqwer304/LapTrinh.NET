@@ -39,6 +39,10 @@ namespace QuanLyHopDong
         private void DoanhThu_Load(object sender, EventArgs e)
         {
             QuanLyHopDong.Functions.Connect();
+            txtNam.Enabled = false;
+            txtThang.Enabled = false;
+            mskTu.Enabled = false;
+            mskDen.Enabled = false;
 
 
         }
@@ -135,7 +139,7 @@ namespace QuanLyHopDong
             exRange.Range["C2:E2"].Font.ColorIndex = 3; // Màu đỏ
             exRange.Range["C2:E2"].MergeCells = true;
             exRange.Range["C2:E2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["C2:E2"].Value = "BÁO CÁO DOANH THU";
+            exRange.Range["C2:E2"].Value = "BÁO CÁO ";
 
             // ======= THÔNG TIN THỜI GIAN =========
             exRange.Range["B5:C6"].Font.Size = 12;
@@ -145,78 +149,20 @@ namespace QuanLyHopDong
 
             // ======= IN DỮ LIỆU TỪ CHARTDOANHTHU =========
             int rowStart = 8;
-            exRange.Range["A8:B8"].Font.Bold = true;
-            exRange.Range["A8:B8"].Font.Size = 12;
-            exRange.Range["A8:B8"].Font.Name = "Times New Roman";
-            exRange.Range["A8:B8"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Range["A8:C8"].Font.Bold = true;
+            exRange.Range["A8:C8"].Font.Size = 12;
+            exRange.Range["A8:C8"].Font.Name = "Times New Roman";
+            exRange.Range["A8:C8"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Range["A8:A8"].ColumnWidth = 10;
             exRange.Range["B8:B8"].ColumnWidth = 15;
+            exRange.Range["C8:C8"].ColumnWidth = 15; // Thêm dòng này để chỉnh độ rộng cho cột Chi phí
+
 
             exSheet.Cells[rowStart, 1] = "Tháng";
             exSheet.Cells[rowStart, 2] = "Doanh thu";
+            exSheet.Cells[rowStart, 3] = "Chi phí ";
 
-            int dataRowCount = 0;
-            if (chartDoanhThu.Series["DoanhThu"].Points.Count == 0)
-            {
-                MessageBox.Show("Không có dữ liệu trong chartDoanhThu để in! Vui lòng nhấn 'Làm mới' trước.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                exApp.Quit();
-                return;
-            }
 
-            // Lấy dữ liệu từ chartDoanhThu
-            foreach (var point in chartDoanhThu.Series["DoanhThu"].Points)
-            {
-                string thang = point.XValue.ToString(); // Tháng (đã là dạng số: 1, 2, 3,...)
-                double doanhThu = point.YValues[0]; // Doanh thu (đã ở dạng triệu VNĐ từ btnLamMoi_Click)
-
-                exSheet.Cells[dataRowCount + rowStart + 1, 1] = thang;
-                exSheet.Cells[dataRowCount + rowStart + 1, 2] = doanhThu;
-                dataRowCount++;
-            }
-
-            // ======= VẼ BIỂU ĐỒ =========
-            COMExcel.ChartObjects charts = (COMExcel.ChartObjects)exSheet.ChartObjects();
-            COMExcel.ChartObject chartObject = charts.Add(300, 100, 400, 250); // Vị trí và kích thước biểu đồ
-            COMExcel.Chart chart = chartObject.Chart;
-
-            // Xác định vùng dữ liệu vẽ biểu đồ (bao gồm tiêu đề: A8:B...)
-            string dataStart = "A" + rowStart; // Bao gồm tiêu đề
-            string dataEnd = "B" + (rowStart + dataRowCount);
-            COMExcel.Range chartRange = exSheet.get_Range(dataStart, dataEnd);
-
-            // Đặt nguồn dữ liệu cho biểu đồ
-            chart.SetSourceData(chartRange, COMExcel.XlRowCol.xlColumns);
-
-            // Thay đổi loại biểu đồ nếu chỉ có 1 hàng dữ liệu
-            if (dataRowCount == 1)
-            {
-                chart.ChartType = COMExcel.XlChartType.xlColumnClustered; // Biểu đồ cột cho 1 điểm
-            }
-            else
-            {
-                chart.ChartType = COMExcel.XlChartType.xlLine; // Biểu đồ đường cho nhiều điểm
-            }
-
-            // Tiêu đề biểu đồ
-            chart.HasTitle = true;
-            chart.ChartTitle.Text = "Biểu đồ doanh thu (triệu VNĐ)";
-
-            // Trục X: Chỉ hiển thị tháng
-            chart.Axes(COMExcel.XlAxisType.xlCategory).HasTitle = true;
-            chart.Axes(COMExcel.XlAxisType.xlCategory).AxisTitle.Text = "Tháng";
-            chart.Axes(COMExcel.XlAxisType.xlCategory).CategoryType = COMExcel.XlCategoryType.xlCategoryScale; // Đảm bảo trục X là danh mục (chỉ hiển thị tháng)
-
-            // Trục Y: Doanh thu (triệu VNĐ), với các mức nhảy 10, 20, 30, 40
-            chart.Axes(COMExcel.XlAxisType.xlValue).HasTitle = true;
-            chart.Axes(COMExcel.XlAxisType.xlValue).AxisTitle.Text = "Doanh thu (triệu VNĐ)";
-            chart.Axes(COMExcel.XlAxisType.xlValue).MinimumScale = 0;
-            chart.Axes(COMExcel.XlAxisType.xlValue).MaximumScale = 40; // Tối đa 40 triệu
-            chart.Axes(COMExcel.XlAxisType.xlValue).MajorUnit = 10; // Nhảy 10 triệu mỗi bước
-
-            // Định dạng biểu đồ
-            chart.Legend.Position = COMExcel.XlLegendPosition.xlLegendPositionBottom;
-
-            // ======= HIỂN THỊ EXCEL =========
             exApp.Visible = true;
         }
 
@@ -283,10 +229,15 @@ namespace QuanLyHopDong
                     txtNam.Focus();
                     return;
                 }
-                sql = "SELECT CONCAT(YEAR(NgayKT), '-', MONTH(NgayKT)) AS ThoiGian,SUM(Tongtien) AS DoanhThu" +
-                    " From KhachQuangcao"
-                    + " WHERE MONTH(NgayKT) = " + txtThang.Text + " AND YEAR(NgayKT) = " + txtNam.Text +
-                    " GROUP BY YEAR(NgayKT), MONTH(NgayKT);";
+                sql = "SELECT CONCAT(YEAR(KQ.NgayKT), '-', MONTH(KQ.NgayKT)) AS ThoiGian, " +
+                      "SUM(KQ.Tongtien) AS DoanhThu, " +
+                      "(SELECT SUM(KGB.Nhuanbut) " +
+                      " FROM Khachguibai KGB " +
+                      " WHERE MONTH(KGB.Ngaydang) = MONTH(KQ.NgayKT) AND YEAR(KGB.Ngaydang) = YEAR(KQ.NgayKT)) AS ChiPhi " +
+                      "FROM KhachQuangcao KQ " +
+                      "WHERE MONTH(KQ.NgayKT) = " + txtThang.Text + " AND YEAR(KQ.NgayKT) = " + txtNam.Text + " " +
+                      "GROUP BY YEAR(KQ.NgayKT), MONTH(KQ.NgayKT);";
+
 
 
             }
@@ -335,12 +286,17 @@ namespace QuanLyHopDong
                     return;
                 }
 
-                sql = "SELECT FORMAT(NgayKT, 'yyyy-MM') AS ThoiGian, " +
-                      "SUM(Tongtien) AS DoanhThu " +
-                      "FROM KhachQuangcao " +
-                      "WHERE NgayKT BETWEEN '" + tuNgay.ToString("yyyy-MM-dd") + "' AND '" + denNgay.ToString("yyyy-MM-dd") + "' " +
-                      "GROUP BY FORMAT(NgayKT, 'yyyy-MM') " +
-                      "ORDER BY FORMAT(NgayKT, 'yyyy-MM');";
+                sql =
+                "SELECT FORMAT(KQ.NgayKT, 'yyyy-MM') AS ThoiGian, " +
+                "SUM(KQ.Tongtien) AS DoanhThu, " +
+                "(SELECT SUM(KGB.Nhuanbut) " +
+                " FROM Khachguibai KGB " +
+                " WHERE FORMAT(KGB.Ngaydang, 'yyyy-MM') = FORMAT(KQ.NgayKT, 'yyyy-MM')) AS ChiPhi " +
+                "FROM KhachQuangcao KQ " +
+                "WHERE KQ.NgayKT BETWEEN '" + tuNgay.ToString("yyyy-MM-dd") + "' AND '" + denNgay.ToString("yyyy-MM-dd") + "' " +
+                "GROUP BY FORMAT(KQ.NgayKT, 'yyyy-MM') " +
+                "ORDER BY FORMAT(KQ.NgayKT, 'yyyy-MM');";
+
             }
             DataTable dataTable = QuanLyHopDong.Functions.GetDataToTable(sql);
             dataGridView1.DataSource = dataTable;
@@ -423,7 +379,7 @@ namespace QuanLyHopDong
             exRange.Font.ColorIndex = 3; // Màu đỏ
             exRange.MergeCells = true;
             exRange.HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Value = "BÁO CÁO DOANH THU THEO THÁNG";
+            exRange.Value = "BÁO CÁO ";
 
             // ====== DÒNG 2: HỆ THỐNG ======
             exRange = exSheet.Range["A2:C2"];
@@ -460,8 +416,9 @@ namespace QuanLyHopDong
             exSheet.Cells[rowStart, 1] = "STT";
             exSheet.Cells[rowStart, 2] = "Thời gian";
             exSheet.Cells[rowStart, 3] = "Tổng doanh thu";
+            exSheet.Cells[rowStart, 4] = "Tổng chi phí";
 
-            exRange = exSheet.Range["A" + rowStart, "C" + rowStart];
+            exRange = exSheet.Range["A" + rowStart, "D" + rowStart];
             exRange.Font.Bold = true;
             exRange.HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Borders.LineStyle = COMExcel.XlLineStyle.xlContinuous;
@@ -475,14 +432,15 @@ namespace QuanLyHopDong
                 exSheet.Cells[rowStart + 1 + i, 1] = stt++;
                 exSheet.Cells[rowStart + 1 + i, 2] = dataGridView1.Rows[i].Cells["ThoiGian"].Value?.ToString();
                 exSheet.Cells[rowStart + 1 + i, 3] = dataGridView1.Rows[i].Cells["DoanhThu"].Value?.ToString();
+                exSheet.Cells[rowStart + 1 + i, 4] = dataGridView1.Rows[i].Cells["ChiPhi"].Value?.ToString();
+
+                // ======= CĂN CHỈNH KÍCH THƯỚC CỘT =========
+                exSheet.Columns.AutoFit();
+
+                // Hiển thị Excel
+
+                exApp.Visible = true;
             }
-
-            // ======= CĂN CHỈNH KÍCH THƯỚC CỘT =========
-            exSheet.Columns.AutoFit();
-
-            // Hiển thị Excel
-
-            exApp.Visible = true;
         }
     }
 }
