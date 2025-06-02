@@ -532,7 +532,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmNhanVien";
-            this.Text = "FrmNhanVien";
+            this.Text = "NHÂN VIÊN";
             this.Load += new System.EventHandler(this.FrmNhanVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             this.ResumeLayout(false);

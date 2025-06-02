@@ -83,6 +83,12 @@
     <Compile Include="DoanhThu.Designer.cs">
       <DependentUpon>DoanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="formlogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlogin.Designer.cs">
+      <DependentUpon>formlogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDanhMuc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,8 +145,12 @@
     <Compile Include="QuangCao.Designer.cs">
       <DependentUpon>QuangCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="StaticData.cs" />
     <EmbeddedResource Include="DoanhThu.resx">
       <DependentUpon>DoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlogin.resx">
+      <DependentUpon>formlogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDanhMuc.resx">
       <DependentUpon>frmDanhMuc.cs</DependentUpon>
@@ -189,6 +199,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <None Include="Resources\chuyển đổi số da nền tảng đã và đang thay đổi.png" />
+    <None Include="Resources\1Hn-288.jpg" />
     <None Include="Resources\Ông Trump giục EU đơn phương giảm thêm thuế Tổng thống Mỹ Donald Trump đang yêu cầu EU đơn phương giảm thuế đối với hàng hóa Mỹ để có tiến triển trong đàm phán, theo Financial Times.1.png" />
     <None Include="Resources\Ông Trump giục EU đơn phương giảm thêm thuế Tổng thống Mỹ Donald Trump đang yêu cầu EU đơn phương giảm thuế đối với hàng hóa Mỹ để có tiến triển trong đàm phán, theo Financial Times..png" />
     <None Include="Resources\banner1.png" />

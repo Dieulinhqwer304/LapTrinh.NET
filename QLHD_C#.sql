@@ -1,7 +1,6 @@
-﻿-- Tạo CSDL
+﻿	-- Tạo CSDL
 CREATE DATABASE QLHD COLLATE Vietnamese_CI_AS;
 GO
-
 USE QLHD;
 GO
 
@@ -188,7 +187,22 @@ INSERT INTO Khachhang VALUES
 (N'KH04', N'Văn phòng Luật Hòa Bình', N'78 Pasteur', N'0287777666', N'0944555666', N'hoabinh@law.vn', N'LV03'),
 (N'KH05', N'Công ty Truyền thông HTV', N'123 Cách Mạng Tháng 8', N'0288888999', N'0955666777', N'htv@media.vn', N'LV05');
 
+--Bảng tài khoản
+CREATE TABLE TaiKhoan (
+    TenDangNhap NVARCHAR(50) PRIMARY KEY,
+    MatKhau NVARCHAR(255) NOT NULL,
+    MaNV NVARCHAR(10) NOT NULL,
+    TrangThai BIT DEFAULT 1, -- 1: hoạt động, 0: khóa
+    FOREIGN KEY (MaNV) REFERENCES Nhanvien(MaNV)
+);
 
+INSERT INTO TaiKhoan (TenDangNhap, MatKhau, MaNV, TrangThai)
+VALUES
+('nva', '123456', 'NV01', 1),
+('ltb', '123456', 'NV02', 1),
+('tvc', 'admin123', 'NV03', 1),
+('ptd', '123456', 'NV04', 1),
+('vve', '123456', 'NV05', 1);
 
 -- Bảng Khachguibai
 CREATE TABLE Khachguibai (

@@ -63,9 +63,29 @@ namespace QuanLyHopDong.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1Hn_288 {
+            get {
+                object obj = ResourceManager.GetObject("1Hn-288", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap banner {
             get {
                 object obj = ResourceManager.GetObject("banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chuyển_đổi_số_da_nền_tảng_đã_và_đang_thay_đổi {
+            get {
+                object obj = ResourceManager.GetObject("chuyển đổi số da nền tảng đã và đang thay đổi", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
