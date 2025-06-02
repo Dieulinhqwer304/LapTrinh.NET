@@ -38,11 +38,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.mtxtNgayBD = new System.Windows.Forms.MaskedTextBox();
             this.txtNoidung = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.mtxtNgayKT = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTongtien = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -54,6 +52,8 @@
             this.iconbtnLuu = new FontAwesome.Sharp.IconButton();
             this.iconbtnHuy = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.dtpNgayBD = new System.Windows.Forms.DateTimePicker();
+            this.dtpNgayKT = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKQcao)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,15 +144,6 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "Mã lần quảng cáo";
             // 
-            // mtxtNgayBD
-            // 
-            this.mtxtNgayBD.Location = new System.Drawing.Point(381, 62);
-            this.mtxtNgayBD.Mask = "00/00/0000";
-            this.mtxtNgayBD.Name = "mtxtNgayBD";
-            this.mtxtNgayBD.Size = new System.Drawing.Size(140, 22);
-            this.mtxtNgayBD.TabIndex = 36;
-            this.mtxtNgayBD.ValidatingType = typeof(System.DateTime);
-            // 
             // txtNoidung
             // 
             this.txtNoidung.Location = new System.Drawing.Point(192, 62);
@@ -177,15 +168,6 @@
             this.label6.Size = new System.Drawing.Size(61, 16);
             this.label6.TabIndex = 33;
             this.label6.Text = "Nội dung";
-            // 
-            // mtxtNgayKT
-            // 
-            this.mtxtNgayKT.Location = new System.Drawing.Point(575, 62);
-            this.mtxtNgayKT.Mask = "00/00/0000";
-            this.mtxtNgayKT.Name = "mtxtNgayKT";
-            this.mtxtNgayKT.Size = new System.Drawing.Size(140, 22);
-            this.mtxtNgayKT.TabIndex = 38;
-            this.mtxtNgayKT.ValidatingType = typeof(System.DateTime);
             // 
             // label5
             // 
@@ -333,11 +315,31 @@
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
+            // dtpNgayBD
+            // 
+            this.dtpNgayBD.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgayBD.Location = new System.Drawing.Point(381, 62);
+            this.dtpNgayBD.Name = "dtpNgayBD";
+            this.dtpNgayBD.Size = new System.Drawing.Size(150, 22);
+            this.dtpNgayBD.TabIndex = 55;
+            this.dtpNgayBD.ValueChanged += new System.EventHandler(this.dtpNgayBD_ValueChanged);
+            // 
+            // dtpNgayKT
+            // 
+            this.dtpNgayKT.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgayKT.Location = new System.Drawing.Point(575, 62);
+            this.dtpNgayKT.Name = "dtpNgayKT";
+            this.dtpNgayKT.Size = new System.Drawing.Size(150, 22);
+            this.dtpNgayKT.TabIndex = 56;
+            this.dtpNgayKT.ValueChanged += new System.EventHandler(this.dtpNgayKT_ValueChanged);
+            // 
             // frmKhachQuangCao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 392);
+            this.Controls.Add(this.dtpNgayKT);
+            this.Controls.Add(this.dtpNgayBD);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.iconbtnHuy);
             this.Controls.Add(this.iconbtnLuu);
@@ -348,9 +350,7 @@
             this.Controls.Add(this.dataGridViewKQcao);
             this.Controls.Add(this.txtTongtien);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.mtxtNgayKT);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.mtxtNgayBD);
             this.Controls.Add(this.txtNoidung);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
@@ -384,11 +384,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox mtxtNgayBD;
         private System.Windows.Forms.TextBox txtNoidung;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox mtxtNgayKT;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTongtien;
         private System.Windows.Forms.Label label9;
@@ -400,5 +398,7 @@
         private FontAwesome.Sharp.IconButton iconbtnLuu;
         private FontAwesome.Sharp.IconButton iconbtnHuy;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.DateTimePicker dtpNgayBD;
+        private System.Windows.Forms.DateTimePicker dtpNgayKT;
     }
 }

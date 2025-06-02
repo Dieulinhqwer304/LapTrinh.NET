@@ -124,7 +124,7 @@ namespace QuanLyHopDong
                 txtTenKH.Focus();
                 return;
             }
-            if (cboMaVLHD.SelectedIndex <= 0)
+            if (cboMaVLHD.SelectedIndex == -1)
             {
                 MessageBox.Show("Bạn chưa chọn mã lĩnh vực hoạt động");
                 cboMaVLHD.Focus();

@@ -76,7 +76,7 @@
             this.label10.ForeColor = System.Drawing.Color.SeaGreen;
             this.label10.Location = new System.Drawing.Point(15, 11);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(249, 25);
+            this.label10.Size = new System.Drawing.Size(299, 31);
             this.label10.TabIndex = 22;
             this.label10.Text = "QUẢN LÝ THÔNG TIN BÁO";
             // 
@@ -273,7 +273,7 @@
             this.cboMaChucNang.FormattingEnabled = true;
             this.cboMaChucNang.Location = new System.Drawing.Point(12, 183);
             this.cboMaChucNang.Name = "cboMaChucNang";
-            this.cboMaChucNang.Size = new System.Drawing.Size(121, 24);
+            this.cboMaChucNang.Size = new System.Drawing.Size(101, 24);
             this.cboMaChucNang.TabIndex = 41;
             // 
             // frmBao
