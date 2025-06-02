@@ -363,7 +363,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmKhachGuiBai";
-            this.Text = "frmKhachGuiBai";
+            this.Text = "Quản lý bài viết khách gửi";
             this.Load += new System.EventHandler(this.frmKhachGuiBai_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKGuiBai)).EndInit();
             this.ResumeLayout(false);

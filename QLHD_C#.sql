@@ -5,6 +5,18 @@ GO
 USE QLHD;
 GO
 
+-- Bảng Chucnang
+CREATE TABLE Chucnang (
+    Machucnang NVARCHAR(10) PRIMARY KEY,
+    Tenchucnang NVARCHAR(100)
+);
+INSERT INTO Chucnang VALUES
+(N'CN01', N'Phát hành báo'),
+(N'CN02', N'Tuyển dụng'),
+(N'CN03', N'Quảng cáo'),
+(N'CN04', N'Viết bài'),
+(N'CN05', N'Biên tập');
+
 -- Bảng Bao
 CREATE TABLE Bao (
     Mabao NVARCHAR(10) PRIMARY KEY,
@@ -12,7 +24,8 @@ CREATE TABLE Bao (
     Machucnang NVARCHAR(10),
     Diachi NVARCHAR(200),
     Dienthoai NVARCHAR(15),
-    Email NVARCHAR(100)
+    Email NVARCHAR(100),
+	CONSTRAINT FK_Bao_Chucnang FOREIGN KEY (Machucnang) REFERENCES Chucnang(Machucnang)
 );
 
 INSERT INTO Bao VALUES
@@ -93,18 +106,6 @@ INSERT INTO Trinhdo VALUES
 (N'TD03', N'Tiến sĩ'),
 (N'TD04', N'Cao đẳng'),
 (N'TD05', N'Trung cấp');
-
--- Bảng Chucnang
-CREATE TABLE Chucnang (
-    Machucnang NVARCHAR(10) PRIMARY KEY,
-    Tenchucnang NVARCHAR(100)
-);
-INSERT INTO Chucnang VALUES
-(N'CN01', N'Phát hành báo'),
-(N'CN02', N'Tuyển dụng'),
-(N'CN03', N'Quảng cáo'),
-(N'CN04', N'Viết bài'),
-(N'CN05', N'Biên tập');
 
 -- Bảng Chuyenmon
 CREATE TABLE Chuyenmon (
