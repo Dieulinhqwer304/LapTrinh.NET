@@ -39,12 +39,14 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.OliveDrab;
+            this.panel1.Controls.Add(this.iconButton9);
             this.panel1.Controls.Add(this.iconButton8);
             this.panel1.Controls.Add(this.iconButton6);
             this.panel1.Controls.Add(this.iconButton1);
@@ -66,7 +68,7 @@
             this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton8.IconSize = 25;
             this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton8.Location = new System.Drawing.Point(10, 392);
+            this.iconButton8.Location = new System.Drawing.Point(10, 357);
             this.iconButton8.Name = "iconButton8";
             this.iconButton8.Size = new System.Drawing.Size(144, 34);
             this.iconButton8.TabIndex = 20;
@@ -209,15 +211,32 @@
             this.panelMain.Size = new System.Drawing.Size(811, 439);
             this.panelMain.TabIndex = 1;
             // 
+            // iconButton9
+            // 
+            this.iconButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.RightFromBracket;
+            this.iconButton9.IconColor = System.Drawing.Color.SeaGreen;
+            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton9.IconSize = 25;
+            this.iconButton9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton9.Location = new System.Drawing.Point(10, 397);
+            this.iconButton9.Name = "iconButton9";
+            this.iconButton9.Size = new System.Drawing.Size(144, 34);
+            this.iconButton9.TabIndex = 21;
+            this.iconButton9.Text = "Đăng xuất";
+            this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton9.UseVisualStyleBackColor = true;
+            this.iconButton9.Click += new System.EventHandler(this.iconButton9_Click);
+            // 
             // frmDanhMuc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(974, 513);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel1);
             this.Name = "frmDanhMuc";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh mục";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -238,5 +257,6 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton6;
         private FontAwesome.Sharp.IconButton iconButton8;
+        private FontAwesome.Sharp.IconButton iconButton9;
     }
 }

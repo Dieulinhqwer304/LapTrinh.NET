@@ -14,7 +14,23 @@ namespace QuanLyHopDong
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDanhMuc());
+
+            Functions.Connect(); 
+            using (var loginForm = new frmLogin())
+            {
+        
+                var result = loginForm.ShowDialog();
+
+                if (result == DialogResult.OK) // đăng nhập thành công
+                {
+                    Application.Run(new frmDanhMuc()); // mở form chính
+                }
+                //else
+                //{
+                //    // Đăng nhập thất bại hoặc đóng form login -> thoát app
+                //    Application.Exit();
+                //}
+            }
         }
     }
 }

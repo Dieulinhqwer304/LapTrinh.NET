@@ -95,6 +95,21 @@ namespace QuanLyHopDong
             this.Close();
         }
 
+        private void iconButton9_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+        "Bạn có muốn đăng xuất không?",
+        "Đăng xuất",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question);
 
+            if (result == DialogResult.Yes)
+            {
+                // Ẩn form hiện tại và hiển thị form đăng nhập
+                this.Hide();
+                var loginForm = new frmLogin();
+                loginForm.Show();
+            }
+        }
     }
 }

@@ -3,8 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|c:\\users\\tgdd\\onedrive\\m\u00E1y t\u00EDnh\\c#\\quan_ly_hd\\quanlyhopdong\\frmkhachguibai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|c:\\users\\tgdd\\onedrive\\m\u00E1y t\u00EDnh\\c#\\quan_ly_hd\\quanlyhopdong\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\qlhddataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}",
+      "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:qlhddataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:frmbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmkhachguibai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:frmkhachguibai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:frmbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:frmtrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmkhachquangcao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -13,14 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmkhachquangcao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:frmkhachquangcao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:frmbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|solutionrelative:frmbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F88C69EF-A109-44D0-81F0-58354F3581DB}|QuanLyHopDong.csproj|C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmkhachguibai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -62,7 +82,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -86,7 +106,67 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "formlogin.cs",
+              "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\formlogin.cs",
+              "RelativeDocumentMoniker": "formlogin.cs",
+              "ToolTip": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\formlogin.cs",
+              "RelativeToolTip": "formlogin.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAAAGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T16:10:45.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAQwB4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T16:42:36.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QLHDDataSet.xsd",
+              "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\QLHDDataSet.xsd",
+              "RelativeDocumentMoniker": "QLHDDataSet.xsd",
+              "ToolTip": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\QLHDDataSet.xsd",
+              "RelativeToolTip": "QLHDDataSet.xsd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003579|",
+              "WhenOpened": "2025-06-02T16:42:33.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "frmTrangchu.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmTrangchu.cs",
+              "RelativeDocumentMoniker": "frmTrangchu.cs",
+              "ToolTip": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmTrangchu.cs [Design]",
+              "RelativeToolTip": "frmTrangchu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T16:02:05.033Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "formlogin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\formlogin.cs",
+              "RelativeDocumentMoniker": "formlogin.cs",
+              "ToolTip": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\formlogin.cs [Design]",
+              "RelativeToolTip": "formlogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T15:58:55.631Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "frmBao.cs [Design]",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmBao.cs",
               "RelativeDocumentMoniker": "frmBao.cs",
@@ -97,32 +177,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "frmBao.cs",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmBao.cs",
               "RelativeDocumentMoniker": "frmBao.cs",
               "ToolTip": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmBao.cs",
               "RelativeToolTip": "frmBao.cs",
-              "ViewState": "AgIAAOcAAAAAAAAAAAAUwOMAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAswOMAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T17:59:38.949Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "frmKhachGuiBai.cs",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmKhachGuiBai.cs",
               "RelativeDocumentMoniker": "frmKhachGuiBai.cs",
               "ToolTip": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmKhachGuiBai.cs",
               "RelativeToolTip": "frmKhachGuiBai.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAAAKQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAqwKQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T19:09:06.294Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-01T19:09:06.294Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "Functions.cs",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\Functions.cs",
               "RelativeDocumentMoniker": "Functions.cs",
@@ -134,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "frmKhachQuangCao.cs [Design]",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmKhachQuangCao.cs",
               "RelativeDocumentMoniker": "frmKhachQuangCao.cs",
@@ -145,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "frmKhachQuangCao.cs",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmKhachQuangCao.cs",
               "RelativeDocumentMoniker": "frmKhachQuangCao.cs",
@@ -157,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "FrmNhanVien.cs",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmNhanVien.cs",
               "RelativeDocumentMoniker": "frmNhanVien.cs",
@@ -169,18 +248,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "frmKhachGuiBai.cs [Design]",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmKhachGuiBai.cs",
               "RelativeDocumentMoniker": "frmKhachGuiBai.cs",
-              "ToolTip": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmKhachGuiBai.cs [Design]*",
-              "RelativeToolTip": "frmKhachGuiBai.cs [Design]*",
+              "ToolTip": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmKhachGuiBai.cs [Design]",
+              "RelativeToolTip": "frmKhachGuiBai.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T19:09:04.9Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "FrmNhanVien.cs [Design]",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmNhanVien.cs",
               "RelativeDocumentMoniker": "frmNhanVien.cs",
@@ -191,7 +270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "FrmNhanVien.Designer.cs",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\FrmNhanVien.Designer.cs",
               "RelativeDocumentMoniker": "FrmNhanVien.Designer.cs",
@@ -203,7 +282,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "frmDanhMuc.cs [Design]",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmDanhMuc.cs",
               "RelativeDocumentMoniker": "frmDanhMuc.cs",
@@ -214,7 +293,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "frmDanhMuc.Designer.cs",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmDanhMuc.Designer.cs",
               "RelativeDocumentMoniker": "frmDanhMuc.Designer.cs",
@@ -226,7 +305,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "frmDanhMuc.cs",
               "DocumentMoniker": "C:\\Users\\TGDD\\OneDrive\\M\u00E1y t\u00EDnh\\C#\\QUAN_LY_HD\\QuanLyHopDong\\frmDanhMuc.cs",
               "RelativeDocumentMoniker": "frmDanhMuc.cs",
