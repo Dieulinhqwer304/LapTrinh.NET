@@ -63,5 +63,15 @@ namespace QuanLyHopDong
         {
             txtMatKhau.UseSystemPasswordChar = !txtMatKhau.UseSystemPasswordChar;
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            txtMatKhau.UseSystemPasswordChar = !txtMatKhau.UseSystemPasswordChar;
+        }
+
+        private void txtMatKhau_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
