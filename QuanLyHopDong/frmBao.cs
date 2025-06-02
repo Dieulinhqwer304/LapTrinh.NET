@@ -199,13 +199,31 @@ namespace QuanLyHopDong
 
             if (MessageBox.Show($"Bạn có chắc muốn xóa báo '{mabao}' không?", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                string sql = $"DELETE FROM Bao WHERE Mabao = N'{mabao}'";
                 try
                 {
-                    SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
-                    cmd.ExecuteNonQuery();
+                    string[] relatedTables = {
+                "KhachGuibai",
+                "KhachQuangcao",
+                "Banggia",
+                "Nhanvien",
+                "Phongban",
+                "Bao_Theloai"
+            };
+
+                    foreach (string table in relatedTables)
+                    {
+                        string deleteQuery = $"DELETE FROM {table} WHERE Mabao = N'{mabao}'";
+                        SqlCommand cmd = new SqlCommand(deleteQuery, Functions.Conn);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    string deleteBao = $"DELETE FROM Bao WHERE Mabao = N'{mabao}'";
+                    SqlCommand cmdDelete = new SqlCommand(deleteBao, Functions.Conn);
+                    cmdDelete.ExecuteNonQuery();
+
                     LoadDataToGridView();
                     clear();
+                    MessageBox.Show("Xóa thành công!");
                 }
                 catch (Exception ex)
                 {
