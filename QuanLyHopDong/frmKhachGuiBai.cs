@@ -293,6 +293,9 @@ namespace QuanLyHopDong
         private void iconbtnHuy_Click(object sender, EventArgs e)
         {
             clear();
+            string sql = "SELECT * FROM Khachguibai";
+            DataTable dt = Functions.GetDataToTable(sql);
+            dataGridViewKGuiBai.DataSource = dt;
         }
 
         private void iconbtnThoat_Click(object sender, EventArgs e)
@@ -303,6 +306,47 @@ namespace QuanLyHopDong
         private void dtpNgaydang_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
+        }
+
+        private void iconbtnTimkiem_Click(object sender, EventArgs e)
+        {
+            string malangui = txtmaLanGui.Text.Trim();
+            string makh = cboMaKH.Text.Trim();
+            string matheloai = cboMaTL.Text.Trim();
+            string mabao = cboMaBao.Text.Trim();    
+            string manv = cboMaNV.Text.Trim();
+            string tieude = txtTieude.Text.Trim();
+            string noidung = txtNoidung.Text.Trim();
+
+
+            // Khởi tạo câu truy vấn
+            string sql = "SELECT * FROM Khachguibai WHERE 1=1";
+
+            // Thêm điều kiện nếu có nhập dữ liệu
+            if (!string.IsNullOrEmpty(malangui))
+                sql += $" AND Malangui LIKE N'%{malangui}%'";
+
+            if (!string.IsNullOrEmpty(makh))
+                sql += $" AND MaKH LIKE N'%{makh}%'";
+
+            if (!string.IsNullOrEmpty(matheloai))
+                sql += $" AND Matheloai LIKE N'%{matheloai}%'";
+
+            if (!string.IsNullOrEmpty(mabao))
+                sql += $" AND Mabao LIKE N'%{mabao}%'";
+
+            if (!string.IsNullOrEmpty(manv))
+                sql += $" AND MaNV LIKE N'%{manv}%'";
+
+            if (!string.IsNullOrEmpty(tieude))
+                sql += $" AND Tieude LIKE N'%{tieude}%'";
+
+            if (!string.IsNullOrEmpty(noidung))
+                sql += $" AND Noidung LIKE N'%{noidung}%'";
+
+            // Lấy dữ liệu và gán vào DataGridView
+            DataTable dt = Functions.GetDataToTable(sql);
+            dataGridViewKGuiBai.DataSource = dt;
         }
     }
 }

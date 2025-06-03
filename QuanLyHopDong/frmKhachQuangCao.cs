@@ -311,6 +311,9 @@ namespace QuanLyHopDong
         private void iconbtnHuy_Click(object sender, EventArgs e)
         {
             clear();
+            string sql = "SELECT * FROM Khachquangcao";
+            DataTable dt = Functions.GetDataToTable(sql);
+            dataGridViewKQcao.DataSource = dt;
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -318,17 +321,52 @@ namespace QuanLyHopDong
             this.Close();
         }
 
+        private void iconbtnTimkiem_Click(object sender, EventArgs e)
+        {
+            string malanqc = txtmaLanQC.Text.Trim();
+            string manv = cboMaNV.Text.Trim();
+            string makh = cboMaKH.Text.Trim();
+            string maquangcao = cboMaQC.Text.Trim();
+            string mabao = cboMaBao.Text.Trim();
+            string noidung = txtNoidung.Text.Trim();
+
+
+            // Khởi tạo câu truy vấn
+            string sql = "SELECT * FROM Khachquangcao WHERE 1=1";
+
+            // Thêm điều kiện nếu có nhập dữ liệu
+            if (!string.IsNullOrEmpty(malanqc))
+                sql += $" AND MalanQC LIKE N'%{malanqc}%'";
+
+            if (!string.IsNullOrEmpty(makh))
+                sql += $" AND MaKH LIKE N'%{makh}%'";
+
+            if (!string.IsNullOrEmpty(maquangcao))
+                sql += $" AND MaQcao LIKE N'%{maquangcao}%'";
+
+            if (!string.IsNullOrEmpty(mabao))
+                sql += $" AND Mabao LIKE N'%{mabao}%'";
+
+            if (!string.IsNullOrEmpty(manv))
+                sql += $" AND MaNV LIKE N'%{manv}%'";
+
+            if (!string.IsNullOrEmpty(noidung))
+                sql += $" AND Noidung LIKE N'%{noidung}%'";
+
+            // Lấy dữ liệu và gán vào DataGridView
+            DataTable dt = Functions.GetDataToTable(sql);
+            dataGridViewKQcao.DataSource = dt;
+        }
+
+        private void dtpNgayBD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
         private void dtpNgayBD_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }
-
         private void dtpNgayKT_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void dtpNgayBD_ValueChanged(object sender, EventArgs e)
         {
 
         }
@@ -337,5 +375,6 @@ namespace QuanLyHopDong
         {
 
         }
+
     }
 }

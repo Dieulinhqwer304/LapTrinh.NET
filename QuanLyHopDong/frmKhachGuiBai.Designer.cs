@@ -55,6 +55,7 @@
             this.iconbtnSua = new FontAwesome.Sharp.IconButton();
             this.iconbtnThem = new FontAwesome.Sharp.IconButton();
             this.dtpNgaydang = new System.Windows.Forms.DateTimePicker();
+            this.iconbtnTimkiem = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKGuiBai)).BeginInit();
             this.SuspendLayout();
             // 
@@ -263,7 +264,7 @@
             this.iconbtnLuu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnLuu.IconSize = 23;
             this.iconbtnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconbtnLuu.Location = new System.Drawing.Point(474, 361);
+            this.iconbtnLuu.Location = new System.Drawing.Point(477, 361);
             this.iconbtnLuu.Name = "iconbtnLuu";
             this.iconbtnLuu.Size = new System.Drawing.Size(86, 30);
             this.iconbtnLuu.TabIndex = 58;
@@ -280,7 +281,7 @@
             this.iconbtnXoa.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnXoa.IconSize = 23;
             this.iconbtnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconbtnXoa.Location = new System.Drawing.Point(370, 361);
+            this.iconbtnXoa.Location = new System.Drawing.Point(367, 361);
             this.iconbtnXoa.Name = "iconbtnXoa";
             this.iconbtnXoa.Size = new System.Drawing.Size(86, 30);
             this.iconbtnXoa.TabIndex = 57;
@@ -297,7 +298,7 @@
             this.iconbtnSua.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnSua.IconSize = 23;
             this.iconbtnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconbtnSua.Location = new System.Drawing.Point(264, 361);
+            this.iconbtnSua.Location = new System.Drawing.Point(256, 361);
             this.iconbtnSua.Name = "iconbtnSua";
             this.iconbtnSua.Size = new System.Drawing.Size(86, 30);
             this.iconbtnSua.TabIndex = 56;
@@ -314,7 +315,7 @@
             this.iconbtnThem.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconbtnThem.IconSize = 23;
             this.iconbtnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconbtnThem.Location = new System.Drawing.Point(157, 361);
+            this.iconbtnThem.Location = new System.Drawing.Point(144, 361);
             this.iconbtnThem.Name = "iconbtnThem";
             this.iconbtnThem.Size = new System.Drawing.Size(86, 30);
             this.iconbtnThem.TabIndex = 55;
@@ -331,10 +332,28 @@
             this.dtpNgaydang.Size = new System.Drawing.Size(139, 22);
             this.dtpNgaydang.TabIndex = 61;
             // 
+            // iconbtnTimkiem
+            // 
+            this.iconbtnTimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.iconbtnTimkiem.IconChar = FontAwesome.Sharp.IconChar.SearchMinus;
+            this.iconbtnTimkiem.IconColor = System.Drawing.Color.SeaGreen;
+            this.iconbtnTimkiem.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconbtnTimkiem.IconSize = 23;
+            this.iconbtnTimkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconbtnTimkiem.Location = new System.Drawing.Point(658, 14);
+            this.iconbtnTimkiem.Name = "iconbtnTimkiem";
+            this.iconbtnTimkiem.Size = new System.Drawing.Size(122, 30);
+            this.iconbtnTimkiem.TabIndex = 63;
+            this.iconbtnTimkiem.Text = "Tìm kiếm";
+            this.iconbtnTimkiem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconbtnTimkiem.UseVisualStyleBackColor = true;
+            this.iconbtnTimkiem.Click += new System.EventHandler(this.iconbtnTimkiem_Click);
+            // 
             // frmKhachGuiBai
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(793, 392);
+            this.Controls.Add(this.iconbtnTimkiem);
             this.Controls.Add(this.dtpNgaydang);
             this.Controls.Add(this.iconbtnThoat);
             this.Controls.Add(this.iconbtnHuy);
@@ -399,5 +418,6 @@
         private FontAwesome.Sharp.IconButton iconbtnSua;
         private FontAwesome.Sharp.IconButton iconbtnThem;
         private System.Windows.Forms.DateTimePicker dtpNgaydang;
+        private FontAwesome.Sharp.IconButton iconbtnTimkiem;
     }
 }

@@ -54,6 +54,7 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.dtpNgayBD = new System.Windows.Forms.DateTimePicker();
             this.dtpNgayKT = new System.Windows.Forms.DateTimePicker();
+            this.iconbtnTimkiem = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKQcao)).BeginInit();
             this.SuspendLayout();
             // 
@@ -333,10 +334,28 @@
             this.dtpNgayKT.TabIndex = 56;
             this.dtpNgayKT.ValueChanged += new System.EventHandler(this.dtpNgayKT_ValueChanged);
             // 
+            // iconbtnTimkiem
+            // 
+            this.iconbtnTimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.iconbtnTimkiem.IconChar = FontAwesome.Sharp.IconChar.SearchMinus;
+            this.iconbtnTimkiem.IconColor = System.Drawing.Color.SeaGreen;
+            this.iconbtnTimkiem.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconbtnTimkiem.IconSize = 23;
+            this.iconbtnTimkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconbtnTimkiem.Location = new System.Drawing.Point(659, 12);
+            this.iconbtnTimkiem.Name = "iconbtnTimkiem";
+            this.iconbtnTimkiem.Size = new System.Drawing.Size(122, 30);
+            this.iconbtnTimkiem.TabIndex = 64;
+            this.iconbtnTimkiem.Text = "Tìm kiếm";
+            this.iconbtnTimkiem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconbtnTimkiem.UseVisualStyleBackColor = true;
+            this.iconbtnTimkiem.Click += new System.EventHandler(this.iconbtnTimkiem_Click);
+            // 
             // frmKhachQuangCao
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(793, 392);
+            this.Controls.Add(this.iconbtnTimkiem);
             this.Controls.Add(this.dtpNgayKT);
             this.Controls.Add(this.dtpNgayBD);
             this.Controls.Add(this.iconButton1);
@@ -399,5 +418,6 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.DateTimePicker dtpNgayBD;
         private System.Windows.Forms.DateTimePicker dtpNgayKT;
+        private FontAwesome.Sharp.IconButton iconbtnTimkiem;
     }
 }
