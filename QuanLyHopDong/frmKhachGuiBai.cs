@@ -198,7 +198,24 @@ namespace QuanLyHopDong
             string noidung = txtNoidung.Text.Trim();
             string manv = cboMaNV.Text.Trim();
             DateTime ngaydang = dtpNgaydang.Value;
-
+            // Kiểm tra và gán giá trị mặc định cho MaNV
+            if (string.IsNullOrEmpty(manv) && cboMaNV.Items.Count > 0)
+            {
+                cboMaNV.SelectedIndex = 0; // Chọn phần tử đầu tiên
+                manv = cboMaNV.Text.Trim();
+            }
+            else if (cboMaNV.Items.Count == 0)
+            {
+                MessageBox.Show("Không có nhân viên nào trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            //thông báo nhập mã kh
+            if (makh == "")
+            {
+                MessageBox.Show("Bạn chưa nhập mã khách hàng");
+                cboMaKH.Focus();
+                return;
+            }
 
             // Truy vấn nhuận bút mới: Lấy dòng có Ngayapdung <= NgayDang gần nhất
             string sqlGetNB = @"

@@ -221,6 +221,17 @@ namespace QuanLyHopDong
             string maqc = cboMaQC.Text.Trim();
             string noidung = txtNoidung.Text.Trim();
 
+            //Gán mã nhân viên
+            if (string.IsNullOrEmpty(manv) && cboMaNV.Items.Count > 0)
+            {
+                cboMaNV.SelectedIndex = 0; // Chọn phần tử đầu tiên
+                manv = cboMaNV.Text.Trim();
+            }
+            else if (cboMaNV.Items.Count == 0)
+            {
+                MessageBox.Show("Không có nhân viên nào trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (malanqc == "")
             {
@@ -229,6 +240,12 @@ namespace QuanLyHopDong
                 return;
             }
 
+            if (makh == "")
+            {
+                MessageBox.Show("Bạn chưa nhập mã khách hàng");
+                cboMaKH.Focus();
+                return;
+            }
             // Validate ngayBD < ngayKT
             if(dtpNgayBD.Value > dtpNgayKT.Value)
             {
