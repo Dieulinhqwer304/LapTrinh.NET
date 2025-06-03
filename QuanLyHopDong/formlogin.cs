@@ -12,10 +12,6 @@ namespace QuanLyHopDong
             InitializeComponent();
             txtMatKhau.UseSystemPasswordChar = true; // Ẩn mật khẩu khi bắt đầu
         }
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTaiKhoan.Text) || string.IsNullOrWhiteSpace(txtMatKhau.Text))

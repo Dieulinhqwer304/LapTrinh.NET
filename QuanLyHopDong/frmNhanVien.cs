@@ -127,7 +127,51 @@ namespace QuanLyHopDong
 
         private void iconbtnSua_Click(object sender, EventArgs e)
         {
-            clear();
+            if (txtMaNV.Text.Trim() == "")
+            {
+                MessageBox.Show("Bạn chưa chọn bản ghi nào để sửa");
+                return;
+            }
+
+            string manv = txtMaNV.Text.Trim();
+            string tennv = txtTenNV.Text.Trim();
+            string mabao = cboMaBao.Text.Trim();
+            string maphong = cboMaPhong.Text.Trim();
+            string machucvu = cboMaChucVu.Text.Trim();
+            string matrinhdo = cboMaTrinhDo.Text.Trim();
+            string machuyenmon = cboMaChuyenMon.Text.Trim();
+            string diachi = txtDiaChi.Text.Trim();
+            string ngaysinh = dtpNgaySinh.Value.ToString("yyyy-MM-dd");
+            string gioitinh = cboGioiTinh.Text.Trim();
+            string dienthoai = txtDienThoai.Text.Trim();
+            string email = txtEmail.Text.Trim();
+
+            string sql = "UPDATE Nhanvien SET " +
+                         $"TenNV = N'{tennv}', " +
+                         $"MaBao = N'{mabao}', " +
+                         $"MaPhong = N'{maphong}', " +
+                         $"MaChucVu = N'{machucvu}', " +
+                         $"MaTrinhDo = N'{matrinhdo}', " +
+                         $"MaCM = N'{machuyenmon}', " +
+                         $"DiaChi = N'{diachi}', " +
+                         $"NgaySinh = '{ngaysinh}', " +
+                         $"GioiTinh = N'{gioitinh}', " +
+                         $"DienThoai = N'{dienthoai}', " +
+                         $"Email = N'{email}' " +
+                         $"WHERE MaNV = N'{manv}'";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(sql, Functions.Conn);
+                cmd.ExecuteNonQuery();
+                LoadDataToGridView();
+                clear();
+                MessageBox.Show("Sửa thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
+            }
         }
 
         private void iconbtnXoa_Click(object sender, EventArgs e)
